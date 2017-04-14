@@ -1,6 +1,5 @@
 # DogNetS
-##
-DogNetS is a social network for dog owners and their dogs. The purpose of our network is to help people find buddies for their dogs. 
+## DogNetS is a social network for dog owners and their dogs. The purpose of our network is to help people find buddies for their dogs. 
 
 ## User Stories (Required) 
 [ ] User signup/login/logout 
