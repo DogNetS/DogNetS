@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DogNet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="DogNet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -62,15 +62,19 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="passwordTextField" destination="QfK-d6-zdC" id="qTl-v6-OFF"/>
+                        <outlet property="usernameTextField" destination="Fjf-bS-Aa8" id="vXl-XJ-CJI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="122.78860569715144"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="i8Z-5W-wgw">
             <objects>
-                <viewController id="i0Y-6o-8Uy" sceneMemberID="viewController">
+                <viewController id="i0Y-6o-8Uy" customClass="ProfileViewController" customModule="DogNet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="54r-DF-JWQ"/>
                         <viewControllerLayoutGuide type="bottom" id="HtY-0h-I6C"/>
@@ -140,10 +144,10 @@
             </objects>
             <point key="canvasLocation" x="792.79999999999995" y="-558.17091454272872"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="ZM2-un-hFj">
             <objects>
-                <viewController id="gtC-Bq-Xfj" sceneMemberID="viewController">
+                <viewController id="gtC-Bq-Xfj" customClass="HomeViewController" customModule="DogNet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dUC-oZ-y3W"/>
                         <viewControllerLayoutGuide type="bottom" id="24G-JZ-wuZ"/>
@@ -218,10 +222,10 @@
             </objects>
             <point key="canvasLocation" x="794.39999999999998" y="122.78860569715144"/>
         </scene>
-        <!--View Controller-->
+        <!--Dog Profile View Controller-->
         <scene sceneID="hZu-i9-JVk">
             <objects>
-                <viewController id="297-ud-R75" sceneMemberID="viewController">
+                <viewController id="297-ud-R75" customClass="DogProfileViewController" customModule="DogNet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jsy-99-21h"/>
                         <viewControllerLayoutGuide type="bottom" id="X5a-UI-YvB"/>
@@ -338,10 +342,10 @@
             </objects>
             <point key="canvasLocation" x="1502" y="122"/>
         </scene>
-        <!--View Controller-->
+        <!--Dog Pal List View Controller-->
         <scene sceneID="TdK-oz-t0k">
             <objects>
-                <viewController id="Nc2-Ka-Xav" sceneMemberID="viewController">
+                <viewController id="Nc2-Ka-Xav" customClass="DogPalListViewController" customModule="DogNet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DtW-TU-4JM"/>
                         <viewControllerLayoutGuide type="bottom" id="jYS-cG-WWk"/>
@@ -393,10 +397,10 @@
             </objects>
             <point key="canvasLocation" x="2222" y="123"/>
         </scene>
-        <!--View Controller-->
+        <!--Signup View Controller-->
         <scene sceneID="e4n-LJ-iMv">
             <objects>
-                <viewController id="Z0m-wQ-jB8" sceneMemberID="viewController">
+                <viewController id="Z0m-wQ-jB8" customClass="SignupViewController" customModule="DogNet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CKF-Zj-ggn"/>
                         <viewControllerLayoutGuide type="bottom" id="rO8-aK-cAU"/>
@@ -488,10 +492,10 @@
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="798.35082458770626"/>
         </scene>
-        <!--View Controller-->
+        <!--Dog Signup1 View Controller-->
         <scene sceneID="wRc-CK-Jm2">
             <objects>
-                <viewController id="rC7-jb-wlH" sceneMemberID="viewController">
+                <viewController id="rC7-jb-wlH" customClass="DogSignup1ViewController" customModule="DogNet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JZY-Un-RKn"/>
                         <viewControllerLayoutGuide type="bottom" id="g0x-2N-6rf"/>
@@ -564,10 +568,10 @@
             </objects>
             <point key="canvasLocation" x="794" y="798"/>
         </scene>
-        <!--View Controller-->
+        <!--Dog Signup2 View Controller-->
         <scene sceneID="APX-0e-d4t">
             <objects>
-                <viewController id="mPl-v0-HXD" sceneMemberID="viewController">
+                <viewController id="mPl-v0-HXD" customClass="DogSignup2ViewController" customModule="DogNet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FZb-oT-W6c"/>
                         <viewControllerLayoutGuide type="bottom" id="B0q-Sb-gqs"/>
