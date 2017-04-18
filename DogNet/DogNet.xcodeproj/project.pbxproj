@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B16A23DC1ED99371568F6DB0 /* Pods_DogNet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463C1EFA0A3A3A98B2FFF82D /* Pods_DogNet.framework */; };
 		C79708C11EA5C038002D652D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79708C01EA5C038002D652D /* AppDelegate.swift */; };
 		C79708C31EA5C038002D652D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79708C21EA5C038002D652D /* ViewController.swift */; };
 		C79708C61EA5C038002D652D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79708C41EA5C038002D652D /* Main.storyboard */; };
@@ -15,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		463C1EFA0A3A3A98B2FFF82D /* Pods_DogNet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DogNet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3B5349A875B720F30F4001F /* Pods-DogNet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DogNet.release.xcconfig"; path = "Pods/Target Support Files/Pods-DogNet/Pods-DogNet.release.xcconfig"; sourceTree = "<group>"; };
 		C79708BD1EA5C038002D652D /* DogNet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogNet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C79708C01EA5C038002D652D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C79708C21EA5C038002D652D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,7 @@
 		C79708C71EA5C038002D652D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C79708CA1EA5C038002D652D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C79708CC1EA5C038002D652D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3188F68E2E2B8FFC7DF4051 /* Pods-DogNet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DogNet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DogNet/Pods-DogNet.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B16A23DC1ED99371568F6DB0 /* Pods_DogNet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5019140AB905FE573DFD25DF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				463C1EFA0A3A3A98B2FFF82D /* Pods_DogNet.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		64980A3D348EF4A20916A30C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F3188F68E2E2B8FFC7DF4051 /* Pods-DogNet.debug.xcconfig */,
+				A3B5349A875B720F30F4001F /* Pods-DogNet.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C79708B41EA5C037002D652D = {
 			isa = PBXGroup;
 			children = (
 				C79708BF1EA5C038002D652D /* DogNet */,
 				C79708BE1EA5C038002D652D /* Products */,
+				64980A3D348EF4A20916A30C /* Pods */,
+				5019140AB905FE573DFD25DF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C79708CF1EA5C038002D652D /* Build configuration list for PBXNativeTarget "DogNet" */;
 			buildPhases = (
+				13AE3596412E7A30FBCC3863 /* [CP] Check Pods Manifest.lock */,
 				C79708B91EA5C037002D652D /* Sources */,
 				C79708BA1EA5C037002D652D /* Frameworks */,
 				C79708BB1EA5C037002D652D /* Resources */,
+				90DC4834DBD348B858FDA59A /* [CP] Embed Pods Frameworks */,
+				D054588A6D2D086F25A5A1EC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +157,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		13AE3596412E7A30FBCC3863 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		90DC4834DBD348B858FDA59A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DogNet/Pods-DogNet-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D054588A6D2D086F25A5A1EC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DogNet/Pods-DogNet-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C79708B91EA5C037002D652D /* Sources */ = {
@@ -258,6 +333,7 @@
 		};
 		C79708D01EA5C038002D652D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3188F68E2E2B8FFC7DF4051 /* Pods-DogNet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DogNet/Info.plist;
@@ -270,6 +346,7 @@
 		};
 		C79708D11EA5C038002D652D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3B5349A875B720F30F4001F /* Pods-DogNet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DogNet/Info.plist;
