@@ -19,6 +19,9 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        usernameTextField.text = ""
+        passwordTextField.text = ""
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,6 +29,19 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onLogin(_ sender: Any) {
+        
+        PFUser.logInWithUsername(inBackground: usernameTextField.text!, password: passwordTextField.text!) { (user: PFUser?, error: Error?) in
+            if user != nil {
+                print("You're logged in!")
+                self.performSegue(withIdentifier: "loginSegue", sender: nil)
+            } else {
+                self.usernameTextField.text = ""
+                self.passwordTextField.text = ""
+                print("Login was not successful")
+            }
+        }
+    }
 
     /*
     // MARK: - Navigation

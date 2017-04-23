@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import Parse
 
 class SignupViewController: UIViewController {
+    @IBOutlet weak var birthdayDP: UIDatePicker!
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var confirmTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +26,38 @@ class SignupViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onContinue(_ sender: Any) {
+        
+        print("Attempting to make a new user")
+        
+        // confirm passwords match
+        if passwordTextField.text != confirmTextField.text {
+            print("passwords do not match")
+            passwordTextField.text = ""
+            confirmTextField.text = ""
+            return
+        }
+        
+        let newUser = PFUser()
+        newUser.username = usernameTextField.text
+        newUser.password = passwordTextField.text
+        newUser.signUpInBackground { (wasSuccessful: Bool, error: Error?) in
+            if wasSuccessful {
+                print("user created")
+                self.performSegue(withIdentifier: "signupSegue", sender: nil)
+            } else {
+                if error?._code == 202 {
+                    print("Ah, shucks! Someone already has that username")
+                } else if error?._code == 200 {
+                    print("What? You didn't even enter a username")
+                } else if error?._code == 201 {
+                    print("Okay you didn't even enter a password. That's not safe")
+                } else {
+                    print(error?.localizedDescription ?? "Ya done fucked up")
+                }
+            }
+        }
+    }
 
     /*
     // MARK: - Navigation
