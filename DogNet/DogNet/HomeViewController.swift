@@ -20,12 +20,6 @@ class HomeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func logOut(_ sender: Any) {
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let loginVC = mainStoryboard.instantiateViewController(withIdentifier: "Login")
-        self.navigationController?.present(loginVC, animated: true, completion: nil)
-    }
  
     @IBAction func profileButtonTapped(_ sender: Any) {
         
