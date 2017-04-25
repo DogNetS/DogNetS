@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  DogSignup2ViewController.swift
 //  DogNet
 //
 //  Created by Sean Nam on 4/17/17.
@@ -8,11 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
-    @IBAction func onLogout(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "logout"), object: nil)
-    }
+class DogSignup2ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
