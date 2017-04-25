@@ -19,6 +19,7 @@
 		C79708DB1EA5D07D002D652D /* DogPalListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79708DA1EA5D07D002D652D /* DogPalListViewController.swift */; };
 		C79708DD1EA5D091002D652D /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79708DC1EA5D091002D652D /* SignupViewController.swift */; };
 		C79708DF1EA5D099002D652D /* DogSignup1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79708DE1EA5D099002D652D /* DogSignup1ViewController.swift */; };
+		C79708E11EA5D0A7002D652D /* DogSignup2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79708E01EA5D0A7002D652D /* DogSignup2ViewController.swift */; };
 		C79708E31EA5D0B0002D652D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79708E21EA5D0B0002D652D /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		C79708DA1EA5D07D002D652D /* DogPalListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogPalListViewController.swift; sourceTree = "<group>"; };
 		C79708DC1EA5D091002D652D /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		C79708DE1EA5D099002D652D /* DogSignup1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogSignup1ViewController.swift; sourceTree = "<group>"; };
+		C79708E01EA5D0A7002D652D /* DogSignup2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogSignup2ViewController.swift; sourceTree = "<group>"; };
 		C79708E21EA5D0B0002D652D /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F3188F68E2E2B8FFC7DF4051 /* Pods-DogNet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DogNet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DogNet/Pods-DogNet.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +115,7 @@
 				C79708DA1EA5D07D002D652D /* DogPalListViewController.swift */,
 				C79708DC1EA5D091002D652D /* SignupViewController.swift */,
 				C79708DE1EA5D099002D652D /* DogSignup1ViewController.swift */,
+				C79708E01EA5D0A7002D652D /* DogSignup2ViewController.swift */,
 				C79708E21EA5D0B0002D652D /* ProfileViewController.swift */,
 			);
 			name = "View Controllers";
@@ -254,6 +257,7 @@
 				C79708DD1EA5D091002D652D /* SignupViewController.swift in Sources */,
 				C79708C31EA5C038002D652D /* ViewController.swift in Sources */,
 				C79708D91EA5D074002D652D /* DogProfileViewController.swift in Sources */,
+				C79708E11EA5D0A7002D652D /* DogSignup2ViewController.swift in Sources */,
 				C79708C11EA5C038002D652D /* AppDelegate.swift in Sources */,
 				C79708D71EA5D06A002D652D /* HomeViewController.swift in Sources */,
 				C79708DB1EA5D07D002D652D /* DogPalListViewController.swift in Sources */,
