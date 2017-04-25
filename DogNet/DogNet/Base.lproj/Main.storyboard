@@ -48,7 +48,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bco-K8-D3t">
-                                <rect key="frame" x="168" y="418.5" width="38" height="30"/>
+                                <rect key="frame" x="168.5" y="418.5" width="38" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Fzp-4L-wJ6"/>
                                     <constraint firstAttribute="width" constant="38" id="xOs-pO-M89"/>
@@ -59,7 +59,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtK-zk-yxb">
-                                <rect key="frame" x="161" y="464.5" width="52" height="30"/>
+                                <rect key="frame" x="161.5" y="464.5" width="52" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="52" id="Ybr-Yv-u8r"/>
                                     <constraint firstAttribute="height" constant="30" id="sQp-3n-u5R"/>
@@ -245,7 +245,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="134"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x3b-i1-Dri" id="zZh-5i-ypX">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="133"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="133.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q6y-Ft-FmT">
@@ -444,7 +444,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="107"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j0T-hl-N2g" id="Cn1-iy-T79">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="106"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="106.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bm7-Id-735">
@@ -572,7 +572,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="flR-b5-3gG">
-                                <rect key="frame" x="157" y="348.5" width="62" height="30"/>
+                                <rect key="frame" x="156.5" y="348.5" width="62" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="62" id="NHg-0B-GIt"/>
                                     <constraint firstAttribute="height" constant="30" id="iZx-IV-rH3"/>
@@ -583,7 +583,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3IP-aV-u3i">
-                                <rect key="frame" x="162.5" y="410.5" width="50" height="30"/>
+                                <rect key="frame" x="162" y="410.5" width="50" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="6kG-Jv-GZ1"/>
                                     <constraint firstAttribute="height" constant="30" id="DcR-hk-iGg"/>
