@@ -12,6 +12,8 @@ class DogProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "MyPals", style: .plain, target: self, action: "MyPalsTapped")
 
         // Do any additional setup after loading the view.
     }
@@ -21,6 +23,12 @@ class DogProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func MyPalsTapped(){
+        let mainStoryboard = UIStoryboard( name: "Main", bundle: nil)
+        let dogPalsVC = mainStoryboard.instantiateViewController(withIdentifier: "dogPalsVC") as! ProfileViewController
+        self.navigationController?.pushViewController(dogPalsVC, animated: true)
+
+    }
 
     /*
     // MARK: - Navigation
