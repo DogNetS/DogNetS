@@ -335,7 +335,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age: 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7G-mW-UJy">
-                                <rect key="frame" x="192" y="123" width="50" height="21"/>
+                                <rect key="frame" x="192" y="167" width="50" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -354,7 +354,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Golden Doodle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNo-z2-j2c">
-                                <rect key="frame" x="192" y="94" width="114" height="21"/>
+                                <rect key="frame" x="192" y="138" width="114" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -380,13 +380,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Human" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRz-13-V6g">
-                                <rect key="frame" x="192" y="65" width="55" height="21"/>
+                                <rect key="frame" x="192" y="109" width="55" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fluffy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9eu-QT-Tfd">
-                                <rect key="frame" x="192" y="36" width="43.5" height="21"/>
+                                <rect key="frame" x="192" y="80" width="44" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -422,10 +422,19 @@
                             <constraint firstItem="LcU-Jx-zWP" firstAttribute="top" secondItem="VJj-9L-0VO" secondAttribute="bottom" constant="16" id="zBh-jD-qrz"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dogBreed" destination="wNo-z2-j2c" id="oMx-x6-bgp"/>
+                        <outlet property="dogImage" destination="CnB-5Y-GdH" id="m73-bg-mBs"/>
+                        <outlet property="dogName" destination="9eu-QT-Tfd" id="igB-73-RR4"/>
+                        <outlet property="dogsHealth" destination="clG-LL-SWn" id="v9P-s4-m3I"/>
+                        <outlet property="dogsOwner" destination="GRz-13-V6g" id="hzl-jw-muN"/>
+                        <outlet property="dogsTemperament" destination="VJj-9L-0VO" id="xlE-8y-scS"/>
+                        <outlet property="dogsToys" destination="LcU-Jx-zWP" id="F3Q-cP-bjd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QCC-5r-tOc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2440.8000000000002" y="121.88905547226388"/>
+            <point key="canvasLocation" x="2439.375" y="121.47887323943662"/>
         </scene>
         <!--Dog Pal List View Controller-->
         <scene sceneID="TdK-oz-t0k">
