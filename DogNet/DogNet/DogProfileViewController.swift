@@ -7,14 +7,37 @@
 //
 
 import UIKit
+import Parse
 
 class DogProfileViewController: UIViewController {
-
+    
+    var dog: Dog! // or maybe Dog PFObject
+    
+    @IBOutlet weak var dogImage: UIImageView!
+    @IBOutlet weak var dogName: UILabel!
+    @IBOutlet weak var dogsOwner: UILabel!
+    @IBOutlet weak var dogBreed: UILabel!
+    @IBOutlet weak var dogsHealth: UILabel!
+    @IBOutlet weak var dogsTemperament: UILabel!
+    @IBOutlet weak var dogsToys: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "MyPals", style: .plain, target: self, action: "MyPalsTapped")
+        
+        //getting dog info through the Dog Model passed from the cell.
+        self.dogName.text = dog.name
+        //self.dogsOwner.text = dog.owner   owners name
+        self.dogBreed.text = dog.breed
+        self.dogsHealth.text = "Health: " + dog.health!
+        self.dogsTemperament.text = "Temperament: " + dog.temperament!
+        self.dogsToys.text = "Toys: " + dog.toys!
 
+        //set the image too
+        
+        
         // Do any additional setup after loading the view.
     }
 
