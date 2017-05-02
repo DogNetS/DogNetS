@@ -11,9 +11,10 @@ import Parse
 
 class SignupViewController: UIViewController {
     @IBOutlet weak var birthdayDP: UIDatePicker!
-    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmTextField: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,10 +42,25 @@ class SignupViewController: UIViewController {
         let newUser = PFUser()
         newUser.username = usernameTextField.text
         newUser.password = passwordTextField.text
+        newUser.email = emailTextField.text
         newUser.signUpInBackground { (wasSuccessful: Bool, error: Error?) in
             if wasSuccessful {
                 print("user created")
-                self.performSegue(withIdentifier: "signupSegue", sender: nil)
+                print("initializing user data")
+                self.birthdayDP.datePickerMode = .date
+                let dateFormater = DateFormatter()
+                dateFormater.dateFormat = "MM/dd/yyyy"
+                let user_data = PFObject(className: "user_data")
+                user_data["num_dogs"] = 0
+                user_data["age"] = self.birthdayDP.date.timeIntervalSinceNow/(-60*60*24*365)
+                user_data["birthday"] = dateFormater.string(from: self.birthdayDP.date)
+                user_data.saveInBackground(block: { (wasSuccess: Bool, error: Error?) in
+                    if (wasSuccessful) {
+                        self.performSegue(withIdentifier: "signupSegue", sender: nil)
+                    } else {
+                        print(error?.localizedDescription ?? "something went wrong")
+                    }
+                })
             } else {
                 if error?._code == 202 {
                     print("Ah, shucks! Someone already has that username")
