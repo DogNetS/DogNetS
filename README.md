@@ -19,8 +19,6 @@ DogNetS is a social network for dog owners and their dogs. The purpose of our ne
   - Name: String
   - Username: String
   - Password: String
-  - Phone
-  - Facebook profile (option)
   - Biography
   - Profile pic: PFile 
   - Dogs 
