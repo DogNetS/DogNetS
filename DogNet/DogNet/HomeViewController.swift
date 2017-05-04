@@ -28,7 +28,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        var query = PFQuery(className: "Dogs")
+        var query = PFQuery(className: "dog_data")
         query.order(byDescending: "createdAt")
         query.findObjectsInBackground { (dogs: [PFObject]?,error: Error?) in
             if error == nil {

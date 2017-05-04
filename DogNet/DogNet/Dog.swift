@@ -21,7 +21,7 @@ class Dog: NSObject {
     var owner: PFUser?           //owner parameter
     var pals: [Dog] = []     //dictionary of pals
     
-    var dog = PFObject(className: "Dog")
+    var dog = PFObject(className: "dog_data")
     
     //initialize the dog model so that don't need to access parse all the time
     init(dog: PFObject) {
