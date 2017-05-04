@@ -845,6 +845,14 @@
                             <constraint firstItem="QQe-yQ-h6o" firstAttribute="leading" secondItem="bid-uy-D0g" secondAttribute="leading" constant="30" id="zog-6R-It0"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dogBirthdayTextField" destination="u94-PQ-VbL" id="Uqd-Hu-KBs"/>
+                        <outlet property="dogBreedTextField" destination="0ef-6C-HGz" id="0cW-Qb-kDI"/>
+                        <outlet property="dogFavToysTextField" destination="iOu-PY-LKt" id="VkX-uS-teU"/>
+                        <outlet property="dogHealthTextField" destination="GdA-r4-uwt" id="868-ml-NkN"/>
+                        <outlet property="dogNameTextField" destination="l2x-6M-IoZ" id="59s-JZ-x8S"/>
+                        <outlet property="dogTemperTextField" destination="TV7-jr-mKE" id="Brh-Tj-eas"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iq2-7g-0vB" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="QF6-TL-ud4"/>
