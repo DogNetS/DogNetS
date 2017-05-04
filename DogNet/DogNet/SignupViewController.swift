@@ -54,6 +54,10 @@ class SignupViewController: UIViewController {
                 user_data["num_dogs"] = 0
                 user_data["age"] = self.birthdayDP.date.timeIntervalSinceNow/(-60*60*24*365)
                 user_data["birthday"] = dateFormater.string(from: self.birthdayDP.date)
+                user_data["owner"] = PFUser.current()
+                user_data["bio"] = "Tap here to add your bio"
+                user_data["location"] = "New York City"
+                
                 user_data.saveInBackground(block: { (wasSuccess: Bool, error: Error?) in
                     if (wasSuccessful) {
                         self.performSegue(withIdentifier: "signupSegue", sender: nil)
