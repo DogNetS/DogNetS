@@ -7,8 +7,15 @@
 //
 
 import UIKit
+import Parse
 
 class DogSignup1ViewController: UIViewController {
+    @IBOutlet weak var dogNameTextField: UITextField!
+    @IBOutlet weak var dogBreedTextField: UITextField!
+    @IBOutlet weak var dogBirthdayTextField: UITextField!
+    @IBOutlet weak var dogHealthTextField: UITextField!
+    @IBOutlet weak var dogFavToysTextField: UITextField!
+    @IBOutlet weak var dogTemperTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +29,25 @@ class DogSignup1ViewController: UIViewController {
     }
     
     @IBAction func addedDog(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        
+        let dog = PFObject(className: "dog_data")
+        
+        dog["name"] = dogNameTextField.text
+        dog["breed"] = dogBreedTextField.text
+        dog["birthday"] = dogBirthdayTextField.text
+        dog["health"] = dogHealthTextField.text
+        dog["fav_toy"] = dogFavToysTextField.text
+        dog["temper"] = dogTemperTextField.text
+        
+        dog.saveInBackground { (wasSuccessful: Bool, error: Error?) in
+            if (wasSuccessful) {
+                print("dog added!")
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                print(error?.localizedDescription ?? "Something went wrong while adding dog")
+            }
+        }
+        
     }
 
     /*
