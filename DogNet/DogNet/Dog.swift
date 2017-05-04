@@ -15,11 +15,11 @@ class Dog: NSObject {
     var breed: String?            //breed of the dog
     var birthday: String?         //birthday of the dog, maybe not String?
     var health: String?           //health parameters
-    var dogImageUrl: URL?         //image of the dog
+    var dogImage: UIImage?            //image of the dog
     var temperament: String?      //temperament
     var toys: String?             //favorite toys
     var owner: PFUser?           //owner parameter
-    var pals: [Dog] = []     //dictionary of pals
+    var pals: [Dog] = []         //dictionary of pals
     
     var dog = PFObject(className: "dog_data")
     
@@ -29,13 +29,14 @@ class Dog: NSObject {
         
         self.name = dog["name"] as! String?
         self.breed = dog["breed"] as! String?
-        //birthday
+        self.birthday = dog["birthday"] as! String?
         self.health = dog["health"] as! String?
-        self.temperament = dog["temperament"] as! String?
-        self.toys = dog["toys"] as! String?
+        self.temperament = dog["temper"] as! String?
+        self.toys = dog["fav_toy"] as! String?
+        self.owner = dog["owner"] as! PFUser?
         //owner
         //pals
-        self.dogImageUrl = dog["dogImageUrl"] as! URL?
+        //self.dogImage = dog["dogImage"] as! UIImage - need to do this
         
     }
     

@@ -29,7 +29,7 @@ class DogProfileViewController: UIViewController {
         
         //getting dog info through the Dog Model passed from the cell.
         self.dogName.text = dog.name
-        //self.dogsOwner.text = dog.owner   owners name
+        self.dogsOwner.text = dog.owner?.username
         self.dogBreed.text = dog.breed
         self.dogsHealth.text = "Health: " + dog.health!
         self.dogsTemperament.text = "Temperament: " + dog.temperament!
@@ -48,7 +48,7 @@ class DogProfileViewController: UIViewController {
     
     func MyPalsTapped(){
         let mainStoryboard = UIStoryboard( name: "Main", bundle: nil)
-        let dogPalsVC = mainStoryboard.instantiateViewController(withIdentifier: "dogPalsVC") as! ProfileViewController
+        let dogPalsVC = mainStoryboard.instantiateViewController(withIdentifier: "dogPalsVC") as! DogPalListViewController
         self.navigationController?.pushViewController(dogPalsVC, animated: true)
 
     }
