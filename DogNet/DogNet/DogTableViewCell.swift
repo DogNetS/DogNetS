@@ -18,7 +18,7 @@ class DogTableViewCell: UITableViewCell {
     var dog: Dog!{
         didSet{
             self.dogName.text = dog.name
-            self.numberOfPals.text = "\(dog.pals.count)"
+            self.numberOfPals.text = "Number of Pals: " + "\(dog.pals.count)"
             self.breed.text = dog.breed
             self.age.text = dog.birthday //change to age instead of birthday
             //self.dogPhoto.image = dog.dogImageUrl

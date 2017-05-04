@@ -38,7 +38,7 @@ class DogSignup1ViewController: UIViewController {
         dog["health"] = dogHealthTextField.text
         dog["fav_toy"] = dogFavToysTextField.text
         dog["temper"] = dogTemperTextField.text
-        
+        dog["owner"] = PFUser.current()
         dog.saveInBackground { (wasSuccessful: Bool, error: Error?) in
             if (wasSuccessful) {
                 print("dog added!")
