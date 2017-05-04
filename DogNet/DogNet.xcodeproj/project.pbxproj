@@ -21,6 +21,7 @@
 		C79708E11EA5D0A7002D652D /* DogSignup2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79708E01EA5D0A7002D652D /* DogSignup2ViewController.swift */; };
 		C79708E31EA5D0B0002D652D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79708E21EA5D0B0002D652D /* ProfileViewController.swift */; };
 		E34ECF391EB806A8000CF41E /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34ECF381EB806A8000CF41E /* Dog.swift */; };
+		E34ECF3B1EB841B8000CF41E /* DogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34ECF3A1EB841B8000CF41E /* DogTableViewCell.swift */; };
 		E3C4BAFA1EAF0D03008C3F02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3C4BAF81EAF0D03008C3F02 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		C79708E01EA5D0A7002D652D /* DogSignup2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogSignup2ViewController.swift; sourceTree = "<group>"; };
 		C79708E21EA5D0B0002D652D /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E34ECF381EB806A8000CF41E /* Dog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
+		E34ECF3A1EB841B8000CF41E /* DogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogTableViewCell.swift; sourceTree = "<group>"; };
 		E3C4BAF91EAF0D03008C3F02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F3188F68E2E2B8FFC7DF4051 /* Pods-DogNet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DogNet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DogNet/Pods-DogNet.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,6 +101,7 @@
 				C79708D51EA5D04D002D652D /* Models */,
 				C79708D41EA5D046002D652D /* View Controllers */,
 				C79708C01EA5C038002D652D /* AppDelegate.swift */,
+				E34ECF3A1EB841B8000CF41E /* DogTableViewCell.swift */,
 				C79708C21EA5C038002D652D /* ViewController.swift */,
 				C79708C71EA5C038002D652D /* Assets.xcassets */,
 				E3C4BAF81EAF0D03008C3F02 /* Main.storyboard */,
@@ -256,6 +259,7 @@
 			files = (
 				C79708D31EA5D043002D652D /* LoginViewController.swift in Sources */,
 				C79708DF1EA5D099002D652D /* DogSignup1ViewController.swift in Sources */,
+				E34ECF3B1EB841B8000CF41E /* DogTableViewCell.swift in Sources */,
 				C79708E31EA5D0B0002D652D /* ProfileViewController.swift in Sources */,
 				C79708DD1EA5D091002D652D /* SignupViewController.swift in Sources */,
 				C79708C31EA5C038002D652D /* ViewController.swift in Sources */,

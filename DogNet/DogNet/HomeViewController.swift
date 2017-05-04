@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import Parse
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var PFDogs: [PFObject]!
+    var dogs: [Dog]!
+    
+    @IBOutlet weak var tableView: UITableView!
     @IBAction func onLogout(_ sender: Any) {
         dismiss(animated: true, completion: nil)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "logout"), object: nil)
@@ -18,12 +23,49 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.estimatedRowHeight = 150
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        var query = PFQuery(className: "Dogs")
+        query.order(byDescending: "createdAt")
+        query.findObjectsInBackground { (dogs: [PFObject]?,error: Error?) in
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(dogs!.count) dogs.")
+                // Do something with the found objects
+                if let dogs = dogs {
+                    self.PFDogs = dogs
+                    self.tableView.reloadData()
+                }
+            } else {
+                // Log details of the failure
+                print("error")
+            }
+        }
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DogCell", for: indexPath) as! DogTableViewCell
+        
+        let PFDog = PFDogs[indexPath.row] as! PFObject
+        cell.dog = Dog.init(dog: PFDog)
+        return cell;
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let PFDogs = PFDogs{
+            return PFDogs.count
+        }else{
+            return 0
+        }
     }
     
     @IBAction func profileButtonTapped(_ sender: Any) {
@@ -43,9 +85,9 @@ class HomeViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let cell = sender as! UITableViewCell
-        
-        let dogprofile = segue.destination as! DogProfileViewController
+        let cell = sender as! DogTableViewCell
+        let dogProfile = segue.destination as! DogProfileViewController
+        dogProfile.dog = cell.dog
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
