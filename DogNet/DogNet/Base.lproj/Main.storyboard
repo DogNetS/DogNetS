@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -241,7 +241,7 @@
                                 <rect key="frame" x="0.0" y="187" width="320" height="261"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="134" id="x3b-i1-Dri">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DogCell" rowHeight="134" id="x3b-i1-Dri" customClass="DogTableViewCell" customModule="DogNet" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="134"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x3b-i1-Dri" id="zZh-5i-ypX">
@@ -266,14 +266,30 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxN-9u-WC1">
+                                                    <rect key="frame" x="128" y="66" width="46" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KMU-HY-Vgj">
+                                                    <rect key="frame" x="128" y="95" width="30" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="yXa-vJ-OHr" firstAttribute="top" secondItem="zZh-5i-ypX" secondAttribute="top" constant="8" id="0kX-eZ-tVH"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xxN-9u-WC1" secondAttribute="trailing" constant="8" id="1Yg-2I-B8q"/>
                                                 <constraint firstItem="yXa-vJ-OHr" firstAttribute="leading" secondItem="Q6y-Ft-FmT" secondAttribute="trailing" constant="8" id="1y8-JP-pC0"/>
                                                 <constraint firstItem="dr5-nH-1TG" firstAttribute="leading" secondItem="Q6y-Ft-FmT" secondAttribute="trailing" constant="8" id="AWx-5D-wUX"/>
                                                 <constraint firstItem="Q6y-Ft-FmT" firstAttribute="top" secondItem="zZh-5i-ypX" secondAttribute="top" id="BxN-CM-gE9"/>
+                                                <constraint firstItem="xxN-9u-WC1" firstAttribute="top" secondItem="dr5-nH-1TG" secondAttribute="bottom" constant="8" id="JIr-K6-8Ne"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yXa-vJ-OHr" secondAttribute="trailing" constant="8" id="LmC-Jm-OpT"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dr5-nH-1TG" secondAttribute="trailing" constant="8" id="Th0-Fa-E6R"/>
+                                                <constraint firstItem="xxN-9u-WC1" firstAttribute="leading" secondItem="dr5-nH-1TG" secondAttribute="leading" id="UBy-by-QmN"/>
                                                 <constraint firstItem="dr5-nH-1TG" firstAttribute="top" secondItem="yXa-vJ-OHr" secondAttribute="bottom" constant="8" id="cXz-jm-Tkz"/>
                                                 <constraint firstAttribute="bottom" secondItem="Q6y-Ft-FmT" secondAttribute="bottom" id="eYZ-fH-9dK"/>
                                                 <constraint firstItem="Q6y-Ft-FmT" firstAttribute="leading" secondItem="zZh-5i-ypX" secondAttribute="leading" id="hH0-mN-1G5"/>
@@ -281,6 +297,11 @@
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
                                         <connections>
+                                            <outlet property="age" destination="KMU-HY-Vgj" id="cSK-tk-emh"/>
+                                            <outlet property="breed" destination="xxN-9u-WC1" id="yNi-Dv-7wr"/>
+                                            <outlet property="dogName" destination="yXa-vJ-OHr" id="3ko-cl-AQF"/>
+                                            <outlet property="dogPhoto" destination="Q6y-Ft-FmT" id="cIF-rO-SCm"/>
+                                            <outlet property="numberOfPals" destination="dr5-nH-1TG" id="aGo-8v-mHo"/>
                                             <segue destination="297-ud-R75" kind="show" id="g5m-lW-OtP"/>
                                         </connections>
                                     </tableViewCell>
@@ -317,6 +338,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="wwH-Ph-ops" id="Oof-ld-keF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VZ8-gQ-BMZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -505,7 +529,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W3P-Fx-COF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3160.8000000000002" y="122.78860569715144"/>
+            <point key="canvasLocation" x="3281" y="121"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="e4n-LJ-iMv">

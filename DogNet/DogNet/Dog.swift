@@ -18,7 +18,7 @@ class Dog: NSObject {
     var dogImageUrl: URL?         //image of the dog
     var temperament: String?      //temperament
     var toys: String?             //favorite toys
-    //var owner: PFUser?           //owner parameter
+    var owner: PFUser?           //owner parameter
     var pals: [Dog] = []     //dictionary of pals
     
     var dog = PFObject(className: "Dog")
@@ -29,9 +29,12 @@ class Dog: NSObject {
         
         self.name = dog["name"] as! String?
         self.breed = dog["breed"] as! String?
+        //birthday
         self.health = dog["health"] as! String?
         self.temperament = dog["temperament"] as! String?
         self.toys = dog["toys"] as! String?
+        //owner
+        //pals
         self.dogImageUrl = dog["dogImageUrl"] as! URL?
         
     }

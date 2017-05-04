@@ -11,7 +11,7 @@ import Parse
 
 class DogProfileViewController: UIViewController {
     
-    var dog: Dog! // or maybe Dog PFObject
+    var dog: Dog! // Dog model passed from the cell we tapped one.
     
     @IBOutlet weak var dogImage: UIImageView!
     @IBOutlet weak var dogName: UILabel!
@@ -20,7 +20,7 @@ class DogProfileViewController: UIViewController {
     @IBOutlet weak var dogsHealth: UILabel!
     @IBOutlet weak var dogsTemperament: UILabel!
     @IBOutlet weak var dogsToys: UILabel!
-    
+    //need to add pals list, age/birthday.
     
     override func viewDidLoad() {
         super.viewDidLoad()
