@@ -34,6 +34,26 @@ class HomeViewController: UIViewController {
         nameLabel.text = user?.username
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+//        let query = PFQuery(className: "user_data")
+//        query.order(byDescending: "createdAt")
+//        query.includeKey("owner")
+//        query.whereKey("owner", equalTo: PFUser.current()!)
+//        query.limit = 20
+//        query.findObjectsInBackground { (user_data: [PFObject]?, error: Error?) -> Void in
+//            if let data = user_data {
+//                self.user_data = data
+//                print("homeVC - insde: user data: \(self.user_data)")
+//                
+//                //self.saveData()
+//                //self.updateTextLabels()
+//                
+//            } else {
+//                print("error while getting user_data")
+//            }
+//        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -42,6 +62,7 @@ class HomeViewController: UIViewController {
     @IBAction func profileButtonTapped(_ sender: Any) {
         let mainStoryboard = UIStoryboard( name: "Main", bundle: nil)
         let profileVC = mainStoryboard.instantiateViewController(withIdentifier: "profileVC") as! ProfileViewController
+        //profileVC.user_data = self.user_data
         self.navigationController?.pushViewController(profileVC, animated: true)
     }
 
@@ -59,12 +80,7 @@ class HomeViewController: UIViewController {
         let cell = sender as! UITableViewCell
         
         let dogprofile = segue.destination as! DogProfileViewController
-        
-//        if segue.identifier == "profileSegue" {
-//            let userProfile = segue.destination as! ProfileViewController
-//            
-//            
-//        }
+
         
         
         // Get the new view controller using segue.destinationViewController.

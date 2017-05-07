@@ -36,6 +36,9 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.saveData()
+        self.updateTextLabels()
+        
         let query = PFQuery(className: "user_data")
         query.order(byDescending: "createdAt")
         query.includeKey("owner")
