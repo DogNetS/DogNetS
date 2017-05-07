@@ -7,8 +7,20 @@
 //
 
 import UIKit
+import Parse
 
 class HomeViewController: UIViewController {
+    
+    var user_data: [PFObject]!
+    var name: String?
+    var age:Int = 0
+    var num_dogs:Int = 0
+    var bioText:String = ""
+    var location:String = ""
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
     
     @IBAction func onLogout(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -17,8 +29,9 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let user = PFUser.current()
+        nameLabel.text = user?.username
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,6 +59,14 @@ class HomeViewController: UIViewController {
         let cell = sender as! UITableViewCell
         
         let dogprofile = segue.destination as! DogProfileViewController
+        
+//        if segue.identifier == "profileSegue" {
+//            let userProfile = segue.destination as! ProfileViewController
+//            
+//            
+//        }
+        
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }

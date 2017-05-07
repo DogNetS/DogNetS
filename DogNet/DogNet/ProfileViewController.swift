@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var bioTextView: UITextView!
     
+
     var user_data: [PFObject]!
     var age:Int = 0
     var num_dogs:Int = 0
@@ -27,7 +28,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        bioTextView.delegate = self
         
         let user = PFUser.current()
         nameLabel.text = user?.username
@@ -59,19 +60,49 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // saves the data from parse locally
     func saveData() {
+        /*
+        self.age = self.user_data?[0]["age"] as! Int
         self.age = self.user_data?[0]["age"] as! Int
         self.num_dogs = self.user_data?[0]["num_dogs"] as! Int
-        self.location = self.user_data?[0]["location"] as! String
         self.bioText = self.user_data?[0]["bio"] as! String
+        */
+        if(self.user_data?[0]["age"] != nil) {
+            self.age = self.user_data?[0]["age"] as! Int
+        }
+        
+        if(self.user_data?[0]["num_dogs"] != nil) {
+            self.num_dogs = self.user_data?[0]["num_dogs"] as! Int
+        }
+        
+        if(self.user_data?[0]["location"] != nil) {
+            self.location = self.user_data?[0]["location"] as! String
+        }
+
+        if(self.user_data?[0]["bio"] != nil) {
+            self.bioText = self.user_data?[0]["bio"] as! String
+        }
+        
     }
     
+    // updates all the labels
     func updateTextLabels() {
         ageLabel.text = "\(self.age)"
         bioTextView.text = self.bioText
         locationLabel.text = self.location
     }
+    
+    @IBAction func bioTextTapGestureRecognizer(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "EditProfileBioVC")
+        
+        self.present(vc, animated: true, completion: nil)
+    }
 
+    
+    
+    
     /*
     // MARK: - Navigation
 
