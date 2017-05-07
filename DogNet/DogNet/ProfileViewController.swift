@@ -62,12 +62,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
     
     // saves the data from parse locally
     func saveData() {
-        /*
-        self.age = self.user_data?[0]["age"] as! Int
-        self.age = self.user_data?[0]["age"] as! Int
-        self.num_dogs = self.user_data?[0]["num_dogs"] as! Int
-        self.bioText = self.user_data?[0]["bio"] as! String
-        */
+
         if(self.user_data?[0]["age"] != nil) {
             self.age = self.user_data?[0]["age"] as! Int
         }
@@ -84,6 +79,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
             self.bioText = self.user_data?[0]["bio"] as! String
         }
         
+        
     }
     
     // updates all the labels
@@ -95,13 +91,10 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func bioTextTapGestureRecognizer(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "EditProfileBioVC")
-        
+        let vc = storyboard.instantiateViewController(withIdentifier: "EditProfileBioVC") as! EditProfileBioViewController
+        vc.user_data = self.user_data
         self.present(vc, animated: true, completion: nil)
     }
-
-    
-    
     
     /*
     // MARK: - Navigation
