@@ -18,7 +18,6 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var bioTextView: UITextView!
     
-
     var user_data: [PFObject]!
     var age:Int = 0
     var num_dogs:Int = 0
@@ -30,14 +29,10 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
 
         bioTextView.delegate = self
         
-        let user = PFUser.current()
-        nameLabel.text = user?.username
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.saveData()
-        self.updateTextLabels()
+        let edit = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(ProfileViewController.segueToEditProfile))
+        self.navigationItem.rightBarButtonItem = edit
+        self.navigationController?.title = "Profile"
         
         let query = PFQuery(className: "user_data")
         query.order(byDescending: "createdAt")
@@ -47,7 +42,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
         query.findObjectsInBackground { (user_data: [PFObject]?, error: Error?) -> Void in
             if let data = user_data {
                 self.user_data = data
-                print("insde: user data: \(self.user_data)")
+                print("\(self.user_data)")
                 
                 self.saveData()
                 self.updateTextLabels()
@@ -56,6 +51,37 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
                 print("error while getting user_data")
             }
         }
+        
+
+        //let user = PFUser.current()
+        //nameLabel.text = user?.username
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+//        let edit = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(ProfileViewController.segueToEditProfile))
+//        self.navigationItem.rightBarButtonItem = edit
+//
+//        let query = PFQuery(className: "user_data")
+//        query.order(byDescending: "createdAt")
+//        query.includeKey("owner")
+//        query.whereKey("owner", equalTo: PFUser.current()!)
+//        query.limit = 20
+//        query.findObjectsInBackground { (user_data: [PFObject]?, error: Error?) -> Void in
+//            if let data = user_data {
+//                self.user_data = data
+//                print("insde: user data: \(self.user_data)")
+//                
+//                self.saveData()
+//                self.updateTextLabels()
+//                
+//            } else {
+//                print("error while getting user_data")
+//            }
+//        }
+        //self.saveData()
+        //self.updateTextLabels()
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -63,9 +89,12 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    // saves the data from parse locally
+    // sets the data from parse
     func saveData() {
 
+        if(self.user_data?[0]["name"] != nil) {
+            self.nameLabel.text = self.user_data?[0]["name"] as? String
+        }
         if(self.user_data?[0]["age"] != nil) {
             self.age = self.user_data?[0]["age"] as! Int
         }
@@ -82,7 +111,6 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
             self.bioText = self.user_data?[0]["bio"] as! String
         }
         
-        
     }
     
     // updates all the labels
@@ -92,11 +120,24 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
         locationLabel.text = self.location
     }
     
-    @IBAction func bioTextTapGestureRecognizer(_ sender: Any) {
+    @IBAction func onEditProfileButton(_ sender: Any) {
+        segueToEditProfile()
+    }
+    
+//    @IBAction func bioTextTapGestureRecognizer(_ sender: Any) {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "EditProfileBioVC") as! EditProfileBioViewController
+//        vc.user_data = self.user_data
+//        self.present(vc, animated: true, completion: nil)
+//    }
+    
+    func segueToEditProfile() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "EditProfileBioVC") as! EditProfileBioViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "editProfileVC") as! EditProfileViewController
         vc.user_data = self.user_data
         self.present(vc, animated: true, completion: nil)
+        
+        //self.navigationController?.pushViewController(vc, animated: true)
     }
     
     /*

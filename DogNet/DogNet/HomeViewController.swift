@@ -30,28 +30,32 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let user = PFUser.current()
-        nameLabel.text = user?.username
+        //let user = PFUser.current()
+        //nameLabel.text = user?.username
+        
+        if(self.user_data?[0]["name"] != nil) {
+            self.nameLabel.text = self.user_data?[0]["name"] as? String
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
-//        let query = PFQuery(className: "user_data")
-//        query.order(byDescending: "createdAt")
-//        query.includeKey("owner")
-//        query.whereKey("owner", equalTo: PFUser.current()!)
-//        query.limit = 20
-//        query.findObjectsInBackground { (user_data: [PFObject]?, error: Error?) -> Void in
-//            if let data = user_data {
-//                self.user_data = data
-//                print("homeVC - insde: user data: \(self.user_data)")
-//                
-//                //self.saveData()
-//                //self.updateTextLabels()
-//                
-//            } else {
-//                print("error while getting user_data")
-//            }
-//        }
+        let query = PFQuery(className: "user_data")
+        query.order(byDescending: "createdAt")
+        query.includeKey("owner")
+        query.whereKey("owner", equalTo: PFUser.current()!)
+        query.limit = 20
+        query.findObjectsInBackground { (user_data: [PFObject]?, error: Error?) -> Void in
+            if let data = user_data {
+                self.user_data = data
+                //print("insde: user data: \(self.user_data)")
+                
+                self.saveData()
+                self.updateTextLabels()
+                
+            } else {
+                print("error while getting user_data")
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -72,6 +76,27 @@ class HomeViewController: UIViewController {
         self.navigationController?.present(dogSignUpVC, animated: true, completion: nil)
     }
     
+    // saves the data from parse locally
+    func saveData() {
+        
+        if(self.user_data?[0]["name"] != nil) {
+            self.name = self.user_data?[0]["name"] as? String
+        } else {
+            self.name = (PFUser.current()?.username)! as String
+        }
+
+        if(self.user_data?[0]["location"] != nil) {
+            self.location = self.user_data?[0]["location"] as! String
+        } else {
+            self.location = "Location not found"
+        }
+
+    }
+    
+    func updateTextLabels() {
+        nameLabel.text = self.name
+        locationLabel.text = self.location
+    }
     
     // MARK: - Navigation
 
@@ -80,8 +105,6 @@ class HomeViewController: UIViewController {
         let cell = sender as! UITableViewCell
         
         let dogprofile = segue.destination as! DogProfileViewController
-
-        
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
