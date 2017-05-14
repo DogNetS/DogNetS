@@ -9,25 +9,29 @@
 import UIKit
 import Parse
 
-class EditProfileViewController: ViewController, UITextFieldDelegate, UITextViewDelegate {
+class EditProfileViewController: ViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBOutlet weak var bioTextView: UITextView!
     
+    @IBOutlet weak var profileImageView: UIImageView!
+    
     var user_data: [PFObject]!
-    var bioText:String?
-    var name:String?
-    var email:String?
+    var bioText: String?
+    var name: String?
+    var email: String?
+    var resizeImage: UIImage!
+    var profileImage: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        nameTextField.delegate = self
-        emailTextField.delegate = self
-        bioTextView.delegate = self
        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onProfileTapGesture(sender:)))
+        profileImageView.isUserInteractionEnabled = true
+        profileImageView.addGestureRecognizer(tapGestureRecognizer)
+
         // Do any additional setup after loading the view.
     }
     
@@ -35,8 +39,8 @@ class EditProfileViewController: ViewController, UITextFieldDelegate, UITextView
 
         nameTextField.text = user_data?[0]["name"] as? String
         emailTextField.text = PFUser.current()?.email
-
         bioTextView.text = user_data?[0]["bio"] as? String
+        profileImageView.image = self.profileImage
     }
     
     override func didReceiveMemoryWarning() {
@@ -44,13 +48,63 @@ class EditProfileViewController: ViewController, UITextFieldDelegate, UITextView
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func onTapBioTextView(_ sender: Any) {
-        //self.bioTextView.becomeFirstResponder()
-        print("biotext tapped")
+    func chooseProfile() {
+        let vc = UIImagePickerController()
+        vc.delegate = self
+        vc.allowsEditing = true
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            print("Camera is available 📸")
+            vc.sourceType = .camera
+        } else {
+            print("Camera 🚫 available so we will use photo library instead")
+            vc.sourceType = .photoLibrary
+        }
+        
+        self.present(vc, animated: true, completion: nil)
+        
+        print("profile pic tapped")
     }
     
-    @IBAction func onTapProfilePic(_ sender: Any) {
-        print("profile pic tapped")
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        // Get the image captured by the UIImagePickerController
+        profileImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        self.profileImageView.image = profileImage
+        
+        let size = profileImage.size
+
+        let smallerWidth = size.width * 0.7
+        let smallerHeight = size.height * 0.7
+        
+        var smallerSize = CGSize()
+        smallerSize.width = smallerWidth
+        smallerSize.height = smallerHeight
+        
+        self.resizeImage = resize(image: profileImage, newSize: smallerSize)
+        
+        // Dismiss UIImagePickerController to go back to your original view controller
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func resize(image: UIImage, newSize: CGSize) -> UIImage {
+        let resizeImageView = UIImageView(frame: CGRect(origin: CGPoint.zero, size: newSize))
+        resizeImageView.contentMode = UIViewContentMode.scaleAspectFill
+        resizeImageView.image = image
+        
+        UIGraphicsBeginImageContext(resizeImageView.frame.size)
+        resizeImageView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
+    
+    @IBAction func onProfileTapGesture(sender: UITapGestureRecognizer) {
+        print("onProfileTapGesture")
+        chooseProfile()
     }
     
     @IBAction func onCancelButton(_ sender: Any) {
@@ -63,7 +117,7 @@ class EditProfileViewController: ViewController, UITextFieldDelegate, UITextView
         email = emailTextField.text
         bioText = bioTextView.text
         
-        updateProfile(name: name, email: email, bio: bioText /*, profilePic: */) {(success: Bool, error: Error?) in
+        updateProfile(name: name, email: email, bio: bioText, image: resizeImage) {(success: Bool, error: Error?) in
             if success {
                 print("[DEBUG] successfully updated profile")
             } else {
@@ -73,7 +127,7 @@ class EditProfileViewController: ViewController, UITextFieldDelegate, UITextView
         dismiss(animated: true, completion: nil)
     }
     
-    func updateProfile(name: String?, email: String?, bio: String?, /*profilePic: PFFile, */withCompletion completion: PFBooleanResultBlock?) {
+    func updateProfile(name: String?, email: String?, bio: String?, image: UIImage?, withCompletion completion: PFBooleanResultBlock?) {
         
         let query = PFQuery(className: "user_data")
         query.order(byDescending: "createdAt")
@@ -88,12 +142,36 @@ class EditProfileViewController: ViewController, UITextFieldDelegate, UITextView
                 PFUser.current()?.email = self.emailTextField.text
                 user_data?[0]["bio"] = self.bioTextView.text
 
+                user_data?[0]["profilePic"] = self.getPFFileFromImage(image: image) // PFFile column type
+                
                 user_data?[0].saveInBackground(block: completion)
+                
             } else {
                 print("error while setting user_data")
             }
         }
     }
+    
+    
+    /**
+     Method to convert UIImage to PFFile
+     
+     - parameter image: Image that the user wants to upload to parse
+     
+     - returns: PFFile for the the data in the image
+     */
+    func getPFFileFromImage(image: UIImage?) -> PFFile? {
+        // check if image is not nil
+        if let image = image {
+            // get image data and check if that is not nil
+            if let imageData = UIImagePNGRepresentation(image) {
+                return PFFile(name: "image.png", data: imageData)
+            }
+        }
+        return nil
+    }
+    
+
     /*
     // MARK: - Navigation
 
@@ -105,3 +183,4 @@ class EditProfileViewController: ViewController, UITextFieldDelegate, UITextView
     */
 
 }
+

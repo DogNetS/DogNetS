@@ -36,6 +36,7 @@ class HomeViewController: UIViewController {
         if(self.user_data?[0]["name"] != nil) {
             self.nameLabel.text = self.user_data?[0]["name"] as? String
         }
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -96,6 +97,18 @@ class HomeViewController: UIViewController {
     func updateTextLabels() {
         nameLabel.text = self.name
         locationLabel.text = self.location
+        
+        if(self.user_data?[0]["profilePic"] != nil) {
+            //self.nameLabel.text = self.user_data?[0]["profilePic"] as? String
+            if let userPic = user_data[0].value(forKey: "profilePic")! as? PFFile {
+                userPic.getDataInBackground({ (imageData: Data?, error: Error?) -> Void in
+                    let image = UIImage(data: imageData!)
+                    if image != nil {
+                        self.profileImageView.image = image!
+                    }
+                })
+            }
+        }
     }
     
     // MARK: - Navigation

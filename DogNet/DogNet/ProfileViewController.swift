@@ -23,16 +23,17 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
     var num_dogs:Int = 0
     var bioText:String = ""
     var location:String = ""
+    var profileImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         bioTextView.delegate = self
         
-        
         let edit = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(ProfileViewController.segueToEditProfile))
         self.navigationItem.rightBarButtonItem = edit
-        self.navigationController?.title = "Profile"
+        //self.navigationController?.title = "Profile"
+        self.navigationItem.title = "Profile"
         
         let query = PFQuery(className: "user_data")
         query.order(byDescending: "createdAt")
@@ -51,36 +52,10 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
                 print("error while getting user_data")
             }
         }
-        
 
-        //let user = PFUser.current()
-        //nameLabel.text = user?.username
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        let edit = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(ProfileViewController.segueToEditProfile))
-//        self.navigationItem.rightBarButtonItem = edit
-//
-//        let query = PFQuery(className: "user_data")
-//        query.order(byDescending: "createdAt")
-//        query.includeKey("owner")
-//        query.whereKey("owner", equalTo: PFUser.current()!)
-//        query.limit = 20
-//        query.findObjectsInBackground { (user_data: [PFObject]?, error: Error?) -> Void in
-//            if let data = user_data {
-//                self.user_data = data
-//                print("insde: user data: \(self.user_data)")
-//                
-//                self.saveData()
-//                self.updateTextLabels()
-//                
-//            } else {
-//                print("error while getting user_data")
-//            }
-//        }
-        //self.saveData()
-        //self.updateTextLabels()
 
     }
     
@@ -110,7 +85,6 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
         if(self.user_data?[0]["bio"] != nil) {
             self.bioText = self.user_data?[0]["bio"] as! String
         }
-        
     }
     
     // updates all the labels
@@ -118,23 +92,23 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
         ageLabel.text = "\(self.age)"
         bioTextView.text = self.bioText
         locationLabel.text = self.location
+        //profileImageView.image = self.profileImage
+        if let userPic = user_data[0].value(forKey: "profilePic")! as? PFFile {
+            userPic.getDataInBackground({ (imageData: Data?, error: Error?) -> Void in
+                let image = UIImage(data: imageData!)
+                if image != nil {
+                    self.profileImageView.image = image!
+                }
+            })
+        }
+        
     }
-    
-    @IBAction func onEditProfileButton(_ sender: Any) {
-        segueToEditProfile()
-    }
-    
-//    @IBAction func bioTextTapGestureRecognizer(_ sender: Any) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "EditProfileBioVC") as! EditProfileBioViewController
-//        vc.user_data = self.user_data
-//        self.present(vc, animated: true, completion: nil)
-//    }
     
     func segueToEditProfile() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "editProfileVC") as! EditProfileViewController
         vc.user_data = self.user_data
+        vc.profileImage = self.profileImageView.image
         self.present(vc, animated: true, completion: nil)
         
         //self.navigationController?.pushViewController(vc, animated: true)
