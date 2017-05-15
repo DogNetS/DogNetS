@@ -454,6 +454,7 @@
                         <outlet property="dogBreed" destination="wNo-z2-j2c" id="oMx-x6-bgp"/>
                         <outlet property="dogImage" destination="CnB-5Y-GdH" id="m73-bg-mBs"/>
                         <outlet property="dogName" destination="9eu-QT-Tfd" id="igB-73-RR4"/>
+                        <outlet property="dogsAge" destination="y7G-mW-UJy" id="989-8d-oJM"/>
                         <outlet property="dogsBirthday" destination="b3d-gm-cqo" id="prR-QP-MTy"/>
                         <outlet property="dogsHealth" destination="clG-LL-SWn" id="v9P-s4-m3I"/>
                         <outlet property="dogsOwner" destination="GRz-13-V6g" id="hzl-jw-muN"/>

@@ -132,7 +132,7 @@ class DogSignup1ViewController: UIViewController, UIImagePickerControllerDelegat
         
         datePickerView.maximumDate = Date()
         
-       // datePickerView.maximumDate = maxDate
+        // datePickerView.maximumDate = maxDate
         
         datePickerView.datePickerMode = UIDatePickerMode.date
         
@@ -154,6 +154,8 @@ class DogSignup1ViewController: UIViewController, UIImagePickerControllerDelegat
         dateFormatter.dateStyle = DateFormatter.Style.medium
         
         dateFormatter.timeStyle = DateFormatter.Style.none
+        
+        dateFormatter.dateFormat = "MM/dd/yyyy"
         
         dogBirthdayTextField.text = dateFormatter.string(from: sender.date)
         
@@ -203,4 +205,19 @@ class DogSignup1ViewController: UIViewController, UIImagePickerControllerDelegat
     }
     */
 
+}
+// string to date
+extension String
+{
+    func  toDate( dateFormat format  : String) -> Date
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        if let date = dateFormatter.date(from: self)
+        {
+            return date
+        }
+        print("Invalid arguments ! Returning Current Date . ")
+        return Date()
+    }
 }
