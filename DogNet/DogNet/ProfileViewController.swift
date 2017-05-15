@@ -68,6 +68,7 @@ class ProfileViewController: UIViewController {
                 print("error while getting user_data")
             }
         }
+        
     }
     
     override func didReceiveMemoryWarning() {
