@@ -41,13 +41,13 @@ class Dog: NSObject {
     }
     
     //need to add more parameters for other info
-    class func editDogInfo(name: String?, breed: String?,/* owner: PFUser?, */withCompletion completion: PFBooleanResultBlock?){
+    class func editDogInfo(name: String?, breed: String?, owner: PFUser?, withCompletion completion: PFBooleanResultBlock?){
         let dog = PFObject(className: "Dog")
         
         
         dog["name"] = name
         dog["breed"] = breed
-        //dog["owner"] = owner
+        dog["owner"] = owner
         
         dog.saveInBackground(block: completion)
         

@@ -28,10 +28,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        var query = PFQuery(className: "dog_data")
+        let query = PFQuery(className: "dog_data")
         query.order(byDescending: "createdAt")
         query.includeKey("owner")
-        query.whereKey("owner", equalTo: PFUser.current())
+        query.whereKey("owner", equalTo: PFUser.current()!)
         query.findObjectsInBackground { (dogs: [PFObject]?,error: Error?) in
             if error == nil {
                 // The find succeeded.

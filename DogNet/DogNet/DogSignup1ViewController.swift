@@ -39,6 +39,7 @@ class DogSignup1ViewController: UIViewController {
         dog["fav_toy"] = dogFavToysTextField.text
         dog["temper"] = dogTemperTextField.text
         dog["owner"] = PFUser.current()
+        dog["id"] = UUID.init().uuidString
         dog.saveInBackground { (wasSuccessful: Bool, error: Error?) in
             if (wasSuccessful) {
                 print("dog added!")
