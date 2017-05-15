@@ -24,6 +24,7 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
     var bioText:String = ""
     var location:String = ""
     var profileImage: UIImage?
+    let loadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,21 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
         self.navigationItem.rightBarButtonItem = edit
         //self.navigationController?.title = "Profile"
         self.navigationItem.title = "Profile"
+        
+        loadingIndicator.center = view.center
+        loadingIndicator.startAnimating()
+        view.addSubview(loadingIndicator)
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        // clear fields while data is loading
+        self.profileImageView.image = nil
+        self.nameLabel.text = ""
+        self.ageLabel.text = ""
+        self.locationLabel.text = ""
+        self.bioTextView.text = ""
         
         let query = PFQuery(className: "user_data")
         query.order(byDescending: "createdAt")
@@ -46,17 +62,13 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
                 print("\(self.user_data)")
                 
                 self.saveData()
+                self.loadingIndicator.stopAnimating()
                 self.updateTextLabels()
                 
             } else {
                 print("error while getting user_data")
             }
         }
-
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-
     }
     
     override func didReceiveMemoryWarning() {

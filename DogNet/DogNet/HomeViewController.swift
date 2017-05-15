@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
     var num_dogs:Int = 0
     var bioText:String = ""
     var location:String = ""
+    let loadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
@@ -30,16 +31,18 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //let user = PFUser.current()
-        //nameLabel.text = user?.username
-        
-        if(self.user_data?[0]["name"] != nil) {
-            self.nameLabel.text = self.user_data?[0]["name"] as? String
-        }
+        loadingIndicator.center = view.center
+        loadingIndicator.startAnimating()
+        view.addSubview(loadingIndicator)
         
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        // clear fields while data is loading
+        self.profileImageView.image = nil
+        self.nameLabel.text = ""
+        self.locationLabel.text = ""
+        
         let query = PFQuery(className: "user_data")
         query.order(byDescending: "createdAt")
         query.includeKey("owner")
@@ -48,10 +51,11 @@ class HomeViewController: UIViewController {
         query.findObjectsInBackground { (user_data: [PFObject]?, error: Error?) -> Void in
             if let data = user_data {
                 self.user_data = data
-                //print("insde: user data: \(self.user_data)")
                 
                 self.saveData()
                 self.updateTextLabels()
+                self.loadingIndicator.stopAnimating()
+                
                 
             } else {
                 print("error while getting user_data")
@@ -108,6 +112,8 @@ class HomeViewController: UIViewController {
                     }
                 })
             }
+        } else {
+            self.profileImageView.image =  UIImage(named: "profile_avatar")
         }
     }
     

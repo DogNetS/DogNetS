@@ -24,6 +24,7 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
     var email: String?
     var resizeImage: UIImage!
     var profileImage: UIImage!
+    let loadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,6 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
         profileImageView.isUserInteractionEnabled = true
         profileImageView.addGestureRecognizer(tapGestureRecognizer)
 
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,17 +117,20 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
         email = emailTextField.text
         bioText = bioTextView.text
         
-            
         updateProfile(name: name, email: email, bio: bioText, image: resizeImage) {(success: Bool, error: Error?) in
             print("resizeimage: \(self.resizeImage)")
-            
+            self.loadingIndicator.center = self.view.center
+            self.loadingIndicator.startAnimating()
+            self.view.addSubview(self.loadingIndicator)
             if success {
                 print("[DEBUG] successfully updated profile")
+                self.loadingIndicator.stopAnimating()
+                self.dismiss(animated: true, completion: nil)
             } else {
                 print("[DEBUG] fail to update profile")
             }
         }
-        dismiss(animated: true, completion: nil)
+        
     }
     
     func updateProfile(name: String?, email: String?, bio: String?, image: UIImage?, withCompletion completion: PFBooleanResultBlock?) {
