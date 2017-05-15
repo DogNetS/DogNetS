@@ -69,7 +69,10 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
 
         if(self.user_data?[0]["name"] != nil) {
             self.nameLabel.text = self.user_data?[0]["name"] as? String
+        } else {
+            self.nameLabel.text = PFUser.current()?.username
         }
+        
         if(self.user_data?[0]["age"] != nil) {
             self.age = self.user_data?[0]["age"] as! Int
         }
@@ -92,14 +95,18 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
         ageLabel.text = "\(self.age)"
         bioTextView.text = self.bioText
         locationLabel.text = self.location
+        
         //profileImageView.image = self.profileImage
-        if let userPic = user_data[0].value(forKey: "profilePic")! as? PFFile {
+        
+        if let userPic = user_data[0].value(forKey: "profilePic") as? PFFile {
             userPic.getDataInBackground({ (imageData: Data?, error: Error?) -> Void in
                 let image = UIImage(data: imageData!)
                 if image != nil {
                     self.profileImageView.image = image!
                 }
             })
+        } else {
+            print("ERROR: image not found")
         }
         
     }

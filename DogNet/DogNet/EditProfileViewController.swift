@@ -102,7 +102,7 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
         return newImage!
     }
     
-    @IBAction func onProfileTapGesture(sender: UITapGestureRecognizer) {
+    func onProfileTapGesture(sender: UITapGestureRecognizer) {
         print("onProfileTapGesture")
         chooseProfile()
     }
@@ -117,7 +117,10 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
         email = emailTextField.text
         bioText = bioTextView.text
         
+            
         updateProfile(name: name, email: email, bio: bioText, image: resizeImage) {(success: Bool, error: Error?) in
+            print("resizeimage: \(self.resizeImage)")
+            
             if success {
                 print("[DEBUG] successfully updated profile")
             } else {
@@ -128,6 +131,7 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
     }
     
     func updateProfile(name: String?, email: String?, bio: String?, image: UIImage?, withCompletion completion: PFBooleanResultBlock?) {
+        print("resizeimage: \(self.resizeImage)")
         
         let query = PFQuery(className: "user_data")
         query.order(byDescending: "createdAt")
@@ -142,8 +146,13 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
                 PFUser.current()?.email = self.emailTextField.text
                 user_data?[0]["bio"] = self.bioTextView.text
 
-                user_data?[0]["profilePic"] = self.getPFFileFromImage(image: image) // PFFile column type
+                if(image == nil) {
+                    print("no image found")
+                } else {
+                    user_data?[0]["profilePic"] = self.getPFFileFromImage(image: image) // PFFile column type
+                }
                 
+                // save to parse in background
                 user_data?[0].saveInBackground(block: completion)
                 
             } else {
