@@ -11,7 +11,7 @@ import Parse
 
 class DogProfileViewController: UIViewController {
     
-    var dog: Dog! // or maybe Dog PFObject
+    var dog: Dog! // Dog model passed from the cell we tapped one.
     
     @IBOutlet weak var dogImage: UIImageView!
     @IBOutlet weak var dogName: UILabel!
@@ -20,7 +20,9 @@ class DogProfileViewController: UIViewController {
     @IBOutlet weak var dogsHealth: UILabel!
     @IBOutlet weak var dogsTemperament: UILabel!
     @IBOutlet weak var dogsToys: UILabel!
-    
+    @IBOutlet weak var dogsBirthday: UILabel!
+    @IBOutlet weak var dogsAge: UILabel!
+    //need to add pals list, age.
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,14 +31,43 @@ class DogProfileViewController: UIViewController {
         
         //getting dog info through the Dog Model passed from the cell.
         self.dogName.text = dog.name
-        //self.dogsOwner.text = dog.owner   owners name
+        self.dogsOwner.text = dog.owner?.username
         self.dogBreed.text = dog.breed
         self.dogsHealth.text = "Health: " + dog.health!
         self.dogsTemperament.text = "Temperament: " + dog.temperament!
         self.dogsToys.text = "Toys: " + dog.toys!
-
-        //set the image too
+        self.dogImage.image = dog.dogImage
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        dateFormatter.timeStyle = DateFormatter.Style.none
+        
+        var birthdayDate = dog.birthday!.toDate(dateFormat: "MM/dd/yyyy")
+        var age = Int(birthdayDate.timeIntervalSinceNow/(-60*60*24*365))
+        if (age == 0){
+            age = Int(birthdayDate.timeIntervalSinceNow/(-60*60*24*30))
+            if (age == 0){
+                age = Int(birthdayDate.timeIntervalSinceNow/(-60*60*24))
+                if ( age == 1){
+                    self.dogsAge.text = "Age: " + "\(age)" + " day"
+                }else{
+                    self.dogsAge.text = "Age: " + "\(age)" + " days"
+                }
+            }else if (age == 1){
+                self.dogsAge.text = "Age: " + "\(age)" + " month"
+            }else{
+                self.dogsAge.text = "Age: " + "\(age)" + " months"
+            }
+        }else{
+            if ( age == 1){
+                self.dogsAge.text = "Age: " + "\(age)" + " year"
+            }else{
+                self.dogsAge.text = "Age: " + "\(age)" + " years"
+            }
+        }
+        self.dogsBirthday.text = "Birthday: " + dateFormatter.string(from: birthdayDate)
+
+        //set age etc
         
         // Do any additional setup after loading the view.
     }
@@ -48,7 +79,7 @@ class DogProfileViewController: UIViewController {
     
     func MyPalsTapped(){
         let mainStoryboard = UIStoryboard( name: "Main", bundle: nil)
-        let dogPalsVC = mainStoryboard.instantiateViewController(withIdentifier: "dogPalsVC") as! ProfileViewController
+        let dogPalsVC = mainStoryboard.instantiateViewController(withIdentifier: "dogPalsVC") as! DogPalListViewController
         self.navigationController?.pushViewController(dogPalsVC, animated: true)
 
     }

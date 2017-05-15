@@ -61,7 +61,7 @@ class SignupViewController: UIViewController {
                 user_data["bio"] = "Tap here to add your bio"
                 user_data["location"] = "New York City"
                 user_data["profilePic"] = NSNull()
-                    
+
                 user_data.saveInBackground(block: { (wasSuccess: Bool, error: Error?) in
                     if (wasSuccessful) {
                         self.performSegue(withIdentifier: "signupSegue", sender: nil)

@@ -9,8 +9,11 @@
 import UIKit
 import Parse
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var PFDogs: [PFObject]!
+    var dogs: [Dog]!
+  
     var user_data: [PFObject]!
     var name: String?
     var age:Int = 0
@@ -22,7 +25,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
-    
+    @IBOutlet weak var tableView: UITableView!
     @IBAction func onLogout(_ sender: Any) {
         dismiss(animated: true, completion: nil)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "logout"), object: nil)
@@ -30,7 +33,30 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.estimatedRowHeight = 150
+        tableView.rowHeight = UITableViewAutomaticDimension
         
+        var query = PFQuery(className: "dog_data")
+        query.order(byDescending: "createdAt")
+        query.includeKey("owner")
+        query.whereKey("owner", equalTo: PFUser.current())
+        query.findObjectsInBackground { (dogs: [PFObject]?,error: Error?) in
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(dogs!.count) dogs.")
+                // Do something with the found objects
+                if let dogs = dogs {
+                    self.PFDogs = dogs
+                    self.tableView.reloadData()
+                }
+            } else {
+                // Log details of the failure
+                print("error")
+            }
+        }
+
         // Do any additional setup after loading the view.
         
         loadingIndicator.center = view.center
@@ -70,6 +96,35 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DogCell", for: indexPath) as! DogTableViewCell
+        
+        let PFDog = PFDogs[indexPath.row] as! PFObject
+        cell.dog = Dog.init(dog: PFDog)
+        
+        if let the_photo = PFDog["photo"]{
+            (the_photo as AnyObject).getDataInBackground(block: {(imageData: Data?,error: Error?) in
+                if error == nil {
+                    if let imageData = imageData {
+                        let image = UIImage(data: imageData)
+                        cell.dogPhoto.image = image
+                    }
+                }
+            })
+        }else{
+            cell.dogPhoto.image = UIImage(named: "dog_default")
+        }
+        return cell;
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let PFDogs = PFDogs{
+            return PFDogs.count
+        }else{
+            return 0
+        }
+    }
+    
     @IBAction func profileButtonTapped(_ sender: Any) {
         
         let mainStoryboard = UIStoryboard( name: "Main", bundle: nil)
@@ -83,8 +138,31 @@ class HomeViewController: UIViewController {
         let dogSignUpVC = mainStoryboard.instantiateViewController(withIdentifier: "dogSignUpVC") as! DogSignup1ViewController
         self.navigationController?.present(dogSignUpVC, animated: true, completion: nil)
     }
-    
-    // saves the data from parse locally
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        var query = PFQuery(className: "dog_data")
+        query.order(byDescending: "createdAt")
+        query.includeKey("owner")
+        query.whereKey("owner", equalTo: PFUser.current())
+        query.findObjectsInBackground { (dogs: [PFObject]?,error: Error?) in
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(dogs!.count) dogs.")
+                // Do something with the found objects
+                if let dogs = dogs {
+                    self.PFDogs = dogs
+                    self.tableView.reloadData()
+                }
+            } else {
+                // Log details of the failure
+                print("error")
+            }
+        }
+
+    }
+  // saves the data from parse locally
     func saveData() {
         
         if(self.user_data?[0]["name"] != nil) {
@@ -98,7 +176,6 @@ class HomeViewController: UIViewController {
         } else {
             self.location = "Location not found"
         }
-
     }
     
     func updateTextLabels() {
@@ -124,9 +201,10 @@ class HomeViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let cell = sender as! UITableViewCell
-        
-        let dogprofile = segue.destination as! DogProfileViewController
+        let cell = sender as! DogTableViewCell
+        let dogProfile = segue.destination as! DogProfileViewController
+        dogProfile.dog = cell.dog
+        cell.dog.dogImage = cell.dogPhoto.image
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
