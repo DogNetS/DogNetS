@@ -31,6 +31,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Do any additional setup after loading the view.
+        
         loadingIndicator.center = view.center
         loadingIndicator.startAnimating()
         view.addSubview(loadingIndicator)
@@ -69,10 +71,11 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func profileButtonTapped(_ sender: Any) {
+        
         let mainStoryboard = UIStoryboard( name: "Main", bundle: nil)
         let profileVC = mainStoryboard.instantiateViewController(withIdentifier: "profileVC") as! ProfileViewController
-        //profileVC.user_data = self.user_data
         self.navigationController?.pushViewController(profileVC, animated: true)
+        
     }
 
     @IBAction func addDog(_ sender: Any) {
@@ -103,7 +106,6 @@ class HomeViewController: UIViewController {
         locationLabel.text = self.location
         
         if(self.user_data?[0]["profilePic"] != nil) {
-            //self.nameLabel.text = self.user_data?[0]["profilePic"] as? String
             if let userPic = user_data[0].value(forKey: "profilePic")! as? PFFile {
                 userPic.getDataInBackground({ (imageData: Data?, error: Error?) -> Void in
                     let image = UIImage(data: imageData!)
@@ -113,6 +115,7 @@ class HomeViewController: UIViewController {
                 })
             }
         } else {
+            // set default profile image
             self.profileImageView.image =  UIImage(named: "profile_avatar")
         }
     }
@@ -124,7 +127,6 @@ class HomeViewController: UIViewController {
         let cell = sender as! UITableViewCell
         
         let dogprofile = segue.destination as! DogProfileViewController
-        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }

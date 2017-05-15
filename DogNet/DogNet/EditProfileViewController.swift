@@ -65,9 +65,7 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
         
         print("profile pic tapped")
     }
-    
-    
-    
+        
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         // Get the image captured by the UIImagePickerController

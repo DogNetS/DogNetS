@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class ProfileViewController: UIViewController, UITextViewDelegate {
+class ProfileViewController: UIViewController {
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -28,12 +28,11 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        bioTextView.delegate = self
+        
+        // Do any additional setup after loading the view.
         
         let edit = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(ProfileViewController.segueToEditProfile))
         self.navigationItem.rightBarButtonItem = edit
-        //self.navigationController?.title = "Profile"
         self.navigationItem.title = "Profile"
         
         loadingIndicator.center = view.center
@@ -108,8 +107,6 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
         bioTextView.text = self.bioText
         locationLabel.text = self.location
         
-        //profileImageView.image = self.profileImage
-        
         if let userPic = user_data[0].value(forKey: "profilePic") as? PFFile {
             userPic.getDataInBackground({ (imageData: Data?, error: Error?) -> Void in
                 let image = UIImage(data: imageData!)
@@ -120,17 +117,16 @@ class ProfileViewController: UIViewController, UITextViewDelegate {
         } else {
             print("ERROR: image not found")
         }
-        
     }
     
     func segueToEditProfile() {
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "editProfileVC") as! EditProfileViewController
         vc.user_data = self.user_data
         vc.profileImage = self.profileImageView.image
         self.present(vc, animated: true, completion: nil)
         
-        //self.navigationController?.pushViewController(vc, animated: true)
     }
     
     /*
