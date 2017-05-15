@@ -55,7 +55,6 @@ class Dog: NSObject {
     class func editDogInfo(name: String?, breed: String?,/* owner: PFUser?, */withCompletion completion: PFBooleanResultBlock?){
         let dog = PFObject(className: "Dog")
         
-        
         dog["name"] = name
         dog["breed"] = breed
         //dog["owner"] = owner

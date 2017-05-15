@@ -13,7 +13,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var PFDogs: [PFObject]!
     var dogs: [Dog]!
+  
+    var user_data: [PFObject]!
+    var name: String?
+    var age:Int = 0
+    var num_dogs:Int = 0
+    var bioText:String = ""
+    var location:String = ""
+    let loadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBAction func onLogout(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -22,7 +33,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 150
@@ -46,9 +56,41 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 print("error")
             }
         }
+
         // Do any additional setup after loading the view.
+        
+        loadingIndicator.center = view.center
+        loadingIndicator.startAnimating()
+        view.addSubview(loadingIndicator)
+        
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        // clear fields while data is loading
+        self.profileImageView.image = nil
+        self.nameLabel.text = ""
+        self.locationLabel.text = ""
+        
+        let query = PFQuery(className: "user_data")
+        query.order(byDescending: "createdAt")
+        query.includeKey("owner")
+        query.whereKey("owner", equalTo: PFUser.current()!)
+        query.limit = 20
+        query.findObjectsInBackground { (user_data: [PFObject]?, error: Error?) -> Void in
+            if let data = user_data {
+                self.user_data = data
+                
+                self.saveData()
+                self.updateTextLabels()
+                self.loadingIndicator.stopAnimating()
+                
+                
+            } else {
+                print("error while getting user_data")
+            }
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -84,9 +126,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func profileButtonTapped(_ sender: Any) {
+        
         let mainStoryboard = UIStoryboard( name: "Main", bundle: nil)
         let profileVC = mainStoryboard.instantiateViewController(withIdentifier: "profileVC") as! ProfileViewController
         self.navigationController?.pushViewController(profileVC, animated: true)
+        
     }
 
     @IBAction func addDog(_ sender: Any) {
@@ -94,7 +138,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let dogSignUpVC = mainStoryboard.instantiateViewController(withIdentifier: "dogSignUpVC") as! DogSignup1ViewController
         self.navigationController?.present(dogSignUpVC, animated: true, completion: nil)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -118,7 +162,40 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
 
     }
+  // saves the data from parse locally
+    func saveData() {
+        
+        if(self.user_data?[0]["name"] != nil) {
+            self.name = self.user_data?[0]["name"] as? String
+        } else {
+            self.name = (PFUser.current()?.username)! as String
+        }
+
+        if(self.user_data?[0]["location"] != nil) {
+            self.location = self.user_data?[0]["location"] as! String
+        } else {
+            self.location = "Location not found"
+        }
+    }
     
+    func updateTextLabels() {
+        nameLabel.text = self.name
+        locationLabel.text = self.location
+        
+        if(self.user_data?[0]["profilePic"] != nil) {
+            if let userPic = user_data[0].value(forKey: "profilePic")! as? PFFile {
+                userPic.getDataInBackground({ (imageData: Data?, error: Error?) -> Void in
+                    let image = UIImage(data: imageData!)
+                    if image != nil {
+                        self.profileImageView.image = image!
+                    }
+                })
+            }
+        } else {
+            // set default profile image
+            self.profileImageView.image =  UIImage(named: "profile_avatar")
+        }
+    }
     
     // MARK: - Navigation
 
