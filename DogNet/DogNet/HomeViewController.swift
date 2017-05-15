@@ -59,6 +59,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let PFDog = PFDogs[indexPath.row] as! PFObject
         cell.dog = Dog.init(dog: PFDog)
+        
+        if let the_photo = PFDog["photo"]{
+            (the_photo as AnyObject).getDataInBackground(block: {(imageData: Data?,error: Error?) in
+                if error == nil {
+                    if let imageData = imageData {
+                        let image = UIImage(data: imageData)
+                        cell.dogPhoto.image = image
+                    }
+                }
+            })
+        }else{
+            cell.dogPhoto.image = UIImage(named: "dog_default")
+        }
         return cell;
     }
     
@@ -114,6 +127,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = sender as! DogTableViewCell
         let dogProfile = segue.destination as! DogProfileViewController
         dogProfile.dog = cell.dog
+        cell.dog.dogImage = cell.dogPhoto.image
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }

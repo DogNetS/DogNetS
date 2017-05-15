@@ -20,7 +20,8 @@ class DogProfileViewController: UIViewController {
     @IBOutlet weak var dogsHealth: UILabel!
     @IBOutlet weak var dogsTemperament: UILabel!
     @IBOutlet weak var dogsToys: UILabel!
-    //need to add pals list, age/birthday.
+    @IBOutlet weak var dogsBirthday: UILabel!
+    //need to add pals list, age.
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +35,10 @@ class DogProfileViewController: UIViewController {
         self.dogsHealth.text = "Health: " + dog.health!
         self.dogsTemperament.text = "Temperament: " + dog.temperament!
         self.dogsToys.text = "Toys: " + dog.toys!
-
-        //set the image too
+        self.dogImage.image = dog.dogImage
+        self.dogsBirthday.text = "Birthday: " + dog.birthday!
         
+        //set age etc
         
         // Do any additional setup after loading the view.
     }

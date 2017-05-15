@@ -22,9 +22,10 @@ class Dog: NSObject {
     var pals: [Dog] = []         //dictionary of pals
     
     var dog = PFObject(className: "dog_data")
-    
+    var photo_Dog = UIImage(named: "dog_default")
     //initialize the dog model so that don't need to access parse all the time
     init(dog: PFObject) {
+        super.init()
         self.dog = dog
         
         self.name = dog["name"] as! String?
@@ -34,11 +35,21 @@ class Dog: NSObject {
         self.temperament = dog["temper"] as! String?
         self.toys = dog["fav_toy"] as! String?
         self.owner = dog["owner"] as! PFUser?
-        //owner
+        
         //pals
-        //self.dogImage = dog["dogImage"] as! UIImage - need to do this
         
     }
+    
+    func getPhoto(the_photo: AnyObject, completion: @escaping (UIImage?)->()) {
+        (the_photo as AnyObject).getDataInBackground(block: { (imageData: Data?,error: Error?) in
+            if error == nil {
+                if let imageData = imageData {
+                    completion(UIImage(data: imageData))
+                }
+            }
+        })
+    }
+
     
     //need to add more parameters for other info
     class func editDogInfo(name: String?, breed: String?,/* owner: PFUser?, */withCompletion completion: PFBooleanResultBlock?){
@@ -52,5 +63,24 @@ class Dog: NSObject {
         dog.saveInBackground(block: completion)
         
     }
+    
+    /**
+     Method to convert UIImage to PFFile
+     
+     - parameter image: Image that the user wants to upload to parse
+     
+     - returns: PFFile for the the data in the image
+     */
+    class func getPFFileFromImage(image: UIImage?) -> PFFile? {
+        // check if image is not nil
+        if let image = image {
+            // get image data and check if that is not nil
+            if let imageData = UIImagePNGRepresentation(image) {
+                return PFFile(name: "image.png", data: imageData)
+            }
+        }
+        return nil
+    }
+
 }
 
