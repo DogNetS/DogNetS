@@ -40,11 +40,13 @@ class HomeViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        
         // clear fields while data is loading
         self.profileImageView.image = nil
         self.nameLabel.text = ""
         self.locationLabel.text = ""
         
+        // search for PFObject with matching "owner" field
         let query = PFQuery(className: "user_data")
         query.order(byDescending: "createdAt")
         query.includeKey("owner")
@@ -54,10 +56,9 @@ class HomeViewController: UIViewController {
             if let data = user_data {
                 self.user_data = data
                 
-                self.saveData()
-                self.updateTextLabels()
-                self.loadingIndicator.stopAnimating()
-                
+                self.saveData()                         // save data from parse to local variables
+                self.updateTextLabels()                 // update text labels with new values
+                self.loadingIndicator.stopAnimating()   // stop activity indicator and show updated views
                 
             } else {
                 print("error while getting user_data")

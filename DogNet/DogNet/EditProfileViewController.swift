@@ -111,6 +111,7 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
 
     @IBAction func onSaveButton(_ sender: Any) {
         
+        // save values from fields
         name = nameTextField.text
         email = emailTextField.text
         bioText = bioTextView.text
