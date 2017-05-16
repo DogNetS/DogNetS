@@ -30,7 +30,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
+    
         let edit = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(ProfileViewController.segueToEditProfile))
         self.navigationItem.rightBarButtonItem = edit
         self.navigationItem.title = "Profile"
@@ -50,6 +50,7 @@ class ProfileViewController: UIViewController {
         self.locationLabel.text = ""
         self.bioTextView.text = ""
         
+        // search for PFObject with matching "owner" field
         let query = PFQuery(className: "user_data")
         query.order(byDescending: "createdAt")
         query.includeKey("owner")
@@ -58,7 +59,7 @@ class ProfileViewController: UIViewController {
         query.findObjectsInBackground { (user_data: [PFObject]?, error: Error?) -> Void in
             if let data = user_data {
                 self.user_data = data
-                print("\(self.user_data)")
+                //print("\(self.user_data)")
                 
                 self.saveData()
                 self.loadingIndicator.stopAnimating()
