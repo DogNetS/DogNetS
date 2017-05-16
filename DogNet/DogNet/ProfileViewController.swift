@@ -108,6 +108,7 @@ class ProfileViewController: UIViewController {
         bioTextView.text = self.bioText
         locationLabel.text = self.location
         
+        // check if image exists before setting
         if let userPic = user_data[0].value(forKey: "profilePic") as? PFFile {
             userPic.getDataInBackground({ (imageData: Data?, error: Error?) -> Void in
                 let image = UIImage(data: imageData!)
