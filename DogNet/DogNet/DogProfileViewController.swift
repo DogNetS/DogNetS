@@ -27,7 +27,7 @@ class DogProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "MyPals", style: .plain, target: self, action: "MyPalsTapped")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "MyPals", style: .plain, target: self, action: #selector(DogProfileViewController.MyPalsTapped))
         
         //getting dog info through the Dog Model passed from the cell.
         self.dogName.text = dog.name

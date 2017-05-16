@@ -77,6 +77,7 @@ class DogSignup1ViewController: UIViewController, UIImagePickerControllerDelegat
         dog["fav_toy"] = (dogFavToysTextField.text?.isEmpty)! ? "Not specified" : dogFavToysTextField.text
         dog["temper"] = (dogTemperTextField.text?.isEmpty)! ? "Not specified" : dogTemperTextField.text
         dog["owner"] = PFUser.current()
+
         dog["photo"] = Dog.getPFFileFromImage(image: pickedImage)
         
         if ((!(dogNameTextField.text?.isEmpty)!) && (!(dogBreedTextField.text?.isEmpty)!) && (!(dogBirthdayTextField.text?.isEmpty)!)){
