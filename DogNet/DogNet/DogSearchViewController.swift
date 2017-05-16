@@ -42,7 +42,11 @@ class DogSearchViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dogSearchCell", for: indexPath) as! DogSearchTableViewCell
         let dog = dogs[indexPath.row]
+        if dog.dogImage == nil {
+            dog.dogImage = UIImage(named: "dog_default")
+        }
         cell.dog = dog
+
         return cell
     }
     
@@ -65,7 +69,7 @@ class DogSearchViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        dogs.removeAll(keepingCapacity: false)
+        dogs.removeAll()
         dogSearchTableView.reloadData()
     }
 
