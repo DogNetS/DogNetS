@@ -441,6 +441,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="locationLabel" destination="Sqr-sU-tiY" id="TJn-cN-xl2"/>
+                        <outlet property="nameLabel" destination="LAd-Kt-PdC" id="3x6-bb-gB8"/>
+                        <outlet property="profileImageView" destination="3zZ-EW-Z7c" id="DBA-RX-cSS"/>
                         <outlet property="tableView" destination="wwH-Ph-ops" id="Oof-ld-keF"/>
                     </connections>
                 </viewController>

@@ -117,7 +117,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NPb-Ew-tvp">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="NPb-Ew-tvp">
                                 <rect key="frame" x="0.0" y="56" width="375" height="232"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -187,7 +187,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j6V-0s-vjL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1663" y="-542"/>
+            <point key="canvasLocation" x="1727" y="-638"/>
         </scene>
         <!--Edit Profile View Controller-->
         <scene sceneID="4Rc-I3-fis">
@@ -233,7 +233,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gNz-MF-MUM">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="gNz-MF-MUM">
                                 <rect key="frame" x="0.0" y="56" width="375" height="232"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -307,7 +307,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2336.25" y="-544.0140845070423"/>
+            <point key="canvasLocation" x="2439" y="-639"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="ZM2-un-hFj">
@@ -448,14 +448,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="locationLabel" destination="Sqr-sU-tiY" id="6Nd-TS-Orn"/>
-                        <outlet property="nameLabel" destination="LAd-Kt-PdC" id="Yui-yt-BwF"/>
-                        <outlet property="profileImageView" destination="3zZ-EW-Z7c" id="5tR-hr-dcM"/>
+                        <outlet property="locationLabel" destination="Sqr-sU-tiY" id="Yr5-4l-hIu"/>
+                        <outlet property="nameLabel" destination="LAd-Kt-PdC" id="0PF-u6-XPo"/>
+                        <outlet property="profileImageView" destination="3zZ-EW-Z7c" id="xKZ-Py-61a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VZ8-gQ-BMZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1725" y="121"/>
+            <point key="canvasLocation" x="1724" y="120.98950524737631"/>
         </scene>
         <!--Dog Profile View Controller-->
         <scene sceneID="hZu-i9-JVk">
@@ -1035,7 +1035,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="profile_avatar" width="350" height="350"/>
+        <image name="profile_avatar" width="700" height="700"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="IcX-wi-4H8"/>
