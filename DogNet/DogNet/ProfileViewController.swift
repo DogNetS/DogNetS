@@ -98,6 +98,8 @@ class ProfileViewController: UIViewController {
         
         if(self.user_data?[0]["location"] != nil) {
             self.location = self.user_data?[0]["location"] as! String
+        } else {
+            self.location = "Location not found"
         }
         
         if(self.user_data?[0]["bio"] != nil) {
@@ -125,11 +127,11 @@ class ProfileViewController: UIViewController {
     
     func segueToEditProfile() {
         
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "editProfileVC") as! EditProfileViewController
-//        vc.user_data = self.user_data
-//        vc.profileImage = self.profileImageView.image
-//        self.present(vc, animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "editProfileVC") as! EditProfileViewController
+        vc.user_data = self.user_data
+        vc.profileImage = self.profileImageView.image
+        self.present(vc, animated: true, completion: nil)
         
     }
     
