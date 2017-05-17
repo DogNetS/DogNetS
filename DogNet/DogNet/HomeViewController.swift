@@ -48,7 +48,31 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        var query = PFQuery(className: "dog_data")
+        query.order(byDescending: "createdAt")
+        query.includeKey("owner")
+        query.whereKey("owner", equalTo: PFUser.current())
+        query.findObjectsInBackground { (dogs: [PFObject]?,error: Error?) in
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(dogs!.count) dogs.")
+                // Do something with the found objects
+                if let dogs = dogs {
+                    self.PFDogs = dogs
+                    self.tableView.reloadData()
+                }
+            } else {
+                // Log details of the failure
+                print("error")
+            }
+        }
 
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -95,29 +119,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationController?.present(dogSignUpVC, animated: true, completion: nil)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        var query = PFQuery(className: "dog_data")
-        query.order(byDescending: "createdAt")
-        query.includeKey("owner")
-        query.whereKey("owner", equalTo: PFUser.current())
-        query.findObjectsInBackground { (dogs: [PFObject]?,error: Error?) in
-            if error == nil {
-                // The find succeeded.
-                print("Successfully retrieved \(dogs!.count) dogs.")
-                // Do something with the found objects
-                if let dogs = dogs {
-                    self.PFDogs = dogs
-                    self.tableView.reloadData()
-                }
-            } else {
-                // Log details of the failure
-                print("error")
-            }
-        }
 
-    }
     
     
     // MARK: - Navigation
