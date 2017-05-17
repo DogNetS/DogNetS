@@ -36,14 +36,16 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        // for selecting new profile pic
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onProfileTapGesture(sender:)))
         profileImageView.isUserInteractionEnabled = true
         profileImageView.addGestureRecognizer(tapGestureRecognizer)
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
 
+        // update fields using data from Profile VC
         nameTextField.text = user_data?[0]["name"] as? String
         emailTextField.text = PFUser.current()?.email
         bioTextView.text = user_data?[0]["bio"] as? String
