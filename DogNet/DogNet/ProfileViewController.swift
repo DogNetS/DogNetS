@@ -50,6 +50,7 @@ class ProfileViewController: UIViewController {
         self.locationLabel.text = ""
         self.bioTextView.text = ""
         
+        // search for matching user_data
         let query = PFQuery(className: "user_data")
         query.order(byDescending: "createdAt")
         query.includeKey("owner")
