@@ -25,6 +25,7 @@
 		C79708E31EA5D0B0002D652D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79708E21EA5D0B0002D652D /* ProfileViewController.swift */; };
 		E34ECF391EB806A8000CF41E /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34ECF381EB806A8000CF41E /* Dog.swift */; };
 		E34ECF3B1EB841B8000CF41E /* DogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34ECF3A1EB841B8000CF41E /* DogTableViewCell.swift */; };
+		E36C86BF1ED16842001AEA0D /* DogEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36C86BE1ED16842001AEA0D /* DogEditViewController.swift */; };
 		E3C4BAFA1EAF0D03008C3F02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3C4BAF81EAF0D03008C3F02 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		C79708E21EA5D0B0002D652D /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E34ECF381EB806A8000CF41E /* Dog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
 		E34ECF3A1EB841B8000CF41E /* DogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogTableViewCell.swift; sourceTree = "<group>"; };
+		E36C86BE1ED16842001AEA0D /* DogEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogEditViewController.swift; sourceTree = "<group>"; };
 		E3C4BAF91EAF0D03008C3F02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F3188F68E2E2B8FFC7DF4051 /* Pods-DogNet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DogNet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DogNet/Pods-DogNet.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +141,7 @@
 				C79708E01EA5D0A7002D652D /* DogSignup2ViewController.swift */,
 				C79708E21EA5D0B0002D652D /* ProfileViewController.swift */,
 				01FA19421EBFBF0900155429 /* DogSearchViewController.swift */,
+				E36C86BE1ED16842001AEA0D /* DogEditViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				E34ECF3B1EB841B8000CF41E /* DogTableViewCell.swift in Sources */,
 				C79708E31EA5D0B0002D652D /* ProfileViewController.swift in Sources */,
 				C79708DD1EA5D091002D652D /* SignupViewController.swift in Sources */,
+				E36C86BF1ED16842001AEA0D /* DogEditViewController.swift in Sources */,
 				01FA19431EBFBF0900155429 /* DogSearchViewController.swift in Sources */,
 				01FA19461EBFBFA100155429 /* DogSearchTableViewCell.swift in Sources */,
 				C79708C31EA5C038002D652D /* ViewController.swift in Sources */,
