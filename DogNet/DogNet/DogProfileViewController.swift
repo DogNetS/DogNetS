@@ -27,7 +27,7 @@ class DogProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "MyPals", style: .plain, target: self, action: #selector(DogProfileViewController.MyPalsTapped))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit Info", style: .plain, target: self, action: #selector(DogProfileViewController.EditInfoTapped))
         
         //getting dog info through the Dog Model passed from the cell.
         self.dogName.text = dog.name
@@ -71,19 +71,64 @@ class DogProfileViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.dogName.text = dog.name
+        self.dogsOwner.text = dog.owner?.username
+        self.dogBreed.text = dog.breed
+        self.dogsHealth.text = "Health: " + dog.health!
+        self.dogsTemperament.text = "Temperament: " + dog.temperament!
+        self.dogsToys.text = "Toys: " + dog.toys!
+        self.dogImage.image = dog.dogImage
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        dateFormatter.timeStyle = DateFormatter.Style.none
+
+        var birthdayDate = dog.birthday!.toDate(dateFormat: "MM/dd/yyyy")
+        var age = Int(birthdayDate.timeIntervalSinceNow/(-60*60*24*365))
+        if (age == 0){
+            age = Int(birthdayDate.timeIntervalSinceNow/(-60*60*24*30))
+            if (age == 0){
+                age = Int(birthdayDate.timeIntervalSinceNow/(-60*60*24))
+                if ( age == 1){
+                    self.dogsAge.text = "Age: " + "\(age)" + " day"
+                }else{
+                    self.dogsAge.text = "Age: " + "\(age)" + " days"
+                }
+            }else if (age == 1){
+                self.dogsAge.text = "Age: " + "\(age)" + " month"
+            }else{
+                self.dogsAge.text = "Age: " + "\(age)" + " months"
+            }
+        }else{
+            if ( age == 1){
+                self.dogsAge.text = "Age: " + "\(age)" + " year"
+            }else{
+                self.dogsAge.text = "Age: " + "\(age)" + " years"
+            }
+        }
+        self.dogsBirthday.text = "Birthday: " + dateFormatter.string(from: birthdayDate)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func MyPalsTapped(){
+    func EditInfoTapped(){
+        let mainStoryboard = UIStoryboard( name: "Main", bundle: nil)
+        let dogEditVC = mainStoryboard.instantiateViewController(withIdentifier: "dogEditVC") as! DogEditViewController
+        dogEditVC.dog = self.dog
+        self.navigationController?.present(dogEditVC, animated: true, completion: nil)
+    }
+
+    @IBAction func MyPalsButtonTapped(_ sender: Any) {
         let mainStoryboard = UIStoryboard( name: "Main", bundle: nil)
         let dogPalsVC = mainStoryboard.instantiateViewController(withIdentifier: "dogPalsVC") as! DogPalListViewController
         self.navigationController?.pushViewController(dogPalsVC, animated: true)
-
     }
-
     /*
     // MARK: - Navigation
 
