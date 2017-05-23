@@ -10,6 +10,7 @@ import UIKit
 
 class PalProfileViewController: UIViewController {
 
+    @IBOutlet weak var addDeleteButton: UIButton!
     var dog: Dog! // Dog model passed from the cell we tapped one.
     var currentDog: Dog!
     
@@ -22,8 +23,15 @@ class PalProfileViewController: UIViewController {
     @IBOutlet weak var dogTemper: UILabel!
     @IBOutlet weak var dogToys: UILabel!
     @IBOutlet weak var dogImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if(currentDog.checkPal(dog: dog)){
+            addDeleteButton.titleLabel?.text = "Delete Pal"
+        }else{
+            addDeleteButton.titleLabel?.text = "Add Pal"
+        }
 
         self.dogName.text = dog.name
         self.dogOwner.text = dog.owner?.username
@@ -66,23 +74,49 @@ class PalProfileViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if(currentDog.checkPal(dog: dog)){
+            addDeleteButton.titleLabel?.text = "Delete Pal"
+        }else{
+            addDeleteButton.titleLabel?.text = "Add Pal"
+        }
+    }
 
     @IBAction func addPal(_ sender: Any) {
-        currentDog.updateDog(name: nil, breed: nil, birthday: nil, image: nil, health: nil, temp: nil, toys: nil, palId: dog.id) {(success: Bool, error: Error?) in
-            if success {
-                print("[DEBUG] successfully updated current dog")
-            } else {
-                print("[DEBUG] fail to update current dog")
+        if(!currentDog.checkPal(dog: dog)){
+            currentDog.updateDog(name: nil, breed: nil, birthday: nil, image: nil, health: nil, temp: nil, toys: nil, palId: dog.id) {(success: Bool, error: Error?) in
+                if success {
+                    print("[DEBUG] successfully updated current dog")
+                    self.addDeleteButton.titleLabel?.text = "Delete Pal"
+                } else {
+                    print("[DEBUG] fail to update current dog")
+                }
+            }
+            dog.updateDog(name: nil, breed: nil, birthday: nil, image: nil, health: nil, temp: nil, toys: nil, palId: currentDog.id) {(success: Bool, error: Error?) in
+                if success {
+                    print("[DEBUG] successfully updated pal dog")
+                } else {
+                    print("[DEBUG] fail to update pal dog")
+                }
+            }
+        }else{
+            currentDog.deleteDog(palId: dog.id) {(success: Bool,error: Error?) in
+                if success {
+                    print("[DEBUG] successfully deleted pal from the current dog")
+                    self.addDeleteButton.titleLabel?.text = "Add Pal"
+                }else{
+                    print("[DEBUG] fail to delete pal from current dog")
+                }
+            }
+            dog.deleteDog(palId: currentDog.id) {(success: Bool,error: Error?) in
+                if success {
+                    print("[DEBUG] successfully deleted current dog from the pal dog")
+                }else{
+                    print("[DEBUG] fail to delete current dog from pal dog")
+                }
             }
         }
-        dog.updateDog(name: nil, breed: nil, birthday: nil, image: nil, health: nil, temp: nil, toys: nil, palId: currentDog.id) {(success: Bool, error: Error?) in
-            if success {
-                print("[DEBUG] successfully updated pal dog")
-            } else {
-                print("[DEBUG] fail to update pal dog")
-            }
-        }
-
     }
     
     override func didReceiveMemoryWarning() {

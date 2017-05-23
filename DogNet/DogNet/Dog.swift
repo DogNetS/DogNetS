@@ -39,8 +39,11 @@ class Dog: NSObject {
         self.toys = dog["fav_toy"] as! String?
         self.owner = dog["owner"] as! PFUser?
         self.id = dog.objectId as! String?
+        if let pals = dog["pals"]{
+            self.pals = pals as! [String?]
+        }
         
-        //pals
+        
         
     }
     
@@ -63,6 +66,16 @@ class Dog: NSObject {
             return false
         }
         
+    }
+    
+    func checkPal(dog: Dog?) -> Bool{
+        for pal in pals{
+            if dog?.id == pal{
+                print("got the pal")
+                return true
+            }
+        }
+        return false
     }
     
     //function to edit dogs
@@ -125,8 +138,42 @@ class Dog: NSObject {
                 print("error while saving dog's data")
             }
         }
-        
-        
+    }
+    
+    func deleteDog(palId: String?, withCompletion completion: PFBooleanResultBlock?){
+        let query = PFQuery(className: "dog_data")
+        query.order(byDescending: "createdAt")
+        query.includeKey("owner")
+        query.whereKey("owner", equalTo: owner!)
+        query.findObjectsInBackground { (dogs: [PFObject]?,error: Error?) in
+            if error == nil {
+                if let dogs = dogs {
+                    for doggy in dogs{
+                        //finding the dog we are editing from Parse
+                        
+                        
+                        if self.equals(dog: Dog.init(dog: doggy)){
+                            if(palId != nil){
+                                
+                                for (index, pal) in self.pals.enumerated() {
+                                    if (palId == pal){
+                                        self.pals.remove(at: index)
+                                    }
+                                }
+                                doggy["pals"] = self.pals
+                            }
+                            
+                            //save the data
+                            doggy.saveInBackground(block: completion)
+                        }
+                    }
+                    
+                }
+            } else {
+                // Log details of the failure
+                print("error while saving dog's data")
+            }
+        }
     }
     
     /**
