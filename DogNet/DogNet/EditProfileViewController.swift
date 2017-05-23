@@ -19,7 +19,7 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var ageTextField: UITextField!
+    @IBOutlet weak var birthdayTextField: UITextField!
     
     @IBOutlet weak var bioTextView: UITextView!
     
@@ -27,7 +27,7 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
     var bioText: String?
     var name: String?
     var email: String?
-    var age: String?
+    var birthday: String?
     
     var resizeImage: UIImage!
     var profileImage: UIImage!
@@ -45,16 +45,13 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
     
     override func viewWillAppear(_ animated: Bool) {
 
+        self.birthday = user_data?[0]["birthday"] as? String
+        
         // update fields using data from Profile VC
         nameTextField.text = user_data?[0]["name"] as? String
         emailTextField.text = PFUser.current()?.email
         bioTextView.text = user_data?[0]["bio"] as? String
-        
-        
-        var birthdate = user_data?[0]["birthday"]
-        
-        //ageTextField.text = (user_data?[0]["age"]).toDate(dateFormat: "MM/dd/yyyy")
-        
+        birthdayTextField.text = birthday
         profileImageView.image = self.profileImage
         
         /* setting the date picker, etc*/
@@ -76,7 +73,7 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
         label.textAlignment = NSTextAlignment.center
         let textBtn = UIBarButtonItem(customView: label)
         toolBar.setItems([textBtn,flexSpace,okBarBtn], animated: true)
-        ageTextField.inputAccessoryView = toolBar
+        birthdayTextField.inputAccessoryView = toolBar
         
     }
     
@@ -151,7 +148,7 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
         // save values from fields
         name = nameTextField.text
         email = emailTextField.text
-        age = ageTextField.text
+        birthday = birthdayTextField.text
         bioText = bioTextView.text
         
         updateProfile(name: name, email: email, bio: bioText, image: resizeImage) {(success: Bool, error: Error?) in
@@ -172,16 +169,15 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
     
     @IBAction func onBirthdaySelect(_ sender: UITextField) {
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        let date = dateFormatter.date(from:self.birthday!)!
+        
         let datePickerView:UIDatePicker = UIDatePicker()
-        
+        datePickerView.date = date
         datePickerView.maximumDate = Date()
-        
-        // datePickerView.maximumDate = maxDate
-        
         datePickerView.datePickerMode = UIDatePickerMode.date
-        
         sender.inputView = datePickerView
-        
         datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControlEvents.valueChanged)
         
     }
@@ -193,12 +189,12 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
         dateFormatter.timeStyle = DateFormatter.Style.none
         dateFormatter.dateFormat = "MM/dd/yyyy"
         
-        ageTextField.text = dateFormatter.string(from: sender.date)
+        birthdayTextField.text = dateFormatter.string(from: sender.date)
         
     }
     
     func donePressed(sender: UIBarButtonItem) {
-        ageTextField.resignFirstResponder()
+        birthdayTextField.resignFirstResponder()
     }
     
     func updateProfile(name: String?, email: String?, bio: String?, image: UIImage?, withCompletion completion: PFBooleanResultBlock?) {
@@ -215,6 +211,7 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
                 user_data?[0]["name"] = self.nameTextField.text
                 PFUser.current()?.email = self.emailTextField.text
                 user_data?[0]["bio"] = self.bioTextView.text
+                user_data?[0]["birthday"] = self.birthdayTextField.text
 
                 if(image == nil) {
                     print("no image found")

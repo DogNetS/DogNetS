@@ -19,6 +19,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var num_dogs:Int = 0
     var bioText:String = ""
     var location:String = ""
+    var birthday:String?
     let loadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
     @IBOutlet weak var nameLabel: UILabel!

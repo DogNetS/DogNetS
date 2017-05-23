@@ -25,6 +25,7 @@ class ProfileViewController: UIViewController {
     var bioText:String = ""
     var location:String = ""
     var profileImage: UIImage?
+    var birthday: String?
     let loadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
     override func viewDidLoad() {
@@ -41,6 +42,7 @@ class ProfileViewController: UIViewController {
         loadingIndicator.center = view.center
         loadingIndicator.startAnimating()
         view.addSubview(loadingIndicator)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,7 +91,7 @@ class ProfileViewController: UIViewController {
         }
         
         if(self.user_data?[0]["age"] != nil) {
-            self.age = self.user_data?[0]["age"] as! Int
+            //self.age = self.user_data?[0]["age"] as! Int
         }
         
         if(self.user_data?[0]["num_dogs"] != nil) {
@@ -98,17 +100,26 @@ class ProfileViewController: UIViewController {
         
         if(self.user_data?[0]["location"] != nil) {
             self.location = self.user_data?[0]["location"] as! String
-        } else {
+        }
+        else {
             self.location = "Location not found"
         }
         
         if(self.user_data?[0]["bio"] != nil) {
             self.bioText = self.user_data?[0]["bio"] as! String
         }
+        
+        if(self.user_data?[0]["birthday"] != nil) {
+            self.birthday = self.user_data?[0]["birthday"] as? String
+        }
     }
     
     // updates all the labels
     func updateTextLabels() {
+        
+        let birthday = self.birthday?.toDate(dateFormat: "MM/dd/yyyy")
+        self.age = Int((birthday?.timeIntervalSinceNow)!/(-60*60*24*365))
+        
         ageLabel.text = "\(self.age)"
         bioTextView.text = self.bioText
         locationLabel.text = self.location
@@ -134,6 +145,8 @@ class ProfileViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
         
     }
+    
+    
     
     /*
     // MARK: - Navigation
