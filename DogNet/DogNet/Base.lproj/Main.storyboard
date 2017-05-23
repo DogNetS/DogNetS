@@ -207,19 +207,19 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBG-dD-Fxh">
-                                <rect key="frame" x="16" y="288" width="50" height="26.5"/>
+                                <rect key="frame" x="16" y="288" width="53" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bxd-9j-Z3o">
-                                <rect key="frame" x="16" y="330.5" width="50" height="21"/>
+                                <rect key="frame" x="16" y="330.5" width="53" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ncB-7I-Hdh">
-                                <rect key="frame" x="90" y="326" width="200" height="30"/>
+                                <rect key="frame" x="93" y="326" width="200" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="rqL-He-NeP"/>
                                 </constraints>
@@ -227,8 +227,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yf3-4q-7DS">
-                                <rect key="frame" x="16" y="367.5" width="50" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthday:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yf3-4q-7DS">
+                                <rect key="frame" x="16" y="367.5" width="69" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -240,7 +240,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Zq-Ds-VgO">
-                                <rect key="frame" x="90" y="288" width="200" height="30"/>
+                                <rect key="frame" x="93" y="288" width="200" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="y4q-fX-HcT"/>
                                 </constraints>
@@ -249,13 +249,16 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IrJ-Yp-f8Q">
-                                <rect key="frame" x="90" y="363" width="200" height="30"/>
+                                <rect key="frame" x="93" y="363" width="200" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="E6w-Tk-iqI"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="onBirthdaySelect:" destination="377-5B-WJI" eventType="editingDidBegin" id="9Ch-QP-YB4"/>
+                                </connections>
                             </textField>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ut2-X6-341">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -285,7 +288,7 @@
                             <constraint firstItem="bxd-9j-Z3o" firstAttribute="leading" secondItem="sBG-dD-Fxh" secondAttribute="leading" id="Ctj-Px-5Ks"/>
                             <constraint firstItem="ncB-7I-Hdh" firstAttribute="leading" secondItem="bxd-9j-Z3o" secondAttribute="trailing" constant="24" id="EO3-nb-HtD"/>
                             <constraint firstItem="8Zq-Ds-VgO" firstAttribute="leading" secondItem="sBG-dD-Fxh" secondAttribute="trailing" constant="24" id="HaA-d9-1Kv"/>
-                            <constraint firstItem="IrJ-Yp-f8Q" firstAttribute="leading" secondItem="Yf3-4q-7DS" secondAttribute="trailing" constant="24" id="Hfq-n9-5x8"/>
+                            <constraint firstItem="IrJ-Yp-f8Q" firstAttribute="leading" secondItem="Yf3-4q-7DS" secondAttribute="trailing" constant="8" id="Hfq-n9-5x8"/>
                             <constraint firstAttribute="trailing" secondItem="smo-rX-GSM" secondAttribute="trailing" id="Lj1-0G-y9j"/>
                             <constraint firstItem="ncB-7I-Hdh" firstAttribute="centerY" secondItem="bxd-9j-Z3o" secondAttribute="centerY" id="Uhz-WD-fOc"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ncB-7I-Hdh" secondAttribute="trailing" constant="24" id="VL6-LT-7RF"/>
@@ -308,8 +311,8 @@
                     </view>
                     <connections>
                         <outlet property="ageLabel" destination="Yf3-4q-7DS" id="hDY-l5-sdW"/>
-                        <outlet property="ageTextField" destination="IrJ-Yp-f8Q" id="4ju-rq-GuK"/>
                         <outlet property="bioTextView" destination="5f2-AT-EHn" id="4J2-UE-cEs"/>
+                        <outlet property="birthdayTextField" destination="IrJ-Yp-f8Q" id="4ju-rq-GuK"/>
                         <outlet property="emailLabel" destination="bxd-9j-Z3o" id="EHW-Dt-P63"/>
                         <outlet property="emailTextField" destination="ncB-7I-Hdh" id="91m-33-ctJ"/>
                         <outlet property="nameLabel" destination="sBG-dD-Fxh" id="48n-J2-FsI"/>
@@ -385,36 +388,36 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DogCell" rowHeight="134" id="x3b-i1-Dri" customClass="DogTableViewCell" customModule="DogNet" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="134"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="x3b-i1-Dri" id="zZh-5i-ypX">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="133"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x3b-i1-Dri" id="zZh-5i-ypX">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="134"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Dog Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXa-vJ-OHr">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dog Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXa-vJ-OHr">
                                                     <rect key="frame" x="128" y="8" width="81" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Pals: 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dr5-nH-1TG">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pals: 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dr5-nH-1TG">
                                                     <rect key="frame" x="128" y="37" width="51" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Breed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxN-9u-WC1">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxN-9u-WC1">
                                                     <rect key="frame" x="128" y="66" width="46" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="dog_default" translatesAutoresizingMaskIntoConstraints="NO" id="Q6y-Ft-FmT">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dog_default" translatesAutoresizingMaskIntoConstraints="NO" id="Q6y-Ft-FmT">
                                                     <rect key="frame" x="0.0" y="0.0" width="120" height="118"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="117.5" id="IuY-cg-HKQ"/>
                                                         <constraint firstAttribute="width" constant="120" id="PwB-JZ-WSa"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KMU-HY-Vgj">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KMU-HY-Vgj">
                                                     <rect key="frame" x="128" y="95" width="30" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -630,7 +633,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="107"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j0T-hl-N2g" id="Cn1-iy-T79">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="106"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="107"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bm7-Id-735">
@@ -1086,7 +1089,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LoF-li-52s" id="hjC-i0-VUY">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="169"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="170"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dog_default" translatesAutoresizingMaskIntoConstraints="NO" id="xnQ-GV-Goh">

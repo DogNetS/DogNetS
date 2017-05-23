@@ -19,7 +19,7 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var ageTextField: UITextField!
+    @IBOutlet weak var birthdayTextField: UITextField!
     
     @IBOutlet weak var bioTextView: UITextView!
     
@@ -27,7 +27,7 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
     var bioText: String?
     var name: String?
     var email: String?
-    var age: String?
+    var birthday: String?
     
     var resizeImage: UIImage!
     var profileImage: UIImage!
@@ -45,12 +45,35 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
     
     override func viewWillAppear(_ animated: Bool) {
 
+        self.birthday = user_data?[0]["birthday"] as? String
+        
         // update fields using data from Profile VC
         nameTextField.text = user_data?[0]["name"] as? String
         emailTextField.text = PFUser.current()?.email
         bioTextView.text = user_data?[0]["bio"] as? String
-        ageLabel.text = "\(user_data?[0]["age"] as! Int)"
+        birthdayTextField.text = birthday
         profileImageView.image = self.profileImage
+        
+        /* setting the date picker, etc*/
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: self.view.frame.size.height/6, width: self.view.frame.size.width, height: 40.0))
+        
+        toolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
+        toolBar.barStyle = UIBarStyle.blackTranslucent
+        toolBar.tintColor = UIColor.white
+        
+        let okBarBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.donePressed))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+        
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width / 3, height: self.view.frame.size.height))
+        
+        label.font = UIFont(name: "Helvetica", size: 12)
+        label.backgroundColor = UIColor.clear
+        label.textColor = UIColor.white
+        label.text = "Select the birthday"
+        label.textAlignment = NSTextAlignment.center
+        let textBtn = UIBarButtonItem(customView: label)
+        toolBar.setItems([textBtn,flexSpace,okBarBtn], animated: true)
+        birthdayTextField.inputAccessoryView = toolBar
         
     }
     
@@ -125,11 +148,11 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
         // save values from fields
         name = nameTextField.text
         email = emailTextField.text
-        //age = ageTextField.text
+        birthday = birthdayTextField.text
         bioText = bioTextView.text
         
         updateProfile(name: name, email: email, bio: bioText, image: resizeImage) {(success: Bool, error: Error?) in
-            print("resizeimage: \(self.resizeImage)")
+
             self.loadingIndicator.center = self.view.center
             self.loadingIndicator.startAnimating()
             self.view.addSubview(self.loadingIndicator)
@@ -144,8 +167,37 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
         
     }
     
+    @IBAction func onBirthdaySelect(_ sender: UITextField) {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        let date = dateFormatter.date(from:self.birthday!)!
+        
+        let datePickerView:UIDatePicker = UIDatePicker()
+        datePickerView.date = date
+        datePickerView.maximumDate = Date()
+        datePickerView.datePickerMode = UIDatePickerMode.date
+        sender.inputView = datePickerView
+        datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControlEvents.valueChanged)
+        
+    }
+    
+    func datePickerValueChanged(sender:UIDatePicker) {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        dateFormatter.timeStyle = DateFormatter.Style.none
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        
+        birthdayTextField.text = dateFormatter.string(from: sender.date)
+        
+    }
+    
+    func donePressed(sender: UIBarButtonItem) {
+        birthdayTextField.resignFirstResponder()
+    }
+    
     func updateProfile(name: String?, email: String?, bio: String?, image: UIImage?, withCompletion completion: PFBooleanResultBlock?) {
-        print("resizeimage: \(self.resizeImage)")
         
         let query = PFQuery(className: "user_data")
         query.order(byDescending: "createdAt")
@@ -159,6 +211,7 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
                 user_data?[0]["name"] = self.nameTextField.text
                 PFUser.current()?.email = self.emailTextField.text
                 user_data?[0]["bio"] = self.bioTextView.text
+                user_data?[0]["birthday"] = self.birthdayTextField.text
 
                 if(image == nil) {
                     print("no image found")
