@@ -19,6 +19,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var num_dogs:Int = 0
     var bioText:String = ""
     var location:String = ""
+    var birthday:String?
     let loadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -129,11 +130,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     if let imageData = imageData {
                         let image = UIImage(data: imageData)
                         cell.dogPhoto.image = image
+                        cell.dog.dogImage = image
                     }
                 }
             })
         }else{
             cell.dogPhoto.image = UIImage(named: "dog_default")
+            cell.dog.dogImage = UIImage(named: "dog_default")
         }
         return cell;
     }
@@ -156,6 +159,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let mainStoryboard = UIStoryboard( name: "Main", bundle: nil)
         let dogSignUpVC = mainStoryboard.instantiateViewController(withIdentifier: "dogSignUpVC") as! DogSignup1ViewController
         self.navigationController?.present(dogSignUpVC, animated: true, completion: nil)
+        
     }
     
 
