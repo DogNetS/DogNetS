@@ -93,7 +93,7 @@
                     <connections>
                         <outlet property="passwordTextField" destination="QfK-d6-zdC" id="qTl-v6-OFF"/>
                         <outlet property="usernameTextField" destination="Fjf-bS-Aa8" id="vXl-XJ-CJI"/>
-                        <segue destination="8J9-6L-B9h" kind="presentation" identifier="loginSegue" id="Zyg-3Z-tyj"/>
+                        <segue destination="8q6-jp-vlc" kind="presentation" identifier="loginSegue" id="kQ4-dE-Di8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -318,7 +318,7 @@
         <!--Home View Controller-->
         <scene sceneID="ZM2-un-hFj">
             <objects>
-                <viewController storyboardIdentifier="UIViewController-gtC-Bq-Xfj" id="gtC-Bq-Xfj" customClass="HomeViewController" customModule="DogNet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gtC-Bq-Xfj" customClass="HomeViewController" customModule="DogNet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dUC-oZ-y3W"/>
                         <viewControllerLayoutGuide type="bottom" id="24G-JZ-wuZ"/>
@@ -328,7 +328,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="3zZ-EW-Z7c">
-                                <rect key="frame" x="0.0" y="20" width="80" height="80"/>
+                                <rect key="frame" x="0.0" y="64" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="eBN-du-gCI"/>
                                     <constraint firstAttribute="width" constant="80" id="ict-Lj-aXm"/>
@@ -349,19 +349,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Jon Doe" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAd-Kt-PdC">
-                                <rect key="frame" x="88" y="28" width="98" height="30"/>
+                                <rect key="frame" x="88" y="72" width="98" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="La Jolla" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqr-sU-tiY">
-                                <rect key="frame" x="88" y="58" width="48.5" height="34"/>
+                                <rect key="frame" x="88" y="102" width="48.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="111" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wwH-Ph-ops">
-                                <rect key="frame" x="0.0" y="100" width="320" height="405"/>
+                                <rect key="frame" x="0.0" y="144" width="320" height="361"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DogCell" rowHeight="111" id="x3b-i1-Dri" customClass="DogTableViewCell" customModule="DogNet" customModuleProvider="target">
@@ -486,7 +486,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VZ8-gQ-BMZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1727" y="123"/>
+            <point key="canvasLocation" x="1732.5" y="122.53521126760563"/>
         </scene>
         <!--Dog Profile View Controller-->
         <scene sceneID="hZu-i9-JVk">
@@ -501,38 +501,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age: 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7G-mW-UJy">
-                                <rect key="frame" x="192" y="123" width="50" height="21"/>
+                                <rect key="frame" x="192" y="167" width="50" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthday: 4/17/14" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3d-gm-cqo">
-                                <rect key="frame" x="16" y="184" width="130" height="21"/>
+                                <rect key="frame" x="16" y="228" width="130" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dog_default" translatesAutoresizingMaskIntoConstraints="NO" id="CnB-5Y-GdH">
-                                <rect key="frame" x="0.0" y="20" width="184" height="148"/>
+                                <rect key="frame" x="0.0" y="64" width="184" height="148"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="184" id="T8B-EL-gpB"/>
                                     <constraint firstAttribute="height" constant="148" id="kga-0U-wBs"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Golden Doodle" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNo-z2-j2c">
-                                <rect key="frame" x="192" y="94" width="114" height="21"/>
+                                <rect key="frame" x="192" y="138" width="114" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Health: Super healthy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clG-LL-SWn">
-                                <rect key="frame" x="16" y="221" width="165" height="21"/>
+                                <rect key="frame" x="16" y="265" width="165" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperament: playful" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJj-9L-0VO">
-                                <rect key="frame" x="16" y="258" width="166" height="21"/>
+                                <rect key="frame" x="16" y="302" width="166" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -546,19 +546,19 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Human" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRz-13-V6g">
-                                <rect key="frame" x="192" y="65" width="55" height="21"/>
+                                <rect key="frame" x="192" y="109" width="55" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fluffy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9eu-QT-Tfd">
-                                <rect key="frame" x="192" y="36" width="44" height="21"/>
+                                <rect key="frame" x="192" y="80" width="44" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite toys: yellow duck" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LcU-Jx-zWP">
-                                <rect key="frame" x="16" y="295" width="196" height="21"/>
+                                <rect key="frame" x="16" y="339" width="196" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -603,7 +603,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QCC-5r-tOc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2439" y="124"/>
+            <point key="canvasLocation" x="2439.375" y="121.47887323943662"/>
         </scene>
         <!--Dog Pal List View Controller-->
         <scene sceneID="TdK-oz-t0k">
@@ -674,7 +674,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W3P-Fx-COF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3279" y="123"/>
+            <point key="canvasLocation" x="3281" y="121"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="e4n-LJ-iMv">
@@ -815,7 +815,7 @@
                         <outlet property="emailTextField" destination="etW-MO-QYM" id="dea-vh-P7j"/>
                         <outlet property="passwordTextField" destination="wql-ah-qW5" id="l0X-09-Mo4"/>
                         <outlet property="usernameTextField" destination="fOB-KT-OAL" id="qty-pi-9la"/>
-                        <segue destination="8J9-6L-B9h" kind="presentation" identifier="signupSegue" id="fYf-5h-RMX"/>
+                        <segue destination="8q6-jp-vlc" kind="presentation" identifier="signupSegue" id="IcX-wi-4H8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fcl-zB-Dv4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1126,22 +1126,22 @@
             <point key="canvasLocation" x="2439.375" y="844.0140845070423"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="5fd-ph-ixk">
+        <scene sceneID="zqj-rz-p1Q">
             <objects>
-                <navigationController storyboardIdentifier="HomeNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="8J9-6L-B9h" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="8q6-jp-vlc" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="w9j-NK-P10">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lVA-xD-yNf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="gtC-Bq-Xfj" kind="relationship" relationship="rootViewController" id="VzW-wK-KnF"/>
+                        <segue destination="gtC-Bq-Xfj" kind="relationship" relationship="rootViewController" id="wdB-Qz-4gO"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vOP-zX-9Kb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iik-C5-6Z0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="923" y="123"/>
+            <point key="canvasLocation" x="905" y="122"/>
         </scene>
     </scenes>
     <resources>
@@ -1150,7 +1150,7 @@
         <image name="profile_avatar" width="700" height="700"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fYf-5h-RMX"/>
+        <segue reference="IcX-wi-4H8"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
 </document>
