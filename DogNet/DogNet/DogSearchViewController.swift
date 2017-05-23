@@ -14,6 +14,7 @@ class DogSearchViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var dogSearchBar: UISearchBar!
     @IBOutlet weak var dogSearchTableView: UITableView!
     var dogs: [Dog]! = []
+    var currentDog: Dog!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,14 +76,19 @@ class DogSearchViewController: UIViewController, UITableViewDelegate, UITableVie
 
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! DogSearchTableViewCell
+        let dogProfile = segue.destination as! PalProfileViewController
+        dogProfile.dog = cell.dog
+        dogProfile.currentDog = self.currentDog
+        cell.dog.dogImage = cell.dogImageView.image
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }

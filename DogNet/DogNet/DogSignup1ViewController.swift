@@ -22,11 +22,14 @@ class DogSignup1ViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /*adding tap gesture recognizer to the photo*/
         pickedImage = UIImage(named: "dog_default")
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addPhoto(_:)))
         dogPhoto.isUserInteractionEnabled = true
         dogPhoto.addGestureRecognizer(tapGestureRecognizer)
   
+        
+        
         /* setting the date picker, etc*/
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: self.view.frame.size.height/6, width: self.view.frame.size.width, height: 40.0))
         

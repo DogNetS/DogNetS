@@ -11,15 +11,18 @@ import Parse
 
 class Dog: NSObject {
     
+    var id: String?               //id to compare dogs
     var name: String?             //name of the dog
     var breed: String?            //breed of the dog
     var birthday: String?         //birthday of the dog, maybe not String?
     var health: String?           //health parameters
-    var dogImage: UIImage?            //image of the dog
+    var dogImage: UIImage?        //image of the dog
     var temperament: String?      //temperament
     var toys: String?             //favorite toys
-    var owner: PFUser?           //owner parameter
-    var pals: [Dog] = []         //dictionary of pals
+    var owner: PFUser?            //owner parameter
+    var pals: [String?] = []              //dictionary of pals
+    
+    
     
     var dog = PFObject(className: "dog_data")
     var photo_Dog = UIImage(named: "dog_default")
@@ -35,8 +38,12 @@ class Dog: NSObject {
         self.temperament = dog["temper"] as! String?
         self.toys = dog["fav_toy"] as! String?
         self.owner = dog["owner"] as! PFUser?
+        self.id = dog.objectId as! String?
+        if let pals = dog["pals"]{
+            self.pals = pals as! [String?]
+        }
         
-        //pals
+        
         
     }
     
@@ -49,19 +56,124 @@ class Dog: NSObject {
             }
         })
     }
-
     
-    //need to add more parameters for other info
-    class func editDogInfo(name: String?, breed: String?, owner: PFUser?, withCompletion completion: PFBooleanResultBlock?){
-        let dog = PFObject(className: "Dog")
+    //function to compare dogs
+    func equals(dog: Dog?) -> (Bool){
+
+        if((self.name == dog?.name) && (self.id == dog?.id)){
+            return true
+        }else{
+            return false
+        }
         
-        
-        dog["name"] = name
-        dog["breed"] = breed
-        dog["owner"] = owner
-        
-        dog.saveInBackground(block: completion)
-        
+    }
+    
+    func checkPal(dog: Dog?) -> Bool{
+        for pal in pals{
+            if dog?.id == pal{
+                print("got the pal")
+                return true
+            }
+        }
+        return false
+    }
+    
+    //function to edit dogs
+    func updateDog(name: String?, breed: String?, birthday: String?, image: UIImage?, health: String?, temp: String?, toys: String?, palId: String?, withCompletion completion: PFBooleanResultBlock?) {
+            
+        let query = PFQuery(className: "dog_data")
+        query.order(byDescending: "createdAt")
+        query.includeKey("owner")
+        query.whereKey("owner", equalTo: owner!)
+        query.findObjectsInBackground { (dogs: [PFObject]?,error: Error?) in
+            if error == nil {
+                if let dogs = dogs {
+                    for doggy in dogs{
+                        //finding the dog we are editing from Parse
+                        
+                        
+                        if self.equals(dog: Dog.init(dog: doggy)){
+                            if(name != nil){
+                                doggy["name"] = name
+                                self.name = name
+                            }
+                            if(breed != nil){
+                                doggy["breed"] = breed
+                                self.breed = breed
+                            }
+                            if(birthday != nil){
+                                doggy["birthday"] = birthday
+                                self.birthday = birthday
+                            }
+                            if(image != nil){
+                                doggy["image"] = Dog.getPFFileFromImage(image: image)
+                                self.dogImage = image
+                            }
+                            if(health != nil){
+                                doggy["health"] = health
+                                self.health = health
+                            }
+                            if(temp != nil){
+                                doggy["temper"] = temp
+                                self.temperament = temp
+                            }
+                            if(toys != nil){
+                                doggy["fav_toy"] = toys
+                                self.toys = toys
+                            }
+                            if(palId != nil){
+                            
+                                self.pals.append(palId)
+                                doggy["pals"] = self.pals
+                            }
+                            
+                            //save the data 
+                            doggy.saveInBackground(block: completion)
+                        }
+                    }
+
+                }
+            } else {
+                // Log details of the failure
+                print("error while saving dog's data")
+            }
+        }
+    }
+    
+    func deleteDog(palId: String?, withCompletion completion: PFBooleanResultBlock?){
+        let query = PFQuery(className: "dog_data")
+        query.order(byDescending: "createdAt")
+        query.includeKey("owner")
+        query.whereKey("owner", equalTo: owner!)
+        query.findObjectsInBackground { (dogs: [PFObject]?,error: Error?) in
+            if error == nil {
+                if let dogs = dogs {
+                    for doggy in dogs{
+                        //finding the dog we are editing from Parse
+                        
+                        
+                        if self.equals(dog: Dog.init(dog: doggy)){
+                            if(palId != nil){
+                                
+                                for (index, pal) in self.pals.enumerated() {
+                                    if (palId == pal){
+                                        self.pals.remove(at: index)
+                                    }
+                                }
+                                doggy["pals"] = self.pals
+                            }
+                            
+                            //save the data
+                            doggy.saveInBackground(block: completion)
+                        }
+                    }
+                    
+                }
+            } else {
+                // Log details of the failure
+                print("error while saving dog's data")
+            }
+        }
     }
     
     /**
