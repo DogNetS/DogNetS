@@ -120,7 +120,7 @@ class ProfileViewController: UIViewController {
         let birthday = self.birthday?.toDate(dateFormat: "MM/dd/yyyy")
         self.age = Int((birthday?.timeIntervalSinceNow)!/(-60*60*24*365))
         
-        ageLabel.text = "\(self.age)"
+        ageLabel.text = "\(self.age) years old"
         bioTextView.text = self.bioText
         locationLabel.text = self.location
         
