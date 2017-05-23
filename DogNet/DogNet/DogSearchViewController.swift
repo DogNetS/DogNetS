@@ -75,14 +75,18 @@ class DogSearchViewController: UIViewController, UITableViewDelegate, UITableVie
 
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! DogSearchTableViewCell
+        let dogProfile = segue.destination as! PalProfileViewController
+        dogProfile.dog = cell.dog
+        cell.dog.dogImage = cell.dogImageView.image
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }

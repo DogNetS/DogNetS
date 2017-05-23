@@ -1144,6 +1144,7 @@
                                             <outlet property="dogImageView" destination="xnQ-GV-Goh" id="pCH-9G-kyf"/>
                                             <outlet property="dogNameLabel" destination="AGj-fj-cVv" id="M5B-pQ-ER6"/>
                                             <outlet property="ownerNameLabel" destination="Dol-7R-288" id="xda-Na-lcC"/>
+                                            <segue destination="O5O-Wh-e6k" kind="show" id="wpR-JR-MOV"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1164,6 +1165,112 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F9R-JC-XlQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2439.375" y="844.0140845070423"/>
+        </scene>
+        <!--Pal Profile View Controller-->
+        <scene sceneID="Moe-9H-gqR">
+            <objects>
+                <viewController id="O5O-Wh-e6k" customClass="PalProfileViewController" customModule="DogNet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="swm-2P-nGk"/>
+                        <viewControllerLayoutGuide type="bottom" id="9hk-6f-EqE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aNR-nt-Q6a">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age: 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJa-kO-9pT">
+                                <rect key="frame" x="154" y="167" width="50" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthday: 4/17/14" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bjc-HF-m9k">
+                                <rect key="frame" x="16" y="208" width="130" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dog_default" translatesAutoresizingMaskIntoConstraints="NO" id="bBy-Sb-GFx">
+                                <rect key="frame" x="0.0" y="64" width="146" height="136"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="146" id="WHx-5g-XIY"/>
+                                    <constraint firstAttribute="height" constant="136" id="gCM-JC-gxJ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Golden Doodle" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQU-6T-33n">
+                                <rect key="frame" x="154" y="138" width="114" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Health: Super healthy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGR-vb-kwL">
+                                <rect key="frame" x="16" y="245" width="165" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperament: playful" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Iu-1Q-Mj1">
+                                <rect key="frame" x="16" y="282" width="166" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Human" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyi-wP-4hU">
+                                <rect key="frame" x="154" y="109" width="55" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Fluffy" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Kq-JU-t30">
+                                <rect key="frame" x="154" y="80" width="44" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite toys: yellow duck" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UBL-1p-EpM">
+                                <rect key="frame" x="16" y="319" width="196" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fQU-6T-33n" firstAttribute="leading" secondItem="6Kq-JU-t30" secondAttribute="leading" id="04d-LN-0wu"/>
+                            <constraint firstItem="8Iu-1Q-Mj1" firstAttribute="top" secondItem="TGR-vb-kwL" secondAttribute="bottom" constant="16" id="2QI-LC-1qK"/>
+                            <constraint firstItem="Bjc-HF-m9k" firstAttribute="top" secondItem="bBy-Sb-GFx" secondAttribute="bottom" constant="8" id="7Kb-2i-Y6v"/>
+                            <constraint firstItem="TGR-vb-kwL" firstAttribute="top" secondItem="Bjc-HF-m9k" secondAttribute="bottom" constant="16" id="9FX-3g-dzE"/>
+                            <constraint firstItem="8Iu-1Q-Mj1" firstAttribute="leading" secondItem="Bjc-HF-m9k" secondAttribute="leading" id="BZz-dt-Acc"/>
+                            <constraint firstItem="bBy-Sb-GFx" firstAttribute="top" secondItem="swm-2P-nGk" secondAttribute="bottom" id="KOf-nD-luZ"/>
+                            <constraint firstItem="bBy-Sb-GFx" firstAttribute="leading" secondItem="aNR-nt-Q6a" secondAttribute="leading" id="XZG-Eu-nJZ"/>
+                            <constraint firstItem="lJa-kO-9pT" firstAttribute="top" secondItem="fQU-6T-33n" secondAttribute="bottom" constant="8" id="eq5-b7-Fqa"/>
+                            <constraint firstItem="TGR-vb-kwL" firstAttribute="leading" secondItem="Bjc-HF-m9k" secondAttribute="leading" id="f20-bi-mat"/>
+                            <constraint firstItem="6Kq-JU-t30" firstAttribute="top" secondItem="swm-2P-nGk" secondAttribute="bottom" constant="16" id="gPi-Ms-Wwb"/>
+                            <constraint firstItem="lJa-kO-9pT" firstAttribute="leading" secondItem="6Kq-JU-t30" secondAttribute="leading" id="h1k-Su-3U7"/>
+                            <constraint firstItem="gyi-wP-4hU" firstAttribute="top" secondItem="6Kq-JU-t30" secondAttribute="bottom" constant="8" id="jbg-OR-pdQ"/>
+                            <constraint firstItem="UBL-1p-EpM" firstAttribute="top" secondItem="8Iu-1Q-Mj1" secondAttribute="bottom" constant="16" id="k1V-gY-Oui"/>
+                            <constraint firstItem="gyi-wP-4hU" firstAttribute="leading" secondItem="6Kq-JU-t30" secondAttribute="leading" id="kFs-ZJ-wLw"/>
+                            <constraint firstItem="fQU-6T-33n" firstAttribute="top" secondItem="gyi-wP-4hU" secondAttribute="bottom" constant="8" id="kii-O3-fXJ"/>
+                            <constraint firstItem="Bjc-HF-m9k" firstAttribute="leading" secondItem="aNR-nt-Q6a" secondAttribute="leading" constant="16" id="knw-Jy-2Q5"/>
+                            <constraint firstItem="UBL-1p-EpM" firstAttribute="leading" secondItem="Bjc-HF-m9k" secondAttribute="leading" id="tO2-el-NuR"/>
+                            <constraint firstItem="6Kq-JU-t30" firstAttribute="leading" secondItem="bBy-Sb-GFx" secondAttribute="trailing" constant="8" id="wT8-js-5nb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dogAge" destination="lJa-kO-9pT" id="h1i-T5-3xP"/>
+                        <outlet property="dogBirthday" destination="Bjc-HF-m9k" id="WaU-zL-Itm"/>
+                        <outlet property="dogBreed" destination="fQU-6T-33n" id="OOu-CX-nel"/>
+                        <outlet property="dogHealth" destination="TGR-vb-kwL" id="jTP-7d-OVP"/>
+                        <outlet property="dogImage" destination="bBy-Sb-GFx" id="0YF-lt-kId"/>
+                        <outlet property="dogName" destination="6Kq-JU-t30" id="IKz-1a-LXV"/>
+                        <outlet property="dogOwner" destination="gyi-wP-4hU" id="aPY-3U-DPG"/>
+                        <outlet property="dogTemper" destination="8Iu-1Q-Mj1" id="mId-Sn-9BH"/>
+                        <outlet property="dogToys" destination="UBL-1p-EpM" id="dKr-O9-Kx5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lRp-CW-HSQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3277.5" y="842.95774647887322"/>
         </scene>
         <!--Dog Edit View Controller-->
         <scene sceneID="zBz-IP-PYg">
@@ -1351,7 +1458,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3277.5" y="842.95774647887322"/>
+            <point key="canvasLocation" x="3279" y="-541"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zqj-rz-p1Q">
