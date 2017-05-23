@@ -129,14 +129,14 @@ class DogProfileViewController: UIViewController {
         let dogPalsVC = mainStoryboard.instantiateViewController(withIdentifier: "dogPalsVC") as! DogPalListViewController
         self.navigationController?.pushViewController(dogPalsVC, animated: true)
     }
-    /*
-    // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let dogSearch = segue.destination as! DogSearchViewController
+        dogSearch.currentDog = self.dog
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
 
 }

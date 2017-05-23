@@ -5,12 +5,13 @@
 //  Created by Cong Tam Quang Hoang on 22/05/17.
 //  Copyright © 2017 dognets. All rights reserved.
 //
-
+import Parse
 import UIKit
 
 class PalProfileViewController: UIViewController {
 
     var dog: Dog! // Dog model passed from the cell we tapped one.
+    var currentDog: Dog!
     
     @IBOutlet weak var dogName: UILabel!
     @IBOutlet weak var dogOwner: UILabel!
@@ -66,8 +67,27 @@ class PalProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func addPal(_ sender: Any) {
+        currentDog.updateDog(name: nil, breed: nil, birthday: nil, image: nil, health: nil, temp: nil, toys: nil, palId: dog.id) {(success: Bool, error: Error?) in
+            if success {
+                print("[DEBUG] successfully updated current dog")
+            } else {
+                print("[DEBUG] fail to update current dog")
+            }
+        }
+        dog.updateDog(name: nil, breed: nil, birthday: nil, image: nil, health: nil, temp: nil, toys: nil, palId: currentDog.id) {(success: Bool, error: Error?) in
+            if success {
+                print("[DEBUG] successfully updated pal dog")
+            } else {
+                print("[DEBUG] fail to update pal dog")
+            }
+        }
+
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
         // Dispose of any resources that can be recreated.
     }
     

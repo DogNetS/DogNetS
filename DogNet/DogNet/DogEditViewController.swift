@@ -87,7 +87,7 @@ class DogEditViewController: UIViewController,UIImagePickerControllerDelegate,UI
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func onSaveButton(_ sender: Any) {
-        dog.updateDog(name: nameField.text, breed: breedField.text, birthday: birthdayField.text, image: pickedImage, health: healthField.text, temp: tempField.text, toys: toysField.text) {(success: Bool, error: Error?) in
+        dog.updateDog(name: nameField.text, breed: breedField.text, birthday: birthdayField.text, image: pickedImage, health: healthField.text, temp: tempField.text, toys: toysField.text, palId: nil) {(success: Bool, error: Error?) in
             if success {
                 print("[DEBUG] successfully updated dog")
                 self.dismiss(animated: true, completion: nil)

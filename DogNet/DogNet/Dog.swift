@@ -20,9 +20,9 @@ class Dog: NSObject {
     var temperament: String?      //temperament
     var toys: String?             //favorite toys
     var owner: PFUser?            //owner parameter
-    var pals: [Dog] = []          //dictionary of pals
+    var pals: [String?] = []              //dictionary of pals
     
-    var dogs: [PFObject]!   //dictionary of PFObject dogs
+    
     
     var dog = PFObject(className: "dog_data")
     var photo_Dog = UIImage(named: "dog_default")
@@ -66,16 +66,15 @@ class Dog: NSObject {
     }
     
     //function to edit dogs
-    func updateDog(name: String?, breed: String?, birthday: String?, image: UIImage?, health: String?, temp: String?, toys: String?, withCompletion completion: PFBooleanResultBlock?) {
+    func updateDog(name: String?, breed: String?, birthday: String?, image: UIImage?, health: String?, temp: String?, toys: String?, palId: String?, withCompletion completion: PFBooleanResultBlock?) {
             
         let query = PFQuery(className: "dog_data")
         query.order(byDescending: "createdAt")
         query.includeKey("owner")
-        query.whereKey("owner", equalTo: PFUser.current()!)
+        query.whereKey("owner", equalTo: owner!)
         query.findObjectsInBackground { (dogs: [PFObject]?,error: Error?) in
             if error == nil {
                 if let dogs = dogs {
-                    self.dogs = dogs
                     for doggy in dogs{
                         //finding the dog we are editing from Parse
                         
@@ -108,6 +107,11 @@ class Dog: NSObject {
                             if(toys != nil){
                                 doggy["fav_toy"] = toys
                                 self.toys = toys
+                            }
+                            if(palId != nil){
+                            
+                                self.pals.append(palId)
+                                doggy["pals"] = self.pals
                             }
                             
                             //save the data 
