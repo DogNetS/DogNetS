@@ -49,7 +49,7 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
         nameTextField.text = user_data?[0]["name"] as? String
         emailTextField.text = PFUser.current()?.email
         bioTextView.text = user_data?[0]["bio"] as? String
-        ageLabel.text = "\(user_data?[0]["age"] as! Int)"
+        ageTextField.text = "\(user_data?[0]["age"] as! Int)"
         profileImageView.image = self.profileImage
         
     }

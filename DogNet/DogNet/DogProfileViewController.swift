@@ -49,20 +49,20 @@ class DogProfileViewController: UIViewController {
             if (age == 0){
                 age = Int(birthdayDate.timeIntervalSinceNow/(-60*60*24))
                 if ( age == 1){
-                    self.dogsAge.text = "Age: " + "\(age)" + " day"
+                    self.dogsAge.text = "\(age)" + " day old"
                 }else{
-                    self.dogsAge.text = "Age: " + "\(age)" + " days"
+                    self.dogsAge.text = "\(age)" + " days old"
                 }
             }else if (age == 1){
-                self.dogsAge.text = "Age: " + "\(age)" + " month"
+                self.dogsAge.text = "\(age)" + " month old"
             }else{
-                self.dogsAge.text = "Age: " + "\(age)" + " months"
+                self.dogsAge.text = "\(age)" + " months old"
             }
         }else{
             if ( age == 1){
-                self.dogsAge.text = "Age: " + "\(age)" + " year"
+                self.dogsAge.text = "\(age)" + " year old"
             }else{
-                self.dogsAge.text = "Age: " + "\(age)" + " years"
+                self.dogsAge.text = "\(age)" + " years old"
             }
         }
         self.dogsBirthday.text = "Birthday: " + dateFormatter.string(from: birthdayDate)
