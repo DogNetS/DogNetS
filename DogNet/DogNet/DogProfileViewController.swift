@@ -123,6 +123,12 @@ class DogProfileViewController: UIViewController {
         dogEditVC.dog = self.dog
         self.navigationController?.present(dogEditVC, animated: true, completion: nil)
     }
+    
+    @IBAction func onUpdateStatus(_ sender: Any) {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let updateVC = mainStoryboard.instantiateViewController(withIdentifier: "statusVC") as! StatusViewController
+        self.navigationController?.pushViewController(updateVC, animated: true)
+    }
 
     @IBAction func MyPalsButtonTapped(_ sender: Any) {
         let mainStoryboard = UIStoryboard( name: "Main", bundle: nil)

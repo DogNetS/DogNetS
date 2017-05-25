@@ -104,6 +104,7 @@ class ProfileViewController: UIViewController {
             self.nameLabel.text = self.user_data?[0]["name"] as? String
         } else {
             self.nameLabel.text = PFUser.current()?.username
+            self.user_data?[0]["name"] = PFUser.current()?.username
         }
         
         if(self.user_data?[0]["age"] != nil) {
@@ -148,6 +149,7 @@ class ProfileViewController: UIViewController {
                 }
             })
         } else {
+            self.profileImageView.image = #imageLiteral(resourceName: "profile_avatar")
             print("ERROR: image not found")
         }
     }
