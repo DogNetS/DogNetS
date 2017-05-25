@@ -21,6 +21,7 @@ class Dog: NSObject {
     var toys: String?             //favorite toys
     var owner: PFUser?            //owner parameter
     var pals: [String] = []              //dictionary of pals
+    var statuses: [String] = []   // all statuses from this dog
     
     
     
@@ -38,7 +39,7 @@ class Dog: NSObject {
         self.temperament = dog["temper"] as! String?
         self.toys = dog["fav_toy"] as! String?
         self.owner = dog["owner"] as! PFUser?
-        self.id = dog.objectId as! String?
+        self.id = dog.objectId
         if let pals = dog["pals"]{
             self.pals = pals as! [String]
         }
