@@ -111,14 +111,15 @@ class SignupViewController: UIViewController {
                 let user_data = PFObject(className: "user_data")
                 let birthdayText = self.birthdayTextField.text
                 user_data["num_dogs"] = 0
-                user_data["age"] = birthdayText?.toDate
                 user_data["birthday"] = birthdayText
                 user_data["owner"] = PFUser.current()
                 
                 user_data.saveInBackground(block: { (wasSuccess: Bool, error: Error?) in
                     if (wasSuccessful) {
+                        print("signup successful")
                         self.performSegue(withIdentifier: "signupSegue", sender: nil)
                     } else {
+                        print("signup failed")
                         print(error?.localizedDescription ?? "something went wrong")
                     }
                 })
@@ -170,6 +171,20 @@ class SignupViewController: UIViewController {
                     }
 
                     print("Okay you didn't even enter a password. That's not safe")
+                } else if error?._code == 203 {
+                    let alertController = UIAlertController(title: "Email already exists!", message: "Please choose a different email!", preferredStyle: .alert)
+                    // create a cancel action
+                    let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                        // handle cancel response here. Doing nothing will dismiss the view.
+                    }
+                    // add the cancel action to the alertController
+                    alertController.addAction(cancelAction)
+                    
+                    self.present(alertController, animated: true) {
+                        // optional code for what happens after the alert controller has finished presenting
+                    }
+                    
+                    print("Okay you didn't even enter a password. That's not safe")
                 } else {
                     print(error?.localizedDescription ?? "Ya done fucked up")
                 }
@@ -202,3 +217,4 @@ class SignupViewController: UIViewController {
     */
 
 }
+
