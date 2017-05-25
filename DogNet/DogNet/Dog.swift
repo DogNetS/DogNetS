@@ -20,7 +20,7 @@ class Dog: NSObject {
     var temperament: String?      //temperament
     var toys: String?             //favorite toys
     var owner: PFUser?            //owner parameter
-    var pals: [String?] = []              //dictionary of pals
+    var pals: [String] = []              //dictionary of pals
     
     
     
@@ -40,7 +40,7 @@ class Dog: NSObject {
         self.owner = dog["owner"] as! PFUser?
         self.id = dog.objectId as! String?
         if let pals = dog["pals"]{
-            self.pals = pals as! [String?]
+            self.pals = pals as! [String]
         }
         
         
@@ -123,7 +123,7 @@ class Dog: NSObject {
                             }
                             if(palId != nil){
                             
-                                self.pals.append(palId)
+                                self.pals.append(palId!)
                                 doggy["pals"] = self.pals
                             }
                             

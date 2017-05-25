@@ -27,6 +27,10 @@ class DogSearchViewController: UIViewController, UITableViewDelegate, UITableVie
         dogSearchTableView.estimatedRowHeight = 120
         dogSearchBar.delegate = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.dogSearchTableView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

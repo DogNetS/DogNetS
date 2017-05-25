@@ -28,6 +28,7 @@
 		E36C86BF1ED16842001AEA0D /* DogEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36C86BE1ED16842001AEA0D /* DogEditViewController.swift */; };
 		E36C86C11ED3AB8D001AEA0D /* PalProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36C86C01ED3AB8D001AEA0D /* PalProfileViewController.swift */; };
 		E3C4BAFA1EAF0D03008C3F02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3C4BAF81EAF0D03008C3F02 /* Main.storyboard */; };
+		E3F652D91ED6772A00235301 /* DogPalsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F652D81ED6772A00235301 /* DogPalsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		E36C86BE1ED16842001AEA0D /* DogEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogEditViewController.swift; sourceTree = "<group>"; };
 		E36C86C01ED3AB8D001AEA0D /* PalProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PalProfileViewController.swift; sourceTree = "<group>"; };
 		E3C4BAF91EAF0D03008C3F02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E3F652D81ED6772A00235301 /* DogPalsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogPalsTableViewCell.swift; sourceTree = "<group>"; };
 		F3188F68E2E2B8FFC7DF4051 /* Pods-DogNet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DogNet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DogNet/Pods-DogNet.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +77,7 @@
 			children = (
 				E34ECF3A1EB841B8000CF41E /* DogTableViewCell.swift */,
 				01FA19451EBFBFA100155429 /* DogSearchTableViewCell.swift */,
+				E3F652D81ED6772A00235301 /* DogPalsTableViewCell.swift */,
 			);
 			name = "TableView Cells";
 			sourceTree = "<group>";
@@ -134,7 +137,6 @@
 			isa = PBXGroup;
 			children = (
 				C79708D21EA5D043002D652D /* LoginViewController.swift */,
-				C79708DC1EA5D091002D652D /* SignupViewController.swift */,
 				C78171A71ECCD764003B1312 /* EditProfileViewController.swift */,
 				C79708D61EA5D06A002D652D /* HomeViewController.swift */,
 				C79708DC1EA5D091002D652D /* SignupViewController.swift */,
@@ -287,6 +289,7 @@
 				E34ECF3B1EB841B8000CF41E /* DogTableViewCell.swift in Sources */,
 				C79708E31EA5D0B0002D652D /* ProfileViewController.swift in Sources */,
 				C79708DD1EA5D091002D652D /* SignupViewController.swift in Sources */,
+				E3F652D91ED6772A00235301 /* DogPalsTableViewCell.swift in Sources */,
 				E36C86BF1ED16842001AEA0D /* DogEditViewController.swift in Sources */,
 				01FA19431EBFBF0900155429 /* DogSearchViewController.swift in Sources */,
 				01FA19461EBFBFA100155429 /* DogSearchTableViewCell.swift in Sources */,

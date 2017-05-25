@@ -127,6 +127,8 @@ class DogProfileViewController: UIViewController {
     @IBAction func MyPalsButtonTapped(_ sender: Any) {
         let mainStoryboard = UIStoryboard( name: "Main", bundle: nil)
         let dogPalsVC = mainStoryboard.instantiateViewController(withIdentifier: "dogPalsVC") as! DogPalListViewController
+        dogPalsVC.dogIDs = dog.pals
+        dogPalsVC.currentDog = self.dog
         self.navigationController?.pushViewController(dogPalsVC, animated: true)
     }
 

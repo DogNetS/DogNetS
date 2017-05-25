@@ -26,6 +26,7 @@ class DogTableViewCell: UITableViewCell {
             self.breed.text = dog.breed
             self.age.text = dog.birthday //change to age instead of birthday
             self.dogPhoto.image = dog.dogImage
+            
         }
     }
     
