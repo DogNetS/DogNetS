@@ -21,14 +21,7 @@ class DogSearchTableViewCell: UITableViewCell {
         didSet{
             self.dogNameLabel.text = dog.name
             self.dogImageView.image = dog.dogImage
-            self.dog.owner?.fetchIfNeededInBackground { (dogOwner: PFObject?, error: Error?) in
-                if dogOwner != nil {
-                    print(dogOwner ?? "cannot print dogOwner")
-                    self.ownerNameLabel.text = self.dog.owner?.username
-                } else {
-                    print(error?.localizedDescription ?? "Cannot find owner")
-                }
-            }
+            self.ownerNameLabel.text = self.dog.owner?.username
         }
     }
 
