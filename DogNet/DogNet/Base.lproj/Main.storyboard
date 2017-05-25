@@ -584,6 +584,10 @@
                                     <action selector="MyPalsButtonTapped:" destination="297-ud-R75" eventType="touchUpInside" id="yg4-bR-pH3"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICY-np-Pgd">
+                                <rect key="frame" x="205" y="123" width="99" height="30"/>
+                                <state key="normal" title="Update Status"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -591,6 +595,7 @@
                             <constraint firstAttribute="trailing" secondItem="Pik-Dk-6o0" secondAttribute="trailing" constant="16" id="4Qj-Q6-gqk"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9eu-QT-Tfd" secondAttribute="trailing" constant="8" id="5NH-bI-AjY"/>
                             <constraint firstItem="9eu-QT-Tfd" firstAttribute="top" secondItem="jsy-99-21h" secondAttribute="bottom" constant="16" id="5nI-qW-Wjk"/>
+                            <constraint firstAttribute="trailing" secondItem="ICY-np-Pgd" secondAttribute="trailing" constant="16" id="69M-R8-way"/>
                             <constraint firstItem="wNo-z2-j2c" firstAttribute="top" secondItem="y7G-mW-UJy" secondAttribute="bottom" id="Fe9-xz-qmW"/>
                             <constraint firstItem="clG-LL-SWn" firstAttribute="top" secondItem="b3d-gm-cqo" secondAttribute="bottom" id="HxP-Ot-MYT"/>
                             <constraint firstItem="wNo-z2-j2c" firstAttribute="leading" secondItem="9eu-QT-Tfd" secondAttribute="leading" id="JQo-um-fSp"/>
@@ -607,6 +612,7 @@
                             <constraint firstItem="VJj-9L-0VO" firstAttribute="top" secondItem="clG-LL-SWn" secondAttribute="bottom" id="fQS-z0-ITW"/>
                             <constraint firstItem="LcU-Jx-zWP" firstAttribute="leading" secondItem="b3d-gm-cqo" secondAttribute="leading" id="g6a-uZ-Rdu"/>
                             <constraint firstItem="wNo-z2-j2c" firstAttribute="leading" secondItem="9eu-QT-Tfd" secondAttribute="leading" id="i7y-H6-dvd"/>
+                            <constraint firstItem="ICY-np-Pgd" firstAttribute="centerY" secondItem="wNo-z2-j2c" secondAttribute="centerY" id="iI6-QR-Cw0"/>
                             <constraint firstItem="X5a-UI-YvB" firstAttribute="top" secondItem="7np-cW-Bpl" secondAttribute="bottom" constant="32" id="j72-tO-TrL"/>
                             <constraint firstItem="b3d-gm-cqo" firstAttribute="top" secondItem="Pik-Dk-6o0" secondAttribute="bottom" constant="4" id="lhE-Ud-cu7"/>
                             <constraint firstItem="VJj-9L-0VO" firstAttribute="leading" secondItem="b3d-gm-cqo" secondAttribute="leading" id="qWf-AO-aHo"/>
