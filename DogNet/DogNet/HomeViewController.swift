@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -44,8 +45,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         query.order(byDescending: "createdAt")
         query.includeKey("owner")
         query.whereKey("owner", equalTo: PFUser.current()!)
+        MBProgressHUD.showAdded(to: self.view , animated: true)
         query.findObjectsInBackground { (dogs: [PFObject]?,error: Error?) in
             if error == nil {
+                MBProgressHUD.hide(for: self.view , animated: true)
                 // The find succeeded.
                 print("Successfully retrieved \(dogs!.count) dogs.")
                 // Do something with the found objects
@@ -55,6 +58,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             } else {
                 // Log details of the failure
+                MBProgressHUD.hide(for: self.view , animated: true)
+                let alertController = UIAlertController(title: "Could not get dog data", message: "Try again!", preferredStyle: .alert)
+                // create a cancel action
+                let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                    // handle cancel response here. Doing nothing will dismiss the view.
+                }
+                // add the cancel action to the alertController
+                alertController.addAction(cancelAction)
+                
+                self.present(alertController, animated: true) {
+                    // optional code for what happens after the alert controller has finished presenting
+                }
                 print("error")
             }
         }
@@ -68,7 +83,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         var query = PFQuery(className: "dog_data")
         query.order(byDescending: "createdAt")
         query.includeKey("owner")
-        query.whereKey("owner", equalTo: PFUser.current())
+        query.whereKey("owner", equalTo: PFUser.current() ?? "")
+
         query.findObjectsInBackground { (dogs: [PFObject]?,error: Error?) in
             if error == nil {
                 // The find succeeded.

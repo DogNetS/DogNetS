@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
 
 class SignupViewController: UIViewController {
     @IBOutlet weak var birthdayDP: UIDatePicker!
@@ -33,9 +34,21 @@ class SignupViewController: UIViewController {
         
         // confirm passwords match
         if passwordTextField.text != confirmTextField.text {
+            let alertController = UIAlertController(title: "Passowrds Do Not Match", message: "Please type the same password", preferredStyle: .alert)
+            // create a cancel action
+            let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                // handle cancel response here. Doing nothing will dismiss the view.
+            }
+            // add the cancel action to the alertController
+            alertController.addAction(cancelAction)
+            
+            present(alertController, animated: true) {
+                // optional code for what happens after the alert controller has finished presenting
+                self.passwordTextField.text = ""
+                self.confirmTextField.text = ""
+            }
+
             print("passwords do not match")
-            passwordTextField.text = ""
-            confirmTextField.text = ""
             return
         }
         
@@ -43,6 +56,8 @@ class SignupViewController: UIViewController {
         newUser.username = usernameTextField.text
         newUser.password = passwordTextField.text
         newUser.email = emailTextField.text
+        
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         newUser.signUpInBackground { (wasSuccessful: Bool, error: Error?) in
             if wasSuccessful {
                 print("user created")
@@ -63,12 +78,53 @@ class SignupViewController: UIViewController {
                         print(error?.localizedDescription ?? "something went wrong")
                     }
                 })
+                MBProgressHUD.hide(for: self.view, animated: true)
+
             } else {
+                MBProgressHUD.hide(for: self.view, animated: true)
+
                 if error?._code == 202 {
+                    let alertController = UIAlertController(title: "Username Taken", message: "Please choose a different username", preferredStyle: .alert)
+                    // create a cancel action
+                    let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                        // handle cancel response here. Doing nothing will dismiss the view.
+                    }
+                    // add the cancel action to the alertController
+                    alertController.addAction(cancelAction)
+                    
+                    self.present(alertController, animated: true) {
+                        // optional code for what happens after the alert controller has finished presenting
+                        self.usernameTextField.text = ""
+                    }
+
                     print("Ah, shucks! Someone already has that username")
                 } else if error?._code == 200 {
+                    let alertController = UIAlertController(title: "Username Field Required", message: "Please choose a username", preferredStyle: .alert)
+                    // create a cancel action
+                    let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                        // handle cancel response here. Doing nothing will dismiss the view.
+                    }
+                    // add the cancel action to the alertController
+                    alertController.addAction(cancelAction)
+                    
+                    self.present(alertController, animated: true) {
+                        // optional code for what happens after the alert controller has finished presenting
+                    }
+
                     print("What? You didn't even enter a username")
                 } else if error?._code == 201 {
+                    let alertController = UIAlertController(title: "Password Field Required", message: "Please choose a password", preferredStyle: .alert)
+                    // create a cancel action
+                    let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                        // handle cancel response here. Doing nothing will dismiss the view.
+                    }
+                    // add the cancel action to the alertController
+                    alertController.addAction(cancelAction)
+                    
+                    self.present(alertController, animated: true) {
+                        // optional code for what happens after the alert controller has finished presenting
+                    }
+
                     print("Okay you didn't even enter a password. That's not safe")
                 } else {
                     print(error?.localizedDescription ?? "Ya done fucked up")
