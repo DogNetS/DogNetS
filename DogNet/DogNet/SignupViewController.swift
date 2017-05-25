@@ -109,17 +109,10 @@ class SignupViewController: UIViewController {
                 print("initializing user data")
                 
                 let user_data = PFObject(className: "user_data")
-                print("1")
                 let birthdayText = self.birthdayTextField.text
-                print("2")
                 user_data["num_dogs"] = 0
-                print("3")
-                user_data["age"] = birthdayText?.toDate(dateFormat: "Mm/dd/yyy")
-                print("4")
                 user_data["birthday"] = birthdayText
-                print("5")
                 user_data["owner"] = PFUser.current()
-                print("will save in background")
                 
                 user_data.saveInBackground(block: { (wasSuccess: Bool, error: Error?) in
                     if (wasSuccessful) {

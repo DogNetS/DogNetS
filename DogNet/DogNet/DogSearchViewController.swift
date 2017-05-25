@@ -57,9 +57,11 @@ class DogSearchViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        dogs.removeAll()
         let searchText = searchBar.text
         let query = PFQuery(className: "dog_data")
         query.whereKey("name", contains: searchText)
+        query.whereKey("owner", notEqualTo: PFUser.current()!)
         
         MBProgressHUD.showAdded(to: self.view , animated: true)
         query.findObjectsInBackground{ (pfdogs: [PFObject]?, error: Error?) in
