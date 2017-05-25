@@ -7,6 +7,7 @@
 //
 import Parse
 import UIKit
+import MBProgressHUD
 
 class PalProfileViewController: UIViewController {
 
@@ -85,12 +86,24 @@ class PalProfileViewController: UIViewController {
 
     @IBAction func addPal(_ sender: Any) {
         if(!currentDog.checkPal(dog: dog)){
+            MBProgressHUD.showAdded(to: self.view , animated: true)
             currentDog.updateDog(name: nil, breed: nil, birthday: nil, image: nil, health: nil, temp: nil, toys: nil, palId: dog.id) {(success: Bool, error: Error?) in
                 if success {
                     print("[DEBUG] successfully updated current dog")
                     self.addDeleteButton.titleLabel?.text = "Delete Pal"
                 } else {
                     print("[DEBUG] fail to update current dog")
+                    let alertController = UIAlertController(title: "Could not update pals", message: "Try again!", preferredStyle: .alert)
+                    // create a cancel action
+                    let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                        // handle cancel response here. Doing nothing will dismiss the view.
+                    }
+                    // add the cancel action to the alertController
+                    alertController.addAction(cancelAction)
+                    
+                    self.present(alertController, animated: true) {
+                        // optional code for what happens after the alert controller has finished presenting
+                    }
                 }
             }
             dog.updateDog(name: nil, breed: nil, birthday: nil, image: nil, health: nil, temp: nil, toys: nil, palId: currentDog.id) {(success: Bool, error: Error?) in
@@ -98,8 +111,20 @@ class PalProfileViewController: UIViewController {
                     print("[DEBUG] successfully updated pal dog")
                 } else {
                     print("[DEBUG] fail to update pal dog")
+                    let alertController = UIAlertController(title: "Could not update pals", message: "Try again!", preferredStyle: .alert)
+                    // create a cancel action
+                    let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                        // handle cancel response here. Doing nothing will dismiss the view.
+                    }
+                    // add the cancel action to the alertController
+                    alertController.addAction(cancelAction)
+                    
+                    self.present(alertController, animated: true) {
+                        // optional code for what happens after the alert controller has finished presenting
+                    }
                 }
             }
+            MBProgressHUD.hide(for: self.view , animated: true)
         }else{
             currentDog.deleteDog(palId: dog.id) {(success: Bool,error: Error?) in
                 if success {
@@ -107,6 +132,17 @@ class PalProfileViewController: UIViewController {
                     self.addDeleteButton.titleLabel?.text = "Add Pal"
                 }else{
                     print("[DEBUG] fail to delete pal from current dog")
+                    let alertController = UIAlertController(title: "Could not update pals", message: "Try again!", preferredStyle: .alert)
+                    // create a cancel action
+                    let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                        // handle cancel response here. Doing nothing will dismiss the view.
+                    }
+                    // add the cancel action to the alertController
+                    alertController.addAction(cancelAction)
+                    
+                    self.present(alertController, animated: true) {
+                        // optional code for what happens after the alert controller has finished presenting
+                    }
                 }
             }
             dog.deleteDog(palId: currentDog.id) {(success: Bool,error: Error?) in
@@ -114,8 +150,21 @@ class PalProfileViewController: UIViewController {
                     print("[DEBUG] successfully deleted current dog from the pal dog")
                 }else{
                     print("[DEBUG] fail to delete current dog from pal dog")
+                    let alertController = UIAlertController(title: "Could not update pals", message: "Try again!", preferredStyle: .alert)
+                    // create a cancel action
+                    let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                        // handle cancel response here. Doing nothing will dismiss the view.
+                    }
+                    // add the cancel action to the alertController
+                    alertController.addAction(cancelAction)
+                    
+                    self.present(alertController, animated: true) {
+                        // optional code for what happens after the alert controller has finished presenting
+                    }
                 }
             }
+            MBProgressHUD.hide(for: self.view , animated: true)
+
         }
     }
     

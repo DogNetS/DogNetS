@@ -7,6 +7,7 @@
 //
 import Parse
 import UIKit
+import MBProgressHUD
 
 class DogEditViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
@@ -87,11 +88,26 @@ class DogEditViewController: UIViewController,UIImagePickerControllerDelegate,UI
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func onSaveButton(_ sender: Any) {
+        MBProgressHUD.showAdded(to: self.view , animated: true)
         dog.updateDog(name: nameField.text, breed: breedField.text, birthday: birthdayField.text, image: pickedImage, health: healthField.text, temp: tempField.text, toys: toysField.text, palId: nil) {(success: Bool, error: Error?) in
             if success {
+                MBProgressHUD.hide(for: self.view , animated: true)
                 print("[DEBUG] successfully updated dog")
                 self.dismiss(animated: true, completion: nil)
             } else {
+                MBProgressHUD.hide(for: self.view , animated: true)
+                let alertController = UIAlertController(title: "Could update dog", message: "Try again!", preferredStyle: .alert)
+                // create a cancel action
+                let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                    // handle cancel response here. Doing nothing will dismiss the view.
+                }
+                // add the cancel action to the alertController
+                alertController.addAction(cancelAction)
+                
+                self.present(alertController, animated: true) {
+                    // optional code for what happens after the alert controller has finished presenting
+                }
+
                 print("[DEBUG] fail to update dog")
             }
         }
@@ -133,6 +149,7 @@ class DogEditViewController: UIViewController,UIImagePickerControllerDelegate,UI
     }
     
     @IBAction func addPhoto(_ sender: UITapGestureRecognizer) {
+        MBProgressHUD.showAdded(to: self.view , animated: true)
         let vc = UIImagePickerController()
         vc.delegate = self
         vc.allowsEditing = true
@@ -147,6 +164,7 @@ class DogEditViewController: UIViewController,UIImagePickerControllerDelegate,UI
          }
          */
         vc.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        MBProgressHUD.hide(for: self.view , animated: true)
         self.present(vc, animated: true, completion: nil)
     }
     
