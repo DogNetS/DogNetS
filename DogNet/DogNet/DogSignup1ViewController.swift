@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
 
 class DogSignup1ViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     @IBOutlet weak var dogNameTextField: UITextField!
@@ -85,11 +86,26 @@ class DogSignup1ViewController: UIViewController, UIImagePickerControllerDelegat
         
         if ((!(dogNameTextField.text?.isEmpty)!) && (!(dogBreedTextField.text?.isEmpty)!) && (!(dogBirthdayTextField.text?.isEmpty)!)){
         
+            MBProgressHUD.showAdded(to: self.view , animated: true)
             dog.saveInBackground { (wasSuccessful: Bool, error: Error?) in
                 if (wasSuccessful) {
+                    MBProgressHUD.hide(for: self.view , animated: true)
                     print("dog added!")
                     self.dismiss(animated: true, completion: nil)
                 } else {
+                    MBProgressHUD.hide(for: self.view , animated: true)
+                    let alertController = UIAlertController(title: "Could not add dog", message: "Try again!", preferredStyle: .alert)
+                    // create a cancel action
+                    let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                        // handle cancel response here. Doing nothing will dismiss the view.
+                    }
+                    // add the cancel action to the alertController
+                    alertController.addAction(cancelAction)
+                    
+                    self.present(alertController, animated: true) {
+                        // optional code for what happens after the alert controller has finished presenting
+                    }
+
                     print(error?.localizedDescription ?? "Something went wrong while adding dog")
                 }
             }

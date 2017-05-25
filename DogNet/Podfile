@@ -8,5 +8,6 @@ target 'DogNet' do
   # Pods for DogNet
   pod 'Parse'
   pod 'ParseUI'
+  pod 'MBProgressHUD'
   
 end

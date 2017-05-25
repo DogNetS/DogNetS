@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
 
 class LoginViewController: UIViewController {
 
@@ -31,13 +32,28 @@ class LoginViewController: UIViewController {
     
     @IBAction func onLogin(_ sender: Any) {
         
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         PFUser.logInWithUsername(inBackground: usernameTextField.text!, password: passwordTextField.text!) { (user: PFUser?, error: Error?) in
             if user != nil {
+                MBProgressHUD.hide(for: self.view , animated: true)
                 print("You're logged in!")
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
             } else {
-                self.usernameTextField.text = ""
-                self.passwordTextField.text = ""
+                MBProgressHUD.hide(for: self.view , animated: true)
+                let alertController = UIAlertController(title: "Login not successful", message: "Try again!", preferredStyle: .alert)
+                // create a cancel action
+                let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                    // handle cancel response here. Doing nothing will dismiss the view.
+                }
+                // add the cancel action to the alertController
+                alertController.addAction(cancelAction)
+                
+                self.present(alertController, animated: true) {
+                    // optional code for what happens after the alert controller has finished presenting
+                    
+                    self.usernameTextField.text = ""
+                    self.passwordTextField.text = ""
+                }
                 print("Login was not successful")
             }
         }

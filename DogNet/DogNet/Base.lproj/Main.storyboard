@@ -1178,7 +1178,7 @@
                                     <constraint firstAttribute="height" constant="90" id="gCM-JC-gxJ"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Golden Doodle" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQU-6T-33n">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Golden Doodle" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQU-6T-33n">
                                 <rect key="frame" x="98" y="129.5" width="90" height="16"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1196,7 +1196,7 @@
                                 <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Human" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyi-wP-4hU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Human" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyi-wP-4hU">
                                 <rect key="frame" x="98" y="145.5" width="43" height="16"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1229,7 +1229,7 @@
                                     <constraint firstAttribute="height" constant="1" id="Kqc-wq-NRO"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Age: 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJa-kO-9pT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age: 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJa-kO-9pT">
                                 <rect key="frame" x="98" y="113.5" width="39" height="16"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1238,16 +1238,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="fQU-6T-33n" firstAttribute="leading" secondItem="6Kq-JU-t30" secondAttribute="leading" id="07Q-en-7we"/>
                             <constraint firstItem="8Iu-1Q-Mj1" firstAttribute="top" secondItem="TGR-vb-kwL" secondAttribute="bottom" id="2QI-LC-1qK"/>
                             <constraint firstItem="gyi-wP-4hU" firstAttribute="top" secondItem="fQU-6T-33n" secondAttribute="bottom" id="3S3-AF-HVO"/>
                             <constraint firstItem="d2U-OE-N6X" firstAttribute="top" secondItem="gyi-wP-4hU" secondAttribute="bottom" constant="4" id="40n-y5-jBm"/>
                             <constraint firstItem="TGR-vb-kwL" firstAttribute="top" secondItem="Bjc-HF-m9k" secondAttribute="bottom" id="9FX-3g-dzE"/>
                             <constraint firstItem="8Iu-1Q-Mj1" firstAttribute="leading" secondItem="Bjc-HF-m9k" secondAttribute="leading" id="BZz-dt-Acc"/>
+                            <constraint firstItem="gyi-wP-4hU" firstAttribute="leading" secondItem="6Kq-JU-t30" secondAttribute="leading" id="DRB-s5-1sh"/>
                             <constraint firstItem="Bjc-HF-m9k" firstAttribute="top" secondItem="d2U-OE-N6X" secondAttribute="bottom" constant="4" id="EYb-hc-lHi"/>
                             <constraint firstItem="bBy-Sb-GFx" firstAttribute="top" secondItem="swm-2P-nGk" secondAttribute="bottom" id="KOf-nD-luZ"/>
                             <constraint firstItem="9hk-6f-EqE" firstAttribute="top" secondItem="se9-cs-m35" secondAttribute="bottom" constant="56" id="SnH-ow-1Ku"/>
                             <constraint firstItem="d2U-OE-N6X" firstAttribute="leading" secondItem="aNR-nt-Q6a" secondAttribute="leading" constant="16" id="Vvk-EJ-A6O"/>
                             <constraint firstItem="bBy-Sb-GFx" firstAttribute="leading" secondItem="aNR-nt-Q6a" secondAttribute="leading" id="XZG-Eu-nJZ"/>
+                            <constraint firstItem="lJa-kO-9pT" firstAttribute="leading" secondItem="6Kq-JU-t30" secondAttribute="leading" id="XdW-Sv-Mht"/>
                             <constraint firstItem="lJa-kO-9pT" firstAttribute="top" secondItem="6Kq-JU-t30" secondAttribute="bottom" id="d2G-VA-z1k"/>
                             <constraint firstItem="TGR-vb-kwL" firstAttribute="leading" secondItem="Bjc-HF-m9k" secondAttribute="leading" id="f20-bi-mat"/>
                             <constraint firstItem="6Kq-JU-t30" firstAttribute="top" secondItem="swm-2P-nGk" secondAttribute="bottom" constant="16" id="gPi-Ms-Wwb"/>

@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
 
 class EditProfileViewController: ViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -152,12 +153,14 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
         birthday = birthdayTextField.text
         bioText = bioTextView.text
         
+        MBProgressHUD.showAdded(to: self.view , animated: true)
         updateProfile(name: name, email: email, bio: bioText, image: resizeImage) {(success: Bool, error: Error?) in
 
             self.loadingIndicator.center = self.view.center
             self.loadingIndicator.startAnimating()
             self.view.addSubview(self.loadingIndicator)
             if success {
+                MBProgressHUD.hide(for: self.view , animated: true)
                 print("[DEBUG] successfully updated profile")
                 self.loadingIndicator.stopAnimating()
                 self.dismiss(animated: true, completion: nil)
@@ -205,8 +208,10 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
         query.includeKey("owner")
         query.whereKey("owner", equalTo: PFUser.current()!)
         query.limit = 20
+        MBProgressHUD.showAdded(to: self.view , animated: true)
         query.findObjectsInBackground { (user_data: [PFObject]?, error: Error?) -> Void in
             if let data = user_data {
+                MBProgressHUD.hide(for: self.view , animated: true)
                 self.user_data = data
                 
                 user_data?[0]["name"] = self.nameTextField.text
@@ -224,6 +229,18 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
                 user_data?[0].saveInBackground(block: completion)
                 
             } else {
+                MBProgressHUD.hide(for: self.view , animated: true)
+                let alertController = UIAlertController(title: "Edit not successful", message: "Try again!", preferredStyle: .alert)
+                // create a cancel action
+                let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                    // handle cancel response here. Doing nothing will dismiss the view.
+                }
+                // add the cancel action to the alertController
+                alertController.addAction(cancelAction)
+                
+                self.present(alertController, animated: true) {
+                    // optional code for what happens after the alert controller has finished presenting
+                }
                 print("error while setting user_data")
             }
         }

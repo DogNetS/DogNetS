@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
 
 class ProfileViewController: UIViewController {
 
@@ -61,8 +62,10 @@ class ProfileViewController: UIViewController {
         query.includeKey("owner")
         query.whereKey("owner", equalTo: PFUser.current()!)
         query.limit = 20
+        MBProgressHUD.showAdded(to: self.view , animated: true)
         query.findObjectsInBackground { (user_data: [PFObject]?, error: Error?) -> Void in
             if let data = user_data {
+                MBProgressHUD.hide(for: self.view , animated: true)
                 self.user_data = data
                 //print("\(self.user_data)")
                 
@@ -71,6 +74,19 @@ class ProfileViewController: UIViewController {
                 self.updateTextLabels()
                 
             } else {
+                MBProgressHUD.hide(for: self.view , animated: true)
+                let alertController = UIAlertController(title: "Could not get user profile", message: "Try again!", preferredStyle: .alert)
+                // create a cancel action
+                let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                    // handle cancel response here. Doing nothing will dismiss the view.
+                }
+                // add the cancel action to the alertController
+                alertController.addAction(cancelAction)
+                
+                self.present(alertController, animated: true) {
+                    // optional code for what happens after the alert controller has finished presenting
+                }
+
                 print("error while getting user_data")
             }
         }
