@@ -24,6 +24,7 @@ class SignupViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         /* setting the date picker, etc*/
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: self.view.frame.size.height/6, width: self.view.frame.size.width, height: 40.0))
         
@@ -58,8 +59,6 @@ class SignupViewController: UIViewController {
     }
     
     func datePickerValueChanged(sender:UIDatePicker) {
-        
-        
         
         let dateFormatter = DateFormatter()
         
