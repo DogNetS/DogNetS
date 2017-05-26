@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class DogProfileViewController: UIViewController {
+class DogProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var dog: Dog! // Dog model passed from the cell we tapped one.
     
@@ -22,10 +22,15 @@ class DogProfileViewController: UIViewController {
     @IBOutlet weak var dogsToys: UILabel!
     @IBOutlet weak var dogsBirthday: UILabel!
     @IBOutlet weak var dogsAge: UILabel!
+    @IBOutlet weak var statusTableView: UITableView!
+    var statuses: [NSDictionary]!
     //need to add pals list, age.
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        statusTableView.estimatedRowHeight = 150
+        statusTableView.rowHeight = UITableViewAutomaticDimension
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit Info", style: .plain, target: self, action: #selector(DogProfileViewController.EditInfoTapped))
         
@@ -42,7 +47,7 @@ class DogProfileViewController: UIViewController {
         dateFormatter.dateStyle = DateFormatter.Style.medium
         dateFormatter.timeStyle = DateFormatter.Style.none
         
-        var birthdayDate = dog.birthday!.toDate(dateFormat: "MM/dd/yyyy")
+        let birthdayDate = dog.birthday!.toDate(dateFormat: "MM/dd/yyyy")
         var age = Int(birthdayDate.timeIntervalSinceNow/(-60*60*24*365))
         if (age == 0){
             age = Int(birthdayDate.timeIntervalSinceNow/(-60*60*24*30))
@@ -86,7 +91,7 @@ class DogProfileViewController: UIViewController {
         dateFormatter.dateStyle = DateFormatter.Style.medium
         dateFormatter.timeStyle = DateFormatter.Style.none
 
-        var birthdayDate = dog.birthday!.toDate(dateFormat: "MM/dd/yyyy")
+        let birthdayDate = dog.birthday!.toDate(dateFormat: "MM/dd/yyyy")
         var age = Int(birthdayDate.timeIntervalSinceNow/(-60*60*24*365))
         if (age == 0){
             age = Int(birthdayDate.timeIntervalSinceNow/(-60*60*24*30))
@@ -115,6 +120,22 @@ class DogProfileViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let statuses = statuses {
+            return statuses.count
+        } else {
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "statusCell", for: indexPath) as! DogStatusTableViewCell
+        let status = statuses[indexPath.row] 
+        cell.status = Status.init(status: status)
+        cell.dog = dog
+        return cell
     }
     
     func EditInfoTapped(){

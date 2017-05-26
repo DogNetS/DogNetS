@@ -21,7 +21,7 @@ class Dog: NSObject {
     var toys: String?             //favorite toys
     var owner: PFUser?            //owner parameter
     var pals: [String] = []              //dictionary of pals
-    var statuses: [String] = []   // all statuses from this dog
+    var statuses: [NSDictionary]?   // all statuses from this dog
     
     
     
@@ -43,7 +43,7 @@ class Dog: NSObject {
         if let pals = dog["pals"]{
             self.pals = pals as! [String]
         }
-        
+        self.statuses = dog["statuses"] as? [NSDictionary] ?? [NSDictionary.init()]
         
         
     }

@@ -83,6 +83,7 @@ class DogSignup1ViewController: UIViewController, UIImagePickerControllerDelegat
         dog["owner"] = PFUser.current()
 
         dog["photo"] = Dog.getPFFileFromImage(image: pickedImage)
+        dog["statuses"] = NSDictionary.init()
         
         if ((!(dogNameTextField.text?.isEmpty)!) && (!(dogBreedTextField.text?.isEmpty)!) && (!(dogBirthdayTextField.text?.isEmpty)!)){
         
