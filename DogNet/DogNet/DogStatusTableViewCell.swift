@@ -18,13 +18,8 @@ class DogStatusTableViewCell: UITableViewCell {
         didSet {
             self.dogStatusText.text = status.status_text
             self.dogPostTime.text = "\(status.post_time ?? 0)"
-        }
-    }
-    
-    var dog: Dog! {
-        didSet {
-            self.dogImage.image = dog.dogImage
-            self.dogNameLabel.text = dog.name
+            self.dogNameLabel.text = status.dog?.name
+            self.dogImage.image = status.dog?.dogImage
         }
     }
 

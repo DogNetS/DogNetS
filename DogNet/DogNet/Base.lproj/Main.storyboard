@@ -719,8 +719,37 @@
                     <view key="view" contentMode="scaleToFill" id="ttd-2l-xko">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Tell your pals what you're doing!" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FaY-F6-eWW">
+                                <rect key="frame" x="0.0" y="20" width="320" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="xRp-ZJ-tTc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="go"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJS-gJ-rX0">
+                                <rect key="frame" x="250" y="228" width="62" height="46"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <state key="normal" title="Post!"/>
+                                <connections>
+                                    <action selector="onPost:" destination="kX3-G7-Nhw" eventType="touchUpInside" id="c2A-hF-WJm"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="FaY-F6-eWW" firstAttribute="leading" secondItem="ttd-2l-xko" secondAttribute="leading" id="919-GC-av5"/>
+                            <constraint firstItem="NJS-gJ-rX0" firstAttribute="top" secondItem="FaY-F6-eWW" secondAttribute="bottom" constant="8" id="BhO-ZA-A71"/>
+                            <constraint firstItem="FaY-F6-eWW" firstAttribute="top" secondItem="Yxd-z5-vLU" secondAttribute="bottom" id="XbU-n7-3xm"/>
+                            <constraint firstAttribute="trailing" secondItem="NJS-gJ-rX0" secondAttribute="trailing" constant="8" id="a5x-GK-GR0"/>
+                            <constraint firstAttribute="trailing" secondItem="FaY-F6-eWW" secondAttribute="trailing" id="gGH-oV-TJH"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="postButton" destination="NJS-gJ-rX0" id="EkH-iZ-ff1"/>
+                        <outlet property="statusText" destination="FaY-F6-eWW" id="1dv-Do-LXt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rsf-w0-qpP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

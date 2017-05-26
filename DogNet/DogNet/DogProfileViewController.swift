@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
 
 class DogProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -23,7 +24,7 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var dogsBirthday: UILabel!
     @IBOutlet weak var dogsAge: UILabel!
     @IBOutlet weak var statusTableView: UITableView!
-    var statuses: [NSDictionary]!
+    var statuses: [NSDictionary]! = []
     //need to add pals list, age.
     
     override func viewDidLoad() {
@@ -75,6 +76,7 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
         //set age etc
         
         // Do any additional setup after loading the view.
+        fetchStatuses()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -122,6 +124,52 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
+    func fetchStatuses(){
+        /*
+         go through list of pals
+         for each pal, get statuses
+         perhaps order them by time
+         */
+        statuses.removeAll()
+        let palIDs = dog.pals
+        
+        let query = PFQuery(className: "dog_data")
+        query.order(byDescending: "updatedAt")
+        query.includeKey("statuses")
+        query.whereKey("objectId", containedIn: palIDs)
+        MBProgressHUD.showAdded(to: self.view , animated: true)
+        query.findObjectsInBackground { (PFdogs: [PFObject]?, error: Error?) in
+            if let PFdogs = PFdogs {
+                MBProgressHUD.hide(for: self.view , animated: true)
+                for PFdog in PFdogs {
+                    if let dogStatusList = PFdog["statuses"] as? [NSDictionary] {
+                        for dogStatus in dogStatusList {
+                            var newStatus = Dictionary<String, Any>()
+                            newStatus.updateValue(dogStatus["text"] ?? "no text", forKey: "text")
+                            newStatus.updateValue(dogStatus["time"] ?? "no time", forKey: "time")
+                            newStatus.updateValue(PFdog, forKey: "dog")
+                            self.statuses.append(newStatus as NSDictionary)
+                        }
+                    }
+                }
+            } else {
+                MBProgressHUD.hide(for: self.view , animated: true)
+                // Log details of the failure
+                let alertController = UIAlertController(title: "Could not get pal statuses", message: "Try again!", preferredStyle: .alert)
+                // create a cancel action
+                let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                    // handle cancel response here. Doing nothing will dismiss the view.
+                }
+                // add the cancel action to the alertController
+                alertController.addAction(cancelAction)
+                
+                self.present(alertController, animated: true) {
+                    // optional code for what happens after the alert controller has finished presenting
+                }
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let statuses = statuses {
             return statuses.count
@@ -134,7 +182,6 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "statusCell", for: indexPath) as! DogStatusTableViewCell
         let status = statuses[indexPath.row] 
         cell.status = Status.init(status: status)
-        cell.dog = dog
         return cell
     }
     
@@ -148,6 +195,7 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBAction func onUpdateStatus(_ sender: Any) {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let updateVC = mainStoryboard.instantiateViewController(withIdentifier: "statusVC") as! StatusViewController
+        updateVC.dog = self.dog
         self.navigationController?.pushViewController(updateVC, animated: true)
     }
 
