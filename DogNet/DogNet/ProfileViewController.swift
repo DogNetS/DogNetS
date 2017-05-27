@@ -104,6 +104,7 @@ class ProfileViewController: UIViewController {
             self.nameLabel.text = self.user_data?[0]["name"] as? String
         } else {
             self.nameLabel.text = PFUser.current()?.username
+            self.user_data?[0]["name"] = PFUser.current()?.username
         }
         
         if(self.user_data?[0]["age"] != nil) {
@@ -137,7 +138,12 @@ class ProfileViewController: UIViewController {
         self.age = Int((birthday?.timeIntervalSinceNow)!/(-60*60*24*365))
         
         ageLabel.text = "\(self.age) years old"
-        bioTextView.text = self.bioText
+        if self.bioText == "" {
+            bioTextView.text = "Update your bio!"
+        } else {
+            bioTextView.text = self.bioText
+
+        }
         locationLabel.text = self.location
         
         if let userPic = user_data[0].value(forKey: "profilePic") as? PFFile {
@@ -148,6 +154,7 @@ class ProfileViewController: UIViewController {
                 }
             })
         } else {
+            self.profileImageView.image = #imageLiteral(resourceName: "profile_avatar")
             print("ERROR: image not found")
         }
     }

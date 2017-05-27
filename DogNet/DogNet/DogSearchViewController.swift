@@ -14,7 +14,7 @@ class DogSearchViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var dogSearchBar: UISearchBar!
     @IBOutlet weak var dogSearchTableView: UITableView!
-    var dogs: [Dog]! = []
+    var dogs: [PFObject]! = []
     var currentDog: Dog!
 
     override func viewDidLoad() {
@@ -47,29 +47,43 @@ class DogSearchViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dogSearchCell", for: indexPath) as! DogSearchTableViewCell
-        let dog = dogs[indexPath.row]
-        if dog.dogImage == nil {
-            dog.dogImage = UIImage(named: "dog_default")
+        let PFdog = dogs[indexPath.row]
+        cell.dog = Dog.init(dog: PFdog)
+        if let the_photo = PFdog["photo"]{
+            (the_photo as AnyObject).getDataInBackground(block: {(imageData: Data?,error: Error?) in
+                if error == nil {
+                    if let imageData = imageData {
+                        let image = UIImage(data: imageData)
+                        cell.dogImageView.image = image
+                        cell.dog.dogImage = image
+                    }
+                }
+            })
         }
-        cell.dog = dog
+
+        
 
         return cell
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        dogs.removeAll()
         let searchText = searchBar.text
         let query = PFQuery(className: "dog_data")
         query.whereKey("name", contains: searchText)
+        query.whereKey("owner", notEqualTo: PFUser.current()!)
         
         MBProgressHUD.showAdded(to: self.view , animated: true)
         query.findObjectsInBackground{ (pfdogs: [PFObject]?, error: Error?) in
-            if let pfdogs = pfdogs {
-                MBProgressHUD.hide(for: self.view , animated: true)
-                for pfdog in pfdogs {
-                    let dog = Dog.init(dog: pfdog)
-                    self.dogs.insert(dog, at: 0)
+            if error == nil {
+                if let pfdogs = pfdogs {
+                    MBProgressHUD.hide(for: self.view , animated: true)
+                    for pfdog in pfdogs {
+                        let dog = pfdog
+                        self.dogs.insert(dog, at: 0)
+                    }
+                    self.dogSearchTableView.reloadData()
                 }
-                self.dogSearchTableView.reloadData()
             } else {
                 MBProgressHUD.hide(for: self.view , animated: true)
                 let alertController = UIAlertController(title: "Could not search for dog", message: "Try again!", preferredStyle: .alert)

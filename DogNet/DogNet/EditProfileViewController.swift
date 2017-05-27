@@ -41,6 +41,7 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onProfileTapGesture(sender:)))
         profileImageView.isUserInteractionEnabled = true
         profileImageView.addGestureRecognizer(tapGestureRecognizer)
+        nameTextField.text = user_data?[0]["name"] as? String
         
     }
     
