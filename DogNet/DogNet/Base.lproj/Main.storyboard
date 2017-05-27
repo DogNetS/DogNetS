@@ -1,13 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Unknown constraint types" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -281,8 +282,7 @@
                                                 <action selector="onCancelButton:" destination="377-5B-WJI" id="3Wt-DA-aWW"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="SE0-PR-SjP">
-                                            <color key="tintColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="SE0-PR-SjP">
                                             <connections>
                                                 <action selector="onSaveButton:" destination="377-5B-WJI" id="ilQ-JB-RYk"/>
                                             </connections>
@@ -398,7 +398,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x3b-i1-Dri" id="zZh-5i-ypX">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="110.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dog Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXa-vJ-OHr">
@@ -648,7 +648,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NU9-Md-nat" id="xE1-Bw-Rfr">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="107"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="107.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dog_default" translatesAutoresizingMaskIntoConstraints="NO" id="gcE-Y9-06G">
@@ -664,7 +664,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dog Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etX-kS-9ZS">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dog Status" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etX-kS-9ZS">
                                                     <rect key="frame" x="76" y="19.5" width="67.5" height="16"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                     <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -701,6 +701,12 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No statuses to display!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qoy-qM-pqN">
+                                <rect key="frame" x="23" y="333" width="274" height="34"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -713,8 +719,10 @@
                             <constraint firstItem="wNo-z2-j2c" firstAttribute="leading" secondItem="9eu-QT-Tfd" secondAttribute="leading" id="JQo-um-fSp"/>
                             <constraint firstAttribute="trailing" secondItem="RkE-zT-C12" secondAttribute="trailing" id="Mqf-A2-Awb"/>
                             <constraint firstItem="y7G-mW-UJy" firstAttribute="leading" secondItem="9eu-QT-Tfd" secondAttribute="leading" id="Psi-s1-bCB"/>
+                            <constraint firstItem="Qoy-qM-pqN" firstAttribute="top" secondItem="LcU-Jx-zWP" secondAttribute="bottom" constant="80" id="QvM-l1-wGK"/>
                             <constraint firstItem="RkE-zT-C12" firstAttribute="leading" secondItem="NNT-tK-7aC" secondAttribute="leading" id="Riv-qG-KMF"/>
                             <constraint firstItem="GRz-13-V6g" firstAttribute="top" secondItem="wNo-z2-j2c" secondAttribute="bottom" id="SCW-hV-jID"/>
+                            <constraint firstItem="Qoy-qM-pqN" firstAttribute="centerX" secondItem="NNT-tK-7aC" secondAttribute="centerX" id="SQ9-eg-ixP"/>
                             <constraint firstItem="CnB-5Y-GdH" firstAttribute="leading" secondItem="NNT-tK-7aC" secondAttribute="leading" constant="8" id="T4v-7c-MNV"/>
                             <constraint firstItem="CnB-5Y-GdH" firstAttribute="top" secondItem="jsy-99-21h" secondAttribute="bottom" id="VAu-q4-AoA"/>
                             <constraint firstItem="AvB-km-iP8" firstAttribute="top" secondItem="RkE-zT-C12" secondAttribute="bottom" constant="8" id="WW9-Gy-oL3"/>
@@ -733,6 +741,7 @@
                             <constraint firstItem="b3d-gm-cqo" firstAttribute="top" secondItem="Pik-Dk-6o0" secondAttribute="bottom" constant="4" id="lhE-Ud-cu7"/>
                             <constraint firstItem="RkE-zT-C12" firstAttribute="top" secondItem="LcU-Jx-zWP" secondAttribute="bottom" constant="8" id="lmc-mi-9U5"/>
                             <constraint firstItem="VJj-9L-0VO" firstAttribute="leading" secondItem="b3d-gm-cqo" secondAttribute="leading" id="qWf-AO-aHo"/>
+                            <constraint firstAttribute="centerX" secondItem="NNT-tK-7aC" secondAttribute="centerX" id="rci-tn-Fg1"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="clG-LL-SWn" secondAttribute="trailing" constant="8" id="sQD-ic-d7i"/>
                             <constraint firstItem="GRz-13-V6g" firstAttribute="leading" secondItem="9eu-QT-Tfd" secondAttribute="leading" id="srP-xO-Z46"/>
                             <constraint firstItem="7np-cW-Bpl" firstAttribute="leading" secondItem="NNT-tK-7aC" secondAttribute="leadingMargin" constant="8" id="t1q-WH-pTU"/>
@@ -753,6 +762,7 @@
                         <outlet property="dogsOwner" destination="GRz-13-V6g" id="hzl-jw-muN"/>
                         <outlet property="dogsTemperament" destination="VJj-9L-0VO" id="xlE-8y-scS"/>
                         <outlet property="dogsToys" destination="LcU-Jx-zWP" id="F3Q-cP-bjd"/>
+                        <outlet property="noStatusText" destination="Qoy-qM-pqN" id="eBQ-XJ-kHK"/>
                         <outlet property="statusTableView" destination="RkE-zT-C12" id="bdO-qe-mch"/>
                     </connections>
                 </viewController>
@@ -773,15 +783,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Tell your pals what you're doing!" translatesAutoresizingMaskIntoConstraints="NO" id="FaY-F6-eWW">
-                                <rect key="frame" x="0.0" y="20" width="320" height="200"/>
+                                <rect key="frame" x="8" y="28" width="304" height="200"/>
+                                <color key="backgroundColor" red="0.82745098039215681" green="0.19215686274509802" blue="0.31764705882352939" alpha="0.77389233732876717" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="xRp-ZJ-tTc"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="go"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJS-gJ-rX0">
-                                <rect key="frame" x="250" y="228" width="62" height="46"/>
+                                <rect key="frame" x="250" y="236" width="62" height="46"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <state key="normal" title="Post!"/>
                                 <connections>
@@ -791,11 +802,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="FaY-F6-eWW" firstAttribute="leading" secondItem="ttd-2l-xko" secondAttribute="leading" id="919-GC-av5"/>
+                            <constraint firstItem="FaY-F6-eWW" firstAttribute="leading" secondItem="ttd-2l-xko" secondAttribute="leading" constant="8" id="919-GC-av5"/>
                             <constraint firstItem="NJS-gJ-rX0" firstAttribute="top" secondItem="FaY-F6-eWW" secondAttribute="bottom" constant="8" id="BhO-ZA-A71"/>
-                            <constraint firstItem="FaY-F6-eWW" firstAttribute="top" secondItem="Yxd-z5-vLU" secondAttribute="bottom" id="XbU-n7-3xm"/>
+                            <constraint firstItem="FaY-F6-eWW" firstAttribute="top" secondItem="Yxd-z5-vLU" secondAttribute="bottom" constant="8" id="XbU-n7-3xm"/>
                             <constraint firstAttribute="trailing" secondItem="NJS-gJ-rX0" secondAttribute="trailing" constant="8" id="a5x-GK-GR0"/>
-                            <constraint firstAttribute="trailing" secondItem="FaY-F6-eWW" secondAttribute="trailing" id="gGH-oV-TJH"/>
+                            <constraint firstAttribute="trailing" secondItem="FaY-F6-eWW" secondAttribute="trailing" constant="8" id="gGH-oV-TJH"/>
                         </constraints>
                     </view>
                     <connections>
@@ -827,7 +838,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j0T-hl-N2g" id="Cn1-iy-T79">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="109"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="109.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dog Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0NJ-VR-TDh">
@@ -994,7 +1005,7 @@
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fOB-KT-OAL">
                                 <rect key="frame" x="134" y="62" width="170" height="30"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
                             </textField>
@@ -1319,7 +1330,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="139"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LoF-li-52s" id="hjC-i0-VUY">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="138"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="138.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dog Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGj-fj-cVv">
@@ -1398,50 +1409,50 @@
                                 <color key="backgroundColor" red="0.82745098039215681" green="0.19215686274509802" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthday: 4/17/14" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bjc-HF-m9k">
-                                <rect key="frame" x="16" y="171" width="137" height="21"/>
+                                <rect key="frame" x="16" y="127" width="137" height="21"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" red="0.82745098039215681" green="0.19215686274509802" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dog_default" translatesAutoresizingMaskIntoConstraints="NO" id="bBy-Sb-GFx">
-                                <rect key="frame" x="8" y="64" width="90" height="90"/>
+                                <rect key="frame" x="8" y="20" width="90" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="WHx-5g-XIY"/>
                                     <constraint firstAttribute="height" constant="90" id="gCM-JC-gxJ"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Golden Doodle" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQU-6T-33n">
-                                <rect key="frame" x="106" y="129.5" width="90" height="16"/>
+                                <rect key="frame" x="106" y="85.5" width="90" height="16"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <color key="textColor" red="0.82745098039215681" green="0.19215686274509802" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Health: Super healthy" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGR-vb-kwL">
-                                <rect key="frame" x="16" y="192" width="173" height="21"/>
+                                <rect key="frame" x="16" y="148" width="173" height="21"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" red="0.82745098039215681" green="0.19215686274509802" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperament: playful" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Iu-1Q-Mj1">
-                                <rect key="frame" x="16" y="213" width="174.5" height="21"/>
+                                <rect key="frame" x="16" y="169" width="174.5" height="21"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" red="0.82745098039215681" green="0.19215686274509802" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Human" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyi-wP-4hU">
-                                <rect key="frame" x="106" y="145.5" width="43" height="16"/>
+                                <rect key="frame" x="106" y="101.5" width="43" height="16"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <color key="textColor" red="0.82745098039215681" green="0.19215686274509802" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Fluffy" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Kq-JU-t30">
-                                <rect key="frame" x="106" y="80" width="67" height="34"/>
+                                <rect key="frame" x="106" y="36" width="67" height="34"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <color key="textColor" red="0.82745098039215681" green="0.19215686274509802" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite toys: yellow duck" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UBL-1p-EpM">
-                                <rect key="frame" x="16" y="234" width="206" height="21"/>
+                                <rect key="frame" x="16" y="190" width="206" height="21"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" red="0.82745098039215681" green="0.19215686274509802" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1457,14 +1468,14 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d2U-OE-N6X">
-                                <rect key="frame" x="16" y="166" width="288" height="1"/>
+                                <rect key="frame" x="16" y="122" width="288" height="1"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Kqc-wq-NRO"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age: 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJa-kO-9pT">
-                                <rect key="frame" x="106" y="113.5" width="39" height="16"/>
+                                <rect key="frame" x="106" y="69.5" width="39" height="16"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <color key="textColor" red="0.82745098039215681" green="0.19215686274509802" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1632,25 +1643,15 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Edit Dog" id="hVO-io-9A8">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="kW8-yl-soX">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hRL-aP-yd6">
-                                                <rect key="frame" x="16" y="7" width="48" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Cancel"/>
-                                                <connections>
-                                                    <action selector="onCancelButton:" destination="6pn-FQ-7B9" eventType="touchUpInside" id="miF-Oe-hQC"/>
-                                                </connections>
-                                            </button>
+                                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="kW8-yl-soX">
+                                            <connections>
+                                                <action selector="onCancelButton:" destination="6pn-FQ-7B9" id="YbP-Ns-0xP"/>
+                                            </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="x00-vN-L0H">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="g2o-TF-Weo">
-                                                <rect key="frame" x="270" y="7" width="34" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Save"/>
-                                                <connections>
-                                                    <action selector="onSaveButton:" destination="6pn-FQ-7B9" eventType="touchUpInside" id="Fa8-Uz-DNy"/>
-                                                </connections>
-                                            </button>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="x00-vN-L0H">
+                                            <connections>
+                                                <action selector="onSaveButton:" destination="6pn-FQ-7B9" id="6Ro-5R-n3W"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -1738,8 +1739,8 @@
         <image name="profile_avatar" width="700" height="700"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="fYf-5h-RMX"/>
         <segue reference="giB-Dy-FsM"/>
-        <segue reference="Zyg-3Z-tyj"/>
     </inferredMetricsTieBreakers>
-    <color key="tintColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+    <color key="tintColor" red="0.87167328596115112" green="0.28635627031326294" blue="0.38851016759872437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

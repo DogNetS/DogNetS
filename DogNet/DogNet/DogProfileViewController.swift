@@ -26,6 +26,7 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var statusTableView: UITableView!
     var statuses: [NSDictionary]! = []
     //need to add pals list, age.
+    @IBOutlet weak var noStatusText: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,11 +79,11 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
         //set age etc
         
         // Do any additional setup after loading the view.
-        fetchStatuses()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        fetchStatuses()
+
         self.dogName.text = dog.name
         self.dogsOwner.text = dog.owner?.username
         self.dogBreed.text = dog.breed
@@ -123,6 +124,7 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
         if let selectedCellIndex = statusTableView.indexPathForSelectedRow {
             statusTableView.deselectRow(at: selectedCellIndex, animated: false)
         }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -136,9 +138,9 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
          for each pal, get statuses
          perhaps order them by time
          */
-        print("**********fetching statuses")
         statuses.removeAll()
-        let palIDs = dog.pals
+        var palIDs = dog.pals
+        palIDs.append(dog.id!)
         
         let query = PFQuery(className: "dog_data")
         query.order(byDescending: "updatedAt")
@@ -147,14 +149,10 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
         MBProgressHUD.showAdded(to: self.view , animated: true)
         query.findObjectsInBackground { (PFdogs: [PFObject]?, error: Error?) in
             if let PFdogs = PFdogs {
-                print("1")
                 MBProgressHUD.hide(for: self.view , animated: true)
                 for PFdog in PFdogs {
                     let dogStatusList = (PFdog["statuses"] as? [NSDictionary]) ?? ([])
-                    print("2")
-                    print(dogStatusList)
                     for dogStatus in dogStatusList {
-                        print("2a")
                         var newStatus = Dictionary<String, Any>()
                         newStatus.updateValue(dogStatus["text"] ?? "no text", forKey: "text")
                         newStatus.updateValue(dogStatus["time"] ?? "no time", forKey: "time")
@@ -163,11 +161,16 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
 
                         self.statuses.append(newStatus as NSDictionary)
                     }
-                    print("self.statuses")
-                    print(self.statuses)
                     self.statusTableView.reloadData()
                     
                     //    PFdog["statuses"] = self.statuses
+                }
+                if self.statuses.count == 0 {
+                    self.statusTableView.isHidden = true
+                    self.noStatusText.isHidden = false
+                } else {
+                    self.statusTableView.isHidden = false
+                    self.noStatusText.isHidden = true
                 }
             } else {
                 print("4")
