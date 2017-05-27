@@ -30,6 +30,10 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     @IBAction func onLogin(_ sender: Any) {
         
         MBProgressHUD.showAdded(to: self.view, animated: true)
