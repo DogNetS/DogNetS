@@ -1387,10 +1387,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6dG-yh-hGO">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6dG-yh-hGO">
                                 <rect key="frame" x="-1" y="440" width="321" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="se9-cs-m35">
+                                        <rect key="frame" x="104.5" y="43" width="111" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Delete Pal">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addPal:" destination="O5O-Wh-e6k" eventType="touchUpInside" id="cMf-0b-wrB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" red="0.82745098039215681" green="0.19215686274509802" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="se9-cs-m35" firstAttribute="centerY" secondItem="6dG-yh-hGO" secondAttribute="centerY" id="6ak-Db-bvV"/>
+                                    <constraint firstItem="se9-cs-m35" firstAttribute="centerX" secondItem="6dG-yh-hGO" secondAttribute="centerX" id="rM2-yK-Mj4"/>
+                                </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthday: 4/17/14" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bjc-HF-m9k">
                                 <rect key="frame" x="16" y="127" width="137" height="21"/>
@@ -1441,16 +1456,6 @@
                                 <color key="textColor" red="0.82745098039215681" green="0.19215686274509802" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="se9-cs-m35">
-                                <rect key="frame" x="105" y="470" width="111" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Delete Pal">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="addPal:" destination="O5O-Wh-e6k" eventType="touchUpInside" id="cMf-0b-wrB"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d2U-OE-N6X">
                                 <rect key="frame" x="16" y="122" width="288" height="1"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -1471,19 +1476,22 @@
                             <constraint firstItem="8Iu-1Q-Mj1" firstAttribute="top" secondItem="TGR-vb-kwL" secondAttribute="bottom" id="2QI-LC-1qK"/>
                             <constraint firstItem="gyi-wP-4hU" firstAttribute="top" secondItem="fQU-6T-33n" secondAttribute="bottom" id="3S3-AF-HVO"/>
                             <constraint firstItem="d2U-OE-N6X" firstAttribute="top" secondItem="gyi-wP-4hU" secondAttribute="bottom" constant="4" id="40n-y5-jBm"/>
+                            <constraint firstItem="9hk-6f-EqE" firstAttribute="top" secondItem="6dG-yh-hGO" secondAttribute="bottom" id="4JA-eT-rmx"/>
+                            <constraint firstItem="6dG-yh-hGO" firstAttribute="leading" secondItem="aNR-nt-Q6a" secondAttribute="leading" id="4wF-0F-Zs3"/>
                             <constraint firstItem="TGR-vb-kwL" firstAttribute="top" secondItem="Bjc-HF-m9k" secondAttribute="bottom" id="9FX-3g-dzE"/>
                             <constraint firstItem="8Iu-1Q-Mj1" firstAttribute="leading" secondItem="Bjc-HF-m9k" secondAttribute="leading" id="BZz-dt-Acc"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8Iu-1Q-Mj1" secondAttribute="trailing" constant="8" id="Crl-BQ-77e"/>
                             <constraint firstItem="gyi-wP-4hU" firstAttribute="leading" secondItem="6Kq-JU-t30" secondAttribute="leading" id="DRB-s5-1sh"/>
+                            <constraint firstItem="6dG-yh-hGO" firstAttribute="top" secondItem="UBL-1p-EpM" secondAttribute="bottom" constant="229" id="Dov-1X-FOO"/>
                             <constraint firstItem="Bjc-HF-m9k" firstAttribute="top" secondItem="d2U-OE-N6X" secondAttribute="bottom" constant="4" id="EYb-hc-lHi"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UBL-1p-EpM" secondAttribute="trailing" constant="8" id="JWA-6b-kpe"/>
                             <constraint firstItem="bBy-Sb-GFx" firstAttribute="top" secondItem="swm-2P-nGk" secondAttribute="bottom" id="KOf-nD-luZ"/>
-                            <constraint firstItem="9hk-6f-EqE" firstAttribute="top" secondItem="se9-cs-m35" secondAttribute="bottom" constant="56" id="SnH-ow-1Ku"/>
                             <constraint firstItem="d2U-OE-N6X" firstAttribute="leading" secondItem="aNR-nt-Q6a" secondAttribute="leading" constant="16" id="Vvk-EJ-A6O"/>
                             <constraint firstItem="bBy-Sb-GFx" firstAttribute="leading" secondItem="aNR-nt-Q6a" secondAttribute="leading" constant="8" id="XZG-Eu-nJZ"/>
                             <constraint firstItem="lJa-kO-9pT" firstAttribute="leading" secondItem="6Kq-JU-t30" secondAttribute="leading" id="XdW-Sv-Mht"/>
                             <constraint firstItem="lJa-kO-9pT" firstAttribute="top" secondItem="6Kq-JU-t30" secondAttribute="bottom" id="d2G-VA-z1k"/>
                             <constraint firstItem="TGR-vb-kwL" firstAttribute="leading" secondItem="Bjc-HF-m9k" secondAttribute="leading" id="f20-bi-mat"/>
+                            <constraint firstAttribute="trailing" secondItem="6dG-yh-hGO" secondAttribute="trailing" id="fbZ-kY-mA3"/>
                             <constraint firstItem="6Kq-JU-t30" firstAttribute="top" secondItem="swm-2P-nGk" secondAttribute="bottom" constant="16" id="gPi-Ms-Wwb"/>
                             <constraint firstItem="fQU-6T-33n" firstAttribute="top" secondItem="lJa-kO-9pT" secondAttribute="bottom" id="ief-mG-WoR"/>
                             <constraint firstItem="UBL-1p-EpM" firstAttribute="top" secondItem="8Iu-1Q-Mj1" secondAttribute="bottom" id="k1V-gY-Oui"/>
@@ -1493,7 +1501,6 @@
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TGR-vb-kwL" secondAttribute="trailing" constant="8" id="uk4-JA-HU9"/>
                             <constraint firstAttribute="trailing" secondItem="d2U-OE-N6X" secondAttribute="trailing" constant="16" id="umM-tv-t4m"/>
                             <constraint firstItem="6Kq-JU-t30" firstAttribute="leading" secondItem="bBy-Sb-GFx" secondAttribute="trailing" constant="8" id="wT8-js-5nb"/>
-                            <constraint firstItem="se9-cs-m35" firstAttribute="centerX" secondItem="aNR-nt-Q6a" secondAttribute="centerX" id="xsJ-O8-343"/>
                         </constraints>
                     </view>
                     <connections>
