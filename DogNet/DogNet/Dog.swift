@@ -107,7 +107,7 @@ class Dog: NSObject {
                                 self.birthday = birthday
                             }
                             if(image != nil){
-                                doggy["image"] = Dog.getPFFileFromImage(image: image)
+                                doggy["photo"] = Dog.getPFFileFromImage(image: image)
                                 self.dogImage = image
                             }
                             if(health != nil){
