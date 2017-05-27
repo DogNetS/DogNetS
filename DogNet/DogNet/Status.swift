@@ -21,6 +21,7 @@ class Status: NSObject {
         self.status_text = status["text"] as? String ?? "cannot find status text"
         let PFdog = status["dog"] as! PFObject
         self.dog = Dog.init(dog: PFdog)
+    
     }
 
 }
