@@ -138,7 +138,8 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
          */
         print("**********fetching statuses")
         statuses.removeAll()
-        let palIDs = dog.pals
+        var palIDs = dog.pals
+        palIDs.append(dog.id!)
         
         let query = PFQuery(className: "dog_data")
         query.order(byDescending: "updatedAt")
