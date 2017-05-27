@@ -42,6 +42,8 @@ class PalProfileViewController: UIViewController {
         self.dogToys.text = "Toys: " + dog.toys!
         self.dogImage.image = dog.dogImage
         
+        self.addDeleteButton.center = view.center
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = DateFormatter.Style.medium
         dateFormatter.timeStyle = DateFormatter.Style.none

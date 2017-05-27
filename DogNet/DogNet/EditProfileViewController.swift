@@ -43,6 +43,7 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
         profileImageView.addGestureRecognizer(tapGestureRecognizer)
         nameTextField.text = user_data?[0]["name"] as? String
         
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
