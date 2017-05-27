@@ -30,10 +30,10 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        statusTableView.estimatedRowHeight = 150
-        statusTableView.rowHeight = UITableViewAutomaticDimension
-        statusTableView.delegate = self
-        statusTableView.dataSource = self
+        self.statusTableView.estimatedRowHeight = 150
+        self.statusTableView.rowHeight = UITableViewAutomaticDimension
+        self.statusTableView.delegate = self
+        self.statusTableView.dataSource = self
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit Info", style: .plain, target: self, action: #selector(DogProfileViewController.EditInfoTapped))
         
@@ -119,6 +119,10 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
             }
         }
         self.dogsBirthday.text = "Birthday: " + dateFormatter.string(from: birthdayDate)
+        
+        if let selectedCellIndex = statusTableView.indexPathForSelectedRow {
+            statusTableView.deselectRow(at: selectedCellIndex, animated: false)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -162,7 +166,7 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
                     print("self.statuses")
                     print(self.statuses)
                     self.statusTableView.reloadData()
-
+                    
                     //    PFdog["statuses"] = self.statuses
                 }
             } else {
@@ -209,7 +213,18 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
                 }
             })
         }
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Change the selected background view of the cell.
+        
+        //tableView.deselectRow(at: indexPath, animated: false)
+        //tableView.reloadRows(at: [indexPath], with: .automatic)
+        
+        print("selecting \(indexPath)")
     }
     
     func EditInfoTapped(){
