@@ -129,6 +129,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="NPb-Ew-tvp">
                                 <rect key="frame" x="0.0" y="64" width="320" height="232"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="232" id="joM-FL-AIw"/>
                                 </constraints>
@@ -136,13 +137,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Doe" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bvt-G3-PLE">
                                 <rect key="frame" x="16" y="304" width="117" height="33.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <color key="textColor" red="0.82745098039215681" green="0.19215686274509802" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="La Jolla" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yfi-Vo-dEW">
                                 <rect key="frame" x="16" y="380" width="68.5" height="24"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                <color key="textColor" red="0.82745098039215681" green="0.19215686274509802" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Bio" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oYv-7J-FgY">
@@ -162,11 +163,11 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age: 65" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPu-qI-M7r">
                                 <rect key="frame" x="16" y="345.5" width="77.5" height="26.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                <color key="textColor" red="0.82745098039215681" green="0.19215686274509802" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.82745098039215681" green="0.19215686274509802" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="oYv-7J-FgY" firstAttribute="top" secondItem="Yfi-Vo-dEW" secondAttribute="bottom" constant="8" id="7kt-5x-oVI"/>
                             <constraint firstItem="oYv-7J-FgY" firstAttribute="leading" secondItem="goo-Q9-D1u" secondAttribute="leading" id="8Gh-74-9Ax"/>
@@ -219,13 +220,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBG-dD-Fxh">
                                 <rect key="frame" x="16" y="304" width="71.5" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bxd-9j-Z3o">
                                 <rect key="frame" x="16" y="341.5" width="71.5" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ncB-7I-Hdh">
@@ -240,13 +241,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthday:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yf3-4q-7DS">
                                 <rect key="frame" x="16" y="379" width="71.5" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Bio" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5f2-AT-EHn">
-                                <rect key="frame" x="16" y="431" width="288" height="137"/>
-                                <color key="backgroundColor" red="0.82745098039215681" green="0.19215686274509802" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="16" y="431" width="288" height="129"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -292,16 +293,16 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="441-Kd-RaM">
                                 <rect key="frame" x="16" y="408.5" width="30" height="22"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.82745098039215681" green="0.19215686274509802" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="sBG-dD-Fxh" firstAttribute="leading" secondItem="Nh4-Db-qbH" secondAttribute="leading" constant="16" id="01K-Xw-IsM"/>
                             <constraint firstItem="Yf3-4q-7DS" firstAttribute="leading" secondItem="sBG-dD-Fxh" secondAttribute="leading" id="2MQ-VT-d7c"/>
                             <constraint firstItem="ut2-X6-341" firstAttribute="top" secondItem="EHV-L3-vxF" secondAttribute="bottom" id="6rD-hf-GAO"/>
-                            <constraint firstItem="66H-Rk-1NS" firstAttribute="top" secondItem="5f2-AT-EHn" secondAttribute="bottom" id="AKb-h7-H6T"/>
+                            <constraint firstItem="66H-Rk-1NS" firstAttribute="top" secondItem="5f2-AT-EHn" secondAttribute="bottom" constant="8" id="AKb-h7-H6T"/>
                             <constraint firstItem="bxd-9j-Z3o" firstAttribute="leading" secondItem="sBG-dD-Fxh" secondAttribute="leading" id="Ctj-Px-5Ks"/>
                             <constraint firstItem="ncB-7I-Hdh" firstAttribute="leading" secondItem="bxd-9j-Z3o" secondAttribute="trailing" constant="8" id="EO3-nb-HtD"/>
                             <constraint firstItem="8Zq-Ds-VgO" firstAttribute="leading" secondItem="sBG-dD-Fxh" secondAttribute="trailing" constant="8" id="HaA-d9-1Kv"/>
