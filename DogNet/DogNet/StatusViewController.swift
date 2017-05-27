@@ -107,14 +107,15 @@ class StatusViewController: UIViewController, UITextViewDelegate {
         query.findObjectsInBackground { (PFdogs: [PFObject]?, error: Error?) in
             if let PFdogs = PFdogs {
                 for PFdog in PFdogs {
-                    var statuses = (PFdog["statuses"] as? [NSDictionary]) ?? ([NSDictionary.init()])
-                    statuses.append(dict as NSDictionary)
+                    var statuses = (PFdog["statuses"] as? [NSDictionary]) ?? ([])
+                    statuses.insert(dict as NSDictionary, at: 0)
                     PFdog["statuses"] = statuses
                     
                     PFdog.saveInBackground(block: { (wasSuccessful: Bool, error: Error?) in
                         if (wasSuccessful) {
                             print("success")
                             MBProgressHUD.hide(for: self.view , animated: true)
+                            self.navigationController?.popViewController(animated: true)
                         } else {
                             MBProgressHUD.hide(for: self.view , animated: true)
                             let alertController = UIAlertController(title: "Could not update status", message: "Please try again", preferredStyle: .alert)

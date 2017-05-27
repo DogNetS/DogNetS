@@ -78,11 +78,11 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
         //set age etc
         
         // Do any additional setup after loading the view.
-        fetchStatuses()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        fetchStatuses()
+
         self.dogName.text = dog.name
         self.dogsOwner.text = dog.owner?.username
         self.dogBreed.text = dog.breed
@@ -123,6 +123,7 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
         if let selectedCellIndex = statusTableView.indexPathForSelectedRow {
             statusTableView.deselectRow(at: selectedCellIndex, animated: false)
         }
+        
     }
 
     override func didReceiveMemoryWarning() {
