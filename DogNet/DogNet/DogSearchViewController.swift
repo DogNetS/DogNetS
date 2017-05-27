@@ -14,7 +14,7 @@ class DogSearchViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var dogSearchBar: UISearchBar!
     @IBOutlet weak var dogSearchTableView: UITableView!
-    var dogs: [Dog]! = []
+    var dogs: [PFObject]! = []
     var currentDog: Dog!
 
     override func viewDidLoad() {
@@ -47,11 +47,21 @@ class DogSearchViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dogSearchCell", for: indexPath) as! DogSearchTableViewCell
-        let dog = dogs[indexPath.row]
-        if dog.dogImage == nil {
-            dog.dogImage = UIImage(named: "dog_default")
+        let PFdog = dogs[indexPath.row]
+        cell.dog = Dog.init(dog: PFdog)
+        if let the_photo = PFdog["photo"]{
+            (the_photo as AnyObject).getDataInBackground(block: {(imageData: Data?,error: Error?) in
+                if error == nil {
+                    if let imageData = imageData {
+                        let image = UIImage(data: imageData)
+                        cell.dogImageView.image = image
+                        cell.dog.dogImage = image
+                    }
+                }
+            })
         }
-        cell.dog = dog
+
+        
 
         return cell
     }
@@ -68,7 +78,7 @@ class DogSearchViewController: UIViewController, UITableViewDelegate, UITableVie
             if let pfdogs = pfdogs {
                 MBProgressHUD.hide(for: self.view , animated: true)
                 for pfdog in pfdogs {
-                    let dog = Dog.init(dog: pfdog)
+                    let dog = pfdog
                     self.dogs.insert(dog, at: 0)
                 }
                 self.dogSearchTableView.reloadData()

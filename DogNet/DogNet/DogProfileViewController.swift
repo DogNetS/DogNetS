@@ -194,8 +194,21 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "statusCell", for: indexPath) as! DogStatusTableViewCell
-        let status = statuses[indexPath.row] 
+        let status = statuses[indexPath.row]
         cell.status = Status.init(status: status)
+        let PFDog = status["dog"] as! PFObject
+        if let the_photo = (PFDog["photo"]){
+            (the_photo as AnyObject).getDataInBackground(block: {(imageData: Data?,error: Error?) in
+                if error == nil {
+                    if let imageData = imageData {
+                        let image = UIImage(data: imageData)
+                        cell.status.dog?.dogImage = image
+                        cell.dogImage.image = image
+                        
+                    }
+                }
+            })
+        }
         return cell
     }
     
