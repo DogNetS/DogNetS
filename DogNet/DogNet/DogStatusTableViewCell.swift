@@ -16,14 +16,18 @@ class DogStatusTableViewCell: UITableViewCell {
     
     var status: Status! {
         didSet {
-            
+            let dateString:String
             let time = status.post_time ?? 0
-            let date = NSDate(timeIntervalSince1970: TimeInterval(time))
-            
-            let dayTimePeriodFormatter = DateFormatter()
-            dayTimePeriodFormatter.dateFormat = "MMM dd YYYY hh:mm a"
-            
-            let dateString = dayTimePeriodFormatter.string(from: date as Date)
+            if (time > 0) {
+                let date = NSDate(timeIntervalSince1970: TimeInterval(time))
+                
+                let dayTimePeriodFormatter = DateFormatter()
+                dayTimePeriodFormatter.dateFormat = "MMM dd YYYY hh:mm a"
+                
+                dateString = dayTimePeriodFormatter.string(from: date as Date)
+            } else {
+                dateString = ""
+            }
             
             self.dogStatusText.text = status.status_text
             self.dogPostTime.text = dateString
