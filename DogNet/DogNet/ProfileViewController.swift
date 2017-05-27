@@ -119,7 +119,8 @@ class ProfileViewController: UIViewController {
             self.location = self.user_data?[0]["location"] as! String
         }
         else {
-            self.location = "Location not found"
+            //self.location = "Location not found"
+            self.location = "La Jolla"
         }
         
         if(self.user_data?[0]["bio"] != nil) {
