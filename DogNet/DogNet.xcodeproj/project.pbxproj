@@ -204,6 +204,7 @@
 				TargetAttributes = {
 					C79708BC1EA5C037002D652D = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = GXSP5NDPCZ;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -436,6 +437,7 @@
 			baseConfigurationReference = F3188F68E2E2B8FFC7DF4051 /* Pods-DogNet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = GXSP5NDPCZ;
 				INFOPLIST_FILE = DogNet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dognets.DogNet;
@@ -449,6 +451,7 @@
 			baseConfigurationReference = A3B5349A875B720F30F4001F /* Pods-DogNet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = GXSP5NDPCZ;
 				INFOPLIST_FILE = DogNet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dognets.DogNet;

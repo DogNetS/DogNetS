@@ -19,6 +19,7 @@ class DogSearchViewController: UIViewController, UITableViewDelegate, UITableVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         // Do any additional setup after loading the view.
         dogSearchTableView.dataSource = self
@@ -43,6 +44,10 @@ class DogSearchViewController: UIViewController, UITableViewDelegate, UITableVie
         } else {
             return 0
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
