@@ -32,6 +32,8 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
         
         statusTableView.estimatedRowHeight = 150
         statusTableView.rowHeight = UITableViewAutomaticDimension
+        statusTableView.delegate = self
+        statusTableView.dataSource = self
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit Info", style: .plain, target: self, action: #selector(DogProfileViewController.EditInfoTapped))
         
@@ -130,6 +132,7 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
          for each pal, get statuses
          perhaps order them by time
          */
+        print("**********fetching statuses")
         statuses.removeAll()
         let palIDs = dog.pals
         
@@ -140,19 +143,30 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
         MBProgressHUD.showAdded(to: self.view , animated: true)
         query.findObjectsInBackground { (PFdogs: [PFObject]?, error: Error?) in
             if let PFdogs = PFdogs {
+                print("1")
                 MBProgressHUD.hide(for: self.view , animated: true)
                 for PFdog in PFdogs {
-                    if let dogStatusList = PFdog["statuses"] as? [NSDictionary] {
-                        for dogStatus in dogStatusList {
-                            var newStatus = Dictionary<String, Any>()
-                            newStatus.updateValue(dogStatus["text"] ?? "no text", forKey: "text")
-                            newStatus.updateValue(dogStatus["time"] ?? "no time", forKey: "time")
-                            newStatus.updateValue(PFdog, forKey: "dog")
-                            self.statuses.append(newStatus as NSDictionary)
-                        }
+                    let dogStatusList = (PFdog["statuses"] as? [NSDictionary]) ?? ([NSDictionary.init()])
+                    print("2")
+                    print(dogStatusList)
+                    for dogStatus in dogStatusList {
+                        print("2a")
+                        var newStatus = Dictionary<String, Any>()
+                        newStatus.updateValue(dogStatus["text"] ?? "no text", forKey: "text")
+                        newStatus.updateValue(dogStatus["time"] ?? "no time", forKey: "time")
+                        newStatus.updateValue(PFdog, forKey: "dog")
+                        print(newStatus)
+
+                        self.statuses.append(newStatus as NSDictionary)
                     }
+                    print("self.statuses")
+                    print(self.statuses)
+                    self.statusTableView.reloadData()
+
+                    //    PFdog["statuses"] = self.statuses
                 }
             } else {
+                print("4")
                 MBProgressHUD.hide(for: self.view , animated: true)
                 // Log details of the failure
                 let alertController = UIAlertController(title: "Could not get pal statuses", message: "Try again!", preferredStyle: .alert)

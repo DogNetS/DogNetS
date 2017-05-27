@@ -104,23 +104,35 @@ class StatusViewController: UIViewController, UITextViewDelegate {
         MBProgressHUD.showAdded(to: self.view , animated: true)
         let query = PFQuery(className: "dog_data")
         query.whereKey("objectId", equalTo: dog.id ?? "no id")
-        query.findObjectsInBackground { (PFdog: [PFObject]?, error: Error?) in
-            if let PFdog = PFdog {
-                let statuses = PFdog["statuses"] as [NSDictionary]
-                statuses.append(dict)
-            }
-        }
-        
-        let post = PFObject(className: "dog_data")
-        post.add(dict, forKey: "statuses")
-        
-        MBProgressHUD.showAdded(to: self.view , animated: true)
-        print("posting status")
-        post.saveInBackground { (wasSuccess: Bool, error: Error?) in
-            if (wasSuccess) {
-                print("success")
-                MBProgressHUD.hide(for: self.view , animated: true)
-                self.dismiss(animated: true, completion: nil)
+        query.findObjectsInBackground { (PFdogs: [PFObject]?, error: Error?) in
+            if let PFdogs = PFdogs {
+                for PFdog in PFdogs {
+                    var statuses = (PFdog["statuses"] as? [NSDictionary]) ?? ([NSDictionary.init()])
+                    statuses.append(dict as NSDictionary)
+                    PFdog["statuses"] = statuses
+                    
+                    PFdog.saveInBackground(block: { (wasSuccessful: Bool, error: Error?) in
+                        if (wasSuccessful) {
+                            print("success")
+                            MBProgressHUD.hide(for: self.view , animated: true)
+                            self.dismiss(animated: true, completion: nil)
+                        } else {
+                            MBProgressHUD.hide(for: self.view , animated: true)
+                            let alertController = UIAlertController(title: "Could not update status", message: "Please try again", preferredStyle: .alert)
+                            // create a cancel action
+                            let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                                // handle cancel response here. Doing nothing will dismiss the view.
+                            }
+                            // add the cancel action to the alertController
+                            alertController.addAction(cancelAction)
+                            
+                            self.present(alertController, animated: true) {
+                                // optional code for what happens after the alert controller has finished presenting
+                            }
+
+                        }
+                    })
+                }
             } else {
                 MBProgressHUD.hide(for: self.view , animated: true)
                 let alertController = UIAlertController(title: "Could not update status", message: "Please try again", preferredStyle: .alert)
@@ -134,8 +146,10 @@ class StatusViewController: UIViewController, UITextViewDelegate {
                 self.present(alertController, animated: true) {
                     // optional code for what happens after the alert controller has finished presenting
                 }
+
             }
         }
+        
     }
 
     /*
