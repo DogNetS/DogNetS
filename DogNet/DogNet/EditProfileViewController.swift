@@ -90,6 +90,7 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
         vc.delegate = self
         vc.allowsEditing = true
         
+        /*
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             print("Camera is available 📸")
             vc.sourceType = .camera
@@ -97,7 +98,8 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
             print("Camera 🚫 available so we will use photo library instead")
             vc.sourceType = .photoLibrary
         }
-        
+        */
+        vc.sourceType = UIImagePickerControllerSourceType.photoLibrary
         self.present(vc, animated: true, completion: nil)
         
         print("profile pic tapped")
