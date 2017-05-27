@@ -43,7 +43,7 @@ class Dog: NSObject {
         if let pals = dog["pals"]{
             self.pals = pals as! [String]
         }
-        self.statuses = dog["statuses"] as? [NSDictionary] ?? [NSDictionary.init()]
+        self.statuses = dog["statuses"] as? [NSDictionary] ?? []
         
         
     }

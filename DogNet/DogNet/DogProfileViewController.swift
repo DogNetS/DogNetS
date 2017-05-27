@@ -150,7 +150,7 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
                 print("1")
                 MBProgressHUD.hide(for: self.view , animated: true)
                 for PFdog in PFdogs {
-                    let dogStatusList = (PFdog["statuses"] as? [NSDictionary]) ?? ([NSDictionary.init()])
+                    let dogStatusList = (PFdog["statuses"] as? [NSDictionary]) ?? ([])
                     print("2")
                     print(dogStatusList)
                     for dogStatus in dogStatusList {

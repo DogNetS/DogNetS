@@ -26,6 +26,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var noDogLabel: UILabel!
     
     @IBOutlet weak var tableView: UITableView!
     @IBAction func onLogout(_ sender: Any) {
@@ -52,9 +53,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 // The find succeeded.
                 print("Successfully retrieved \(dogs!.count) dogs.")
                 // Do something with the found objects
-                if let dogs = dogs {
-                    self.PFDogs = dogs
-                    self.tableView.reloadData()
+                if (dogs!.count == 0){
+                    print("count was 0")
+                    self.tableView.isHidden = true
+                    self.noDogLabel.isHidden = false
+                } else {
+                    if let dogs = dogs {
+                        print("this happened")
+                        self.PFDogs = dogs
+                        self.tableView.isHidden = false
+                        self.noDogLabel.isHidden = true
+                        self.tableView.reloadData()
+                    }
                 }
             } else {
                 // Log details of the failure
@@ -90,9 +100,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 // The find succeeded.
                 print("Successfully retrieved \(dogs!.count) dogs.")
                 // Do something with the found objects
-                if let dogs = dogs {
-                    self.PFDogs = dogs
-                    self.tableView.reloadData()
+                if (dogs!.count == 0){
+                    print("count was 0")
+                    self.tableView.isHidden = true
+                    self.noDogLabel.isHidden = false
+                } else {
+                    if let dogs = dogs {
+                        print("this happened")
+                        self.PFDogs = dogs
+                        self.tableView.isHidden = false
+                        self.noDogLabel.isHidden = true
+                        self.tableView.reloadData()
+                    }
                 }
             } else {
                 // Log details of the failure

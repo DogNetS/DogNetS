@@ -115,7 +115,6 @@ class StatusViewController: UIViewController, UITextViewDelegate {
                         if (wasSuccessful) {
                             print("success")
                             MBProgressHUD.hide(for: self.view , animated: true)
-                            self.dismiss(animated: true, completion: nil)
                         } else {
                             MBProgressHUD.hide(for: self.view , animated: true)
                             let alertController = UIAlertController(title: "Could not update status", message: "Please try again", preferredStyle: .alert)

@@ -42,7 +42,6 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
         profileImageView.isUserInteractionEnabled = true
         profileImageView.addGestureRecognizer(tapGestureRecognizer)
         nameTextField.text = user_data?[0]["name"] as? String
-        print("**********  \(user_data)")
         
     }
     
@@ -52,8 +51,6 @@ class EditProfileViewController: ViewController, UIImagePickerControllerDelegate
         
         // update fields using data from Profile VC
         nameTextField.text = user_data?[0]["name"] as? String
-        print("**********  \(user_data)")
-        print("name in text field: \(nameTextField.text)")
         emailTextField.text = PFUser.current()?.email
         bioTextView.text = user_data?[0]["bio"] as? String
 

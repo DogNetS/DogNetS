@@ -75,13 +75,15 @@ class DogSearchViewController: UIViewController, UITableViewDelegate, UITableVie
         
         MBProgressHUD.showAdded(to: self.view , animated: true)
         query.findObjectsInBackground{ (pfdogs: [PFObject]?, error: Error?) in
-            if let pfdogs = pfdogs {
-                MBProgressHUD.hide(for: self.view , animated: true)
-                for pfdog in pfdogs {
-                    let dog = pfdog
-                    self.dogs.insert(dog, at: 0)
+            if error == nil {
+                if let pfdogs = pfdogs {
+                    MBProgressHUD.hide(for: self.view , animated: true)
+                    for pfdog in pfdogs {
+                        let dog = pfdog
+                        self.dogs.insert(dog, at: 0)
+                    }
+                    self.dogSearchTableView.reloadData()
                 }
-                self.dogSearchTableView.reloadData()
             } else {
                 MBProgressHUD.hide(for: self.view , animated: true)
                 let alertController = UIAlertController(title: "Could not search for dog", message: "Try again!", preferredStyle: .alert)

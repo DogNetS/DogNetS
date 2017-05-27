@@ -139,7 +139,12 @@ class ProfileViewController: UIViewController {
         self.age = Int((birthday?.timeIntervalSinceNow)!/(-60*60*24*365))
         
         ageLabel.text = "\(self.age) years old"
-        bioTextView.text = self.bioText
+        if self.bioText == "" {
+            bioTextView.text = "Update your bio!"
+        } else {
+            bioTextView.text = self.bioText
+
+        }
         locationLabel.text = self.location
         
         if let userPic = user_data[0].value(forKey: "profilePic") as? PFFile {
