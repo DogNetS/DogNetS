@@ -27,6 +27,7 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
     var statuses: [NSDictionary]! = []
     //need to add pals list, age.
     
+    @IBOutlet weak var noStatusesText: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -137,7 +138,6 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
          for each pal, get statuses
          perhaps order them by time
          */
-        print("**********fetching statuses")
         statuses.removeAll()
         var palIDs = dog.pals
         palIDs.append(dog.id!)
@@ -149,14 +149,10 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
         MBProgressHUD.showAdded(to: self.view , animated: true)
         query.findObjectsInBackground { (PFdogs: [PFObject]?, error: Error?) in
             if let PFdogs = PFdogs {
-                print("1")
                 MBProgressHUD.hide(for: self.view , animated: true)
                 for PFdog in PFdogs {
                     let dogStatusList = (PFdog["statuses"] as? [NSDictionary]) ?? ([])
-                    print("2")
-                    print(dogStatusList)
                     for dogStatus in dogStatusList {
-                        print("2a")
                         var newStatus = Dictionary<String, Any>()
                         newStatus.updateValue(dogStatus["text"] ?? "no text", forKey: "text")
                         newStatus.updateValue(dogStatus["time"] ?? "no time", forKey: "time")
@@ -165,11 +161,16 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
 
                         self.statuses.append(newStatus as NSDictionary)
                     }
-                    print("self.statuses")
-                    print(self.statuses)
                     self.statusTableView.reloadData()
                     
                     //    PFdog["statuses"] = self.statuses
+                }
+                if self.statuses.count == 0 {
+                    self.statusTableView.isHidden = true
+                    self.noStatusesText.isHidden = false
+                } else {
+                    self.statusTableView.isHidden = false
+                    self.noStatusesText.isHidden = true
                 }
             } else {
                 print("4")

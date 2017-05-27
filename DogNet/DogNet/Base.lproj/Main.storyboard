@@ -669,10 +669,17 @@
                                     <action selector="MyPalsButtonTapped:" destination="297-ud-R75" eventType="touchUpInside" id="yg4-bR-pH3"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No statuses to display!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74C-Eo-pPg">
+                                <rect key="frame" x="48" y="333" width="224" height="27"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="y7G-mW-UJy" firstAttribute="top" secondItem="9eu-QT-Tfd" secondAttribute="bottom" id="27i-zc-EA8"/>
+                            <constraint firstItem="74C-Eo-pPg" firstAttribute="top" secondItem="LcU-Jx-zWP" secondAttribute="bottom" constant="80" id="3AO-E7-e39"/>
                             <constraint firstAttribute="trailing" secondItem="Pik-Dk-6o0" secondAttribute="trailing" constant="16" id="4Qj-Q6-gqk"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9eu-QT-Tfd" secondAttribute="trailing" constant="8" id="5NH-bI-AjY"/>
                             <constraint firstItem="9eu-QT-Tfd" firstAttribute="top" secondItem="jsy-99-21h" secondAttribute="bottom" constant="16" id="5nI-qW-Wjk"/>
@@ -703,6 +710,7 @@
                             <constraint firstItem="b3d-gm-cqo" firstAttribute="top" secondItem="Pik-Dk-6o0" secondAttribute="bottom" constant="4" id="lhE-Ud-cu7"/>
                             <constraint firstItem="RkE-zT-C12" firstAttribute="top" secondItem="LcU-Jx-zWP" secondAttribute="bottom" constant="8" id="lmc-mi-9U5"/>
                             <constraint firstItem="VJj-9L-0VO" firstAttribute="leading" secondItem="b3d-gm-cqo" secondAttribute="leading" id="qWf-AO-aHo"/>
+                            <constraint firstItem="74C-Eo-pPg" firstAttribute="centerX" secondItem="NNT-tK-7aC" secondAttribute="centerX" id="rci-tn-Fg1"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="clG-LL-SWn" secondAttribute="trailing" constant="8" id="sQD-ic-d7i"/>
                             <constraint firstItem="GRz-13-V6g" firstAttribute="leading" secondItem="9eu-QT-Tfd" secondAttribute="leading" id="srP-xO-Z46"/>
                             <constraint firstItem="7np-cW-Bpl" firstAttribute="leading" secondItem="NNT-tK-7aC" secondAttribute="leadingMargin" constant="8" id="t1q-WH-pTU"/>
@@ -723,6 +731,7 @@
                         <outlet property="dogsOwner" destination="GRz-13-V6g" id="hzl-jw-muN"/>
                         <outlet property="dogsTemperament" destination="VJj-9L-0VO" id="xlE-8y-scS"/>
                         <outlet property="dogsToys" destination="LcU-Jx-zWP" id="F3Q-cP-bjd"/>
+                        <outlet property="noStatusesText" destination="74C-Eo-pPg" id="9mn-Pr-Gys"/>
                         <outlet property="statusTableView" destination="RkE-zT-C12" id="bdO-qe-mch"/>
                     </connections>
                 </viewController>
