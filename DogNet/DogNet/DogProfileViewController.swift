@@ -26,8 +26,8 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var statusTableView: UITableView!
     var statuses: [NSDictionary]! = []
     //need to add pals list, age.
+    @IBOutlet weak var noStatusText: UILabel!
     
-    @IBOutlet weak var noStatusesText: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -167,10 +167,10 @@ class DogProfileViewController: UIViewController, UITableViewDelegate, UITableVi
                 }
                 if self.statuses.count == 0 {
                     self.statusTableView.isHidden = true
-                    self.noStatusesText.isHidden = false
+                    self.noStatusText.isHidden = false
                 } else {
                     self.statusTableView.isHidden = false
-                    self.noStatusesText.isHidden = true
+                    self.noStatusText.isHidden = true
                 }
             } else {
                 print("4")
