@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0155E5291ED7706600A93263 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0155E5281ED7706600A93263 /* StatusViewController.swift */; };
+		01D890961ED7BAD5002157A4 /* DogStatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D890951ED7BAD5002157A4 /* DogStatusTableViewCell.swift */; };
+		01D890981ED7BB6A002157A4 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D890971ED7BB6A002157A4 /* Status.swift */; };
 		01FA19431EBFBF0900155429 /* DogSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FA19421EBFBF0900155429 /* DogSearchViewController.swift */; };
 		01FA19461EBFBFA100155429 /* DogSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FA19451EBFBFA100155429 /* DogSearchTableViewCell.swift */; };
 		B16A23DC1ED99371568F6DB0 /* Pods_DogNet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463C1EFA0A3A3A98B2FFF82D /* Pods_DogNet.framework */; };
@@ -34,6 +36,8 @@
 
 /* Begin PBXFileReference section */
 		0155E5281ED7706600A93263 /* StatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
+		01D890951ED7BAD5002157A4 /* DogStatusTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogStatusTableViewCell.swift; sourceTree = "<group>"; };
+		01D890971ED7BB6A002157A4 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		01FA19421EBFBF0900155429 /* DogSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogSearchViewController.swift; sourceTree = "<group>"; };
 		01FA19451EBFBFA100155429 /* DogSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogSearchTableViewCell.swift; sourceTree = "<group>"; };
 		463C1EFA0A3A3A98B2FFF82D /* Pods_DogNet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DogNet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +84,7 @@
 				E34ECF3A1EB841B8000CF41E /* DogTableViewCell.swift */,
 				01FA19451EBFBFA100155429 /* DogSearchTableViewCell.swift */,
 				E3F652D81ED6772A00235301 /* DogPalsTableViewCell.swift */,
+				01D890951ED7BAD5002157A4 /* DogStatusTableViewCell.swift */,
 			);
 			name = "TableView Cells";
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				E34ECF381EB806A8000CF41E /* Dog.swift */,
+				01D890971ED7BB6A002157A4 /* Status.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -288,6 +294,7 @@
 			files = (
 				C79708D31EA5D043002D652D /* LoginViewController.swift in Sources */,
 				0155E5291ED7706600A93263 /* StatusViewController.swift in Sources */,
+				01D890981ED7BB6A002157A4 /* Status.swift in Sources */,
 				E36C86C11ED3AB8D001AEA0D /* PalProfileViewController.swift in Sources */,
 				C79708DF1EA5D099002D652D /* DogSignup1ViewController.swift in Sources */,
 				E34ECF3B1EB841B8000CF41E /* DogTableViewCell.swift in Sources */,
@@ -302,6 +309,7 @@
 				E34ECF391EB806A8000CF41E /* Dog.swift in Sources */,
 				C79708D91EA5D074002D652D /* DogProfileViewController.swift in Sources */,
 				C79708E11EA5D0A7002D652D /* DogSignup2ViewController.swift in Sources */,
+				01D890961ED7BAD5002157A4 /* DogStatusTableViewCell.swift in Sources */,
 				C79708C11EA5C038002D652D /* AppDelegate.swift in Sources */,
 				C79708D71EA5D06A002D652D /* HomeViewController.swift in Sources */,
 				C79708DB1EA5D07D002D652D /* DogPalListViewController.swift in Sources */,

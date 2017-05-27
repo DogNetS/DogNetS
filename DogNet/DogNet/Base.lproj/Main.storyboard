@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -543,8 +544,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7np-cW-Bpl">
-                                <rect key="frame" x="91" y="482" width="139" height="54"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <rect key="frame" x="24" y="524" width="81" height="36"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                 <state key="normal" title="Find Pals"/>
                                 <connections>
                                     <segue destination="k28-39-fpm" kind="show" id="eoD-pz-H8l"/>
@@ -575,20 +576,79 @@
                                 <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AvB-km-iP8">
-                                <rect key="frame" x="125.5" y="438" width="70" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="My Pals"/>
-                                <connections>
-                                    <action selector="MyPalsButtonTapped:" destination="297-ud-R75" eventType="touchUpInside" id="yg4-bR-pH3"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICY-np-Pgd">
                                 <rect key="frame" x="205" y="123" width="99" height="30"/>
                                 <state key="normal" title="Update Status"/>
                                 <connections>
                                     <action selector="onUpdateStatus:" destination="297-ud-R75" eventType="touchUpInside" id="WxC-ZP-1rb"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="108" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RkE-zT-C12">
+                                <rect key="frame" x="0.0" y="261" width="320" height="255"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="statusCell" rowHeight="108" id="NU9-Md-nat" customClass="DogStatusTableViewCell" customModule="DogNet" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="108"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NU9-Md-nat" id="xE1-Bw-Rfr">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="107.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dog_default" translatesAutoresizingMaskIntoConstraints="NO" id="gcE-Y9-06G">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="Obp-Ij-xAe"/>
+                                                        <constraint firstAttribute="width" constant="50" id="qgS-v9-BxT"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Dog Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQE-fh-gmC">
+                                                    <rect key="frame" x="58" y="0.0" width="77" height="19.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dog Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etX-kS-9ZS">
+                                                    <rect key="frame" x="58" y="19.5" width="67.5" height="16"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                    <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Post time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Clw-eh-T78">
+                                                    <rect key="frame" x="143" y="3" width="49.5" height="13.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                                    <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="etX-kS-9ZS" firstAttribute="top" secondItem="dQE-fh-gmC" secondAttribute="bottom" id="2go-Pw-Rwj"/>
+                                                <constraint firstItem="etX-kS-9ZS" firstAttribute="leading" secondItem="gcE-Y9-06G" secondAttribute="trailing" constant="8" id="D0B-U3-peE"/>
+                                                <constraint firstItem="dQE-fh-gmC" firstAttribute="leading" secondItem="etX-kS-9ZS" secondAttribute="leading" id="Fo0-dK-f9Q"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="etX-kS-9ZS" secondAttribute="bottom" id="KcC-8o-e7p"/>
+                                                <constraint firstItem="gcE-Y9-06G" firstAttribute="top" secondItem="xE1-Bw-Rfr" secondAttribute="top" id="P1m-MB-aj8"/>
+                                                <constraint firstItem="gcE-Y9-06G" firstAttribute="leading" secondItem="xE1-Bw-Rfr" secondAttribute="leading" id="QYk-nM-I6j"/>
+                                                <constraint firstItem="dQE-fh-gmC" firstAttribute="top" secondItem="xE1-Bw-Rfr" secondAttribute="top" id="Xpw-rg-ehE"/>
+                                                <constraint firstItem="Clw-eh-T78" firstAttribute="leading" secondItem="dQE-fh-gmC" secondAttribute="trailing" constant="8" id="cRr-tT-NDi"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Clw-eh-T78" secondAttribute="trailing" constant="8" id="fWz-OX-Zy3"/>
+                                                <constraint firstItem="Clw-eh-T78" firstAttribute="centerY" secondItem="dQE-fh-gmC" secondAttribute="centerY" id="piC-fX-oUD"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="etX-kS-9ZS" secondAttribute="trailing" constant="8" id="tJG-7z-h77"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dogImage" destination="gcE-Y9-06G" id="glj-6b-5ek"/>
+                                            <outlet property="dogNameLabel" destination="dQE-fh-gmC" id="iLA-Bl-sYK"/>
+                                            <outlet property="dogPostTime" destination="Clw-eh-T78" id="7jE-uO-qMh"/>
+                                            <outlet property="dogStatusText" destination="etX-kS-9ZS" id="QuT-kn-8ql"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AvB-km-iP8">
+                                <rect key="frame" x="234" y="524" width="70" height="36"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <state key="normal" title="My Pals"/>
+                                <connections>
+                                    <action selector="MyPalsButtonTapped:" destination="297-ud-R75" eventType="touchUpInside" id="yg4-bR-pH3"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -602,25 +662,31 @@
                             <constraint firstItem="wNo-z2-j2c" firstAttribute="top" secondItem="y7G-mW-UJy" secondAttribute="bottom" id="Fe9-xz-qmW"/>
                             <constraint firstItem="clG-LL-SWn" firstAttribute="top" secondItem="b3d-gm-cqo" secondAttribute="bottom" id="HxP-Ot-MYT"/>
                             <constraint firstItem="wNo-z2-j2c" firstAttribute="leading" secondItem="9eu-QT-Tfd" secondAttribute="leading" id="JQo-um-fSp"/>
+                            <constraint firstAttribute="trailing" secondItem="RkE-zT-C12" secondAttribute="trailing" id="Mqf-A2-Awb"/>
                             <constraint firstItem="y7G-mW-UJy" firstAttribute="leading" secondItem="9eu-QT-Tfd" secondAttribute="leading" id="Psi-s1-bCB"/>
+                            <constraint firstItem="RkE-zT-C12" firstAttribute="leading" secondItem="NNT-tK-7aC" secondAttribute="leading" id="Riv-qG-KMF"/>
                             <constraint firstItem="GRz-13-V6g" firstAttribute="top" secondItem="wNo-z2-j2c" secondAttribute="bottom" id="SCW-hV-jID"/>
                             <constraint firstItem="CnB-5Y-GdH" firstAttribute="leading" secondItem="NNT-tK-7aC" secondAttribute="leading" id="T4v-7c-MNV"/>
                             <constraint firstItem="CnB-5Y-GdH" firstAttribute="top" secondItem="jsy-99-21h" secondAttribute="bottom" id="VAu-q4-AoA"/>
+                            <constraint firstItem="AvB-km-iP8" firstAttribute="top" secondItem="RkE-zT-C12" secondAttribute="bottom" constant="8" id="WW9-Gy-oL3"/>
                             <constraint firstItem="clG-LL-SWn" firstAttribute="leading" secondItem="b3d-gm-cqo" secondAttribute="leading" id="XX0-ny-Tpq"/>
                             <constraint firstItem="9eu-QT-Tfd" firstAttribute="leading" secondItem="CnB-5Y-GdH" secondAttribute="trailing" constant="8" id="bVm-sW-Boy"/>
                             <constraint firstItem="Pik-Dk-6o0" firstAttribute="top" secondItem="GRz-13-V6g" secondAttribute="bottom" constant="4" id="bcn-17-Qq7"/>
                             <constraint firstItem="b3d-gm-cqo" firstAttribute="leading" secondItem="NNT-tK-7aC" secondAttribute="leading" constant="16" id="boK-Jq-Ej4"/>
                             <constraint firstItem="Pik-Dk-6o0" firstAttribute="leading" secondItem="NNT-tK-7aC" secondAttribute="leading" constant="16" id="cXV-Ii-PcA"/>
                             <constraint firstItem="CnB-5Y-GdH" firstAttribute="top" secondItem="NNT-tK-7aC" secondAttribute="top" constant="64" id="dg3-GZ-vEK"/>
+                            <constraint firstAttribute="trailing" secondItem="AvB-km-iP8" secondAttribute="trailing" constant="16" id="f06-FU-BjA"/>
                             <constraint firstItem="VJj-9L-0VO" firstAttribute="top" secondItem="clG-LL-SWn" secondAttribute="bottom" id="fQS-z0-ITW"/>
                             <constraint firstItem="LcU-Jx-zWP" firstAttribute="leading" secondItem="b3d-gm-cqo" secondAttribute="leading" id="g6a-uZ-Rdu"/>
                             <constraint firstItem="wNo-z2-j2c" firstAttribute="leading" secondItem="9eu-QT-Tfd" secondAttribute="leading" id="i7y-H6-dvd"/>
                             <constraint firstItem="ICY-np-Pgd" firstAttribute="centerY" secondItem="wNo-z2-j2c" secondAttribute="centerY" id="iI6-QR-Cw0"/>
-                            <constraint firstItem="X5a-UI-YvB" firstAttribute="top" secondItem="7np-cW-Bpl" secondAttribute="bottom" constant="32" id="j72-tO-TrL"/>
                             <constraint firstItem="b3d-gm-cqo" firstAttribute="top" secondItem="Pik-Dk-6o0" secondAttribute="bottom" constant="4" id="lhE-Ud-cu7"/>
+                            <constraint firstItem="RkE-zT-C12" firstAttribute="top" secondItem="LcU-Jx-zWP" secondAttribute="bottom" constant="8" id="lmc-mi-9U5"/>
                             <constraint firstItem="VJj-9L-0VO" firstAttribute="leading" secondItem="b3d-gm-cqo" secondAttribute="leading" id="qWf-AO-aHo"/>
                             <constraint firstItem="GRz-13-V6g" firstAttribute="leading" secondItem="9eu-QT-Tfd" secondAttribute="leading" id="srP-xO-Z46"/>
-                            <constraint firstItem="7np-cW-Bpl" firstAttribute="centerX" secondItem="NNT-tK-7aC" secondAttribute="centerX" id="tD9-ff-rQ0"/>
+                            <constraint firstItem="7np-cW-Bpl" firstAttribute="leading" secondItem="NNT-tK-7aC" secondAttribute="leadingMargin" constant="8" id="t1q-WH-pTU"/>
+                            <constraint firstItem="X5a-UI-YvB" firstAttribute="top" secondItem="7np-cW-Bpl" secondAttribute="bottom" constant="8" id="xC7-54-23b"/>
+                            <constraint firstItem="AvB-km-iP8" firstAttribute="centerY" secondItem="7np-cW-Bpl" secondAttribute="centerY" id="z6y-Tj-zd0"/>
                             <constraint firstItem="LcU-Jx-zWP" firstAttribute="top" secondItem="VJj-9L-0VO" secondAttribute="bottom" id="zBh-jD-qrz"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="y7G-mW-UJy" secondAttribute="trailing" constant="8" id="zVo-Gy-rXu"/>
                         </constraints>
@@ -635,6 +701,7 @@
                         <outlet property="dogsOwner" destination="GRz-13-V6g" id="hzl-jw-muN"/>
                         <outlet property="dogsTemperament" destination="VJj-9L-0VO" id="xlE-8y-scS"/>
                         <outlet property="dogsToys" destination="LcU-Jx-zWP" id="F3Q-cP-bjd"/>
+                        <outlet property="statusTableView" destination="RkE-zT-C12" id="bdO-qe-mch"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QCC-5r-tOc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -652,8 +719,37 @@
                     <view key="view" contentMode="scaleToFill" id="ttd-2l-xko">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Tell your pals what you're doing!" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FaY-F6-eWW">
+                                <rect key="frame" x="0.0" y="20" width="320" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="xRp-ZJ-tTc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="go"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJS-gJ-rX0">
+                                <rect key="frame" x="250" y="228" width="62" height="46"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <state key="normal" title="Post!"/>
+                                <connections>
+                                    <action selector="onPost:" destination="kX3-G7-Nhw" eventType="touchUpInside" id="c2A-hF-WJm"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="FaY-F6-eWW" firstAttribute="leading" secondItem="ttd-2l-xko" secondAttribute="leading" id="919-GC-av5"/>
+                            <constraint firstItem="NJS-gJ-rX0" firstAttribute="top" secondItem="FaY-F6-eWW" secondAttribute="bottom" constant="8" id="BhO-ZA-A71"/>
+                            <constraint firstItem="FaY-F6-eWW" firstAttribute="top" secondItem="Yxd-z5-vLU" secondAttribute="bottom" id="XbU-n7-3xm"/>
+                            <constraint firstAttribute="trailing" secondItem="NJS-gJ-rX0" secondAttribute="trailing" constant="8" id="a5x-GK-GR0"/>
+                            <constraint firstAttribute="trailing" secondItem="FaY-F6-eWW" secondAttribute="trailing" id="gGH-oV-TJH"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="postButton" destination="NJS-gJ-rX0" id="EkH-iZ-ff1"/>
+                        <outlet property="statusText" destination="FaY-F6-eWW" id="1dv-Do-LXt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rsf-w0-qpP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

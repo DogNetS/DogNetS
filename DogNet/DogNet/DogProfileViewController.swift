@@ -8,8 +8,9 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
 
-class DogProfileViewController: UIViewController {
+class DogProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var dog: Dog! // Dog model passed from the cell we tapped one.
     
@@ -22,10 +23,17 @@ class DogProfileViewController: UIViewController {
     @IBOutlet weak var dogsToys: UILabel!
     @IBOutlet weak var dogsBirthday: UILabel!
     @IBOutlet weak var dogsAge: UILabel!
+    @IBOutlet weak var statusTableView: UITableView!
+    var statuses: [NSDictionary]! = []
     //need to add pals list, age.
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        statusTableView.estimatedRowHeight = 150
+        statusTableView.rowHeight = UITableViewAutomaticDimension
+        statusTableView.delegate = self
+        statusTableView.dataSource = self
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit Info", style: .plain, target: self, action: #selector(DogProfileViewController.EditInfoTapped))
         
@@ -42,7 +50,7 @@ class DogProfileViewController: UIViewController {
         dateFormatter.dateStyle = DateFormatter.Style.medium
         dateFormatter.timeStyle = DateFormatter.Style.none
         
-        var birthdayDate = dog.birthday!.toDate(dateFormat: "MM/dd/yyyy")
+        let birthdayDate = dog.birthday!.toDate(dateFormat: "MM/dd/yyyy")
         var age = Int(birthdayDate.timeIntervalSinceNow/(-60*60*24*365))
         if (age == 0){
             age = Int(birthdayDate.timeIntervalSinceNow/(-60*60*24*30))
@@ -70,6 +78,7 @@ class DogProfileViewController: UIViewController {
         //set age etc
         
         // Do any additional setup after loading the view.
+        fetchStatuses()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,7 +95,7 @@ class DogProfileViewController: UIViewController {
         dateFormatter.dateStyle = DateFormatter.Style.medium
         dateFormatter.timeStyle = DateFormatter.Style.none
 
-        var birthdayDate = dog.birthday!.toDate(dateFormat: "MM/dd/yyyy")
+        let birthdayDate = dog.birthday!.toDate(dateFormat: "MM/dd/yyyy")
         var age = Int(birthdayDate.timeIntervalSinceNow/(-60*60*24*365))
         if (age == 0){
             age = Int(birthdayDate.timeIntervalSinceNow/(-60*60*24*30))
@@ -117,6 +126,79 @@ class DogProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func fetchStatuses(){
+        /*
+         go through list of pals
+         for each pal, get statuses
+         perhaps order them by time
+         */
+        print("**********fetching statuses")
+        statuses.removeAll()
+        let palIDs = dog.pals
+        
+        let query = PFQuery(className: "dog_data")
+        query.order(byDescending: "updatedAt")
+        query.includeKey("statuses")
+        query.whereKey("objectId", containedIn: palIDs)
+        MBProgressHUD.showAdded(to: self.view , animated: true)
+        query.findObjectsInBackground { (PFdogs: [PFObject]?, error: Error?) in
+            if let PFdogs = PFdogs {
+                print("1")
+                MBProgressHUD.hide(for: self.view , animated: true)
+                for PFdog in PFdogs {
+                    let dogStatusList = (PFdog["statuses"] as? [NSDictionary]) ?? ([NSDictionary.init()])
+                    print("2")
+                    print(dogStatusList)
+                    for dogStatus in dogStatusList {
+                        print("2a")
+                        var newStatus = Dictionary<String, Any>()
+                        newStatus.updateValue(dogStatus["text"] ?? "no text", forKey: "text")
+                        newStatus.updateValue(dogStatus["time"] ?? "no time", forKey: "time")
+                        newStatus.updateValue(PFdog, forKey: "dog")
+                        print(newStatus)
+
+                        self.statuses.append(newStatus as NSDictionary)
+                    }
+                    print("self.statuses")
+                    print(self.statuses)
+                    self.statusTableView.reloadData()
+
+                    //    PFdog["statuses"] = self.statuses
+                }
+            } else {
+                print("4")
+                MBProgressHUD.hide(for: self.view , animated: true)
+                // Log details of the failure
+                let alertController = UIAlertController(title: "Could not get pal statuses", message: "Try again!", preferredStyle: .alert)
+                // create a cancel action
+                let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                    // handle cancel response here. Doing nothing will dismiss the view.
+                }
+                // add the cancel action to the alertController
+                alertController.addAction(cancelAction)
+                
+                self.present(alertController, animated: true) {
+                    // optional code for what happens after the alert controller has finished presenting
+                }
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let statuses = statuses {
+            return statuses.count
+        } else {
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "statusCell", for: indexPath) as! DogStatusTableViewCell
+        let status = statuses[indexPath.row] 
+        cell.status = Status.init(status: status)
+        return cell
+    }
+    
     func EditInfoTapped(){
         let mainStoryboard = UIStoryboard( name: "Main", bundle: nil)
         let dogEditVC = mainStoryboard.instantiateViewController(withIdentifier: "dogEditVC") as! DogEditViewController
@@ -127,6 +209,7 @@ class DogProfileViewController: UIViewController {
     @IBAction func onUpdateStatus(_ sender: Any) {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let updateVC = mainStoryboard.instantiateViewController(withIdentifier: "statusVC") as! StatusViewController
+        updateVC.dog = self.dog
         self.navigationController?.pushViewController(updateVC, animated: true)
     }
 
