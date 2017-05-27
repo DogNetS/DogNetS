@@ -20,11 +20,11 @@ class DogEditViewController: UIViewController,UIImagePickerControllerDelegate,UI
     @IBOutlet weak var photoField: UIImageView!
     
     var dog: Dog!
-    var pickedImage: UIImage! //for adding the photo of the dog
+    var pickedImage: UIImage!  //for adding the photo of the dog
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pickedImage = UIImage(named: "dog_default")
+        pickedImage = nil
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addPhoto(_:)))
         photoField.isUserInteractionEnabled = true
         photoField.addGestureRecognizer(tapGestureRecognizer)
